@@ -91,10 +91,6 @@
                     <td>--allow-empty</td>
                     <td>空のコミットを許可する(-m --allow-emptyで空のままコミットできる)</td>
                   </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>
                 </table>
               </td>
             </tr>
@@ -111,13 +107,61 @@
             </tr>
             <tr>
               <td>rm</td>
-              <td>ファイルをインデックスから削除する</td>
-              <td></td>
+              <td>gitで管理しているファイルを削除する</td>
+              <td>
+                <table border="1">
+                  <tr>
+                    <td>--cached</td>
+                    <td>ワークツリーのファイルは保持する</td>
+                  </tr>
+                  <tr>
+                    <td>--force(-f)</td>
+                    <td>コミット前やインデックスに追加する前のファイルであっても削除する</td>
+                  </tr>
+                  <tr>
+                    <td>-r</td>
+                    <td>ディレクトリを再帰的に削除する</td>
+                  </tr>
+                  <tr>
+                    <td>--dry-run(-n)</td>
+                    <td>実行せずに実行内容を表示する</td>
+                  </tr>
+                </table>
+              </td>
             </tr>
             <tr>
               <td>reset</td>
-              <td>コミットを削除する</td>
-              <td></td>
+              <td>履歴時間軸を戻す</td>
+              <td>
+                <table border="1">
+                  <tr>
+                    <td>--soft</td>
+                    <td>HEADを戻す(commitの取り消し)</td>
+                  </tr>
+                  <tr>
+                    <td>--mixed</td>
+                    <td>HEADとインデックスを戻す(commitとaddの取り消し)</td>
+                  </tr>
+                  <tr>
+                    <td>--hard</td>
+                    <td>全て(HEADとインデックスとワーキングツリー)を戻す(以前commitした時まで取り消す)</td>
+                  </tr>
+                </table>
+                <table border="1">
+                  <tr>
+                    <td>HEAD^(@^)</td>
+                    <td>一つ前のコミット</td>
+                  </tr>
+                  <tr>
+                    <td>HEAD~~~,@^^^,HEAD~3,HEAD~{3},HEAD^^^</td>
+                    <td>3つ前のコミット</td>
+                  </tr>
+                  <tr>
+                    <td>ハッシュ値</td>
+                    <td>そこのコミット</td>
+                  </tr>
+                </table>
+              </td>
             </tr>
             <tr>
               <td>status</td>
@@ -172,6 +216,16 @@
             <tr>
               <td>config</td>
               <td>現在の設定を取得,変更する</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>reflog</td>
+              <td>resetの取り消し</td>
+              <td>git reset --hard ORIG_HEADで直前のresetの取り消し</td>
+            </tr>
+            <tr>
+              <td>bisect</td>
+              <td>問題の効果的な探索</td>
               <td></td>
             </tr>
           </table>
