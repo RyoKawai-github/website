@@ -17,9 +17,98 @@
     <main>
 
       <h1>tex</h1>
+        <p>TeXにも色々ある.おすすめを紹介しよう.</p>
+
+        <h2><a href=https://www.texpad.com>TeXPad</a></h2>
+          <p>mac系統でしか動かないが,とても使い勝手が良いらしい.環境構築が不要なのがとても良い.また,即時反映機能がある.日本語を使う時に設定が必要っぽい.有料である(macOS:4040円,iOS:3180円,2021/10/01現在)</p>
+
+        <h2><a href=https://ja.overleaf.com>OverLeaf</a></h2>
+          <p>クラウド上で動かすTeX.めちゃくちゃ便利らしい.オンラインで動かさないといけない意外にデメリットはないのでは?</p>
+
+        <h2><a href=https://texwiki.texjp.org/?TeX%20Live>TeXLive</a>+<a href=https://azure.microsoft.com/ja-jp/products/visual-studio-code/>VScode</a>(+<a href=https://git-scm.com>git</a>)</h2>
+          <p>現在の自分の環境.環境構築が必要だし面倒だが,カスタマイズしやすくて使いやすい.以下で環境構築の方法をメモしておく.</p>
+
         <h2>環境構築</h2>
+          <p>mac版TeXLive+VScode+(git+github)のmemo</p>
 
-
+          <ol>
+            <li>
+              <h3>ターミナルをzshに変更</h3>
+                <ol>
+                  ターミナルを開く
+                  <li>
+                    echo $SHELL で自分の現在のSHELLを確認
+                  </li>
+                  <li>
+                    cat /etc/shells で自分が使えるSHELLの確認
+                  </li>
+                  <li>
+                    /bin/zsh がなければzshのインストールをする
+                  </li>
+                  <li>
+                    chsh -s /bin/zsh を入力して再起動
+                  </li>
+                </ol>
+            </li>
+            <li>
+              <h3>TeXLiveのインストール</h3>
+                <ol>
+                  ターミナルでの操作を書いておく
+                  <li>
+                    curl -OL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz でミラーサイトからインストール
+                  </li>
+                  <li>
+                    tar xvf install-tl-unx.tar.gz で展開
+                  </li>
+                  <li>
+                    cd install-tl-2* でインストーラのディレクトリへ
+                  </li>
+                  <li>
+                    sudo ./install-tl -no-gui -repository http://mirror.ctan.org/systems/texlive/tlnet/ とするとActionが選べるので,Iを入力するとインストールが始まる(めちゃくちゃ時間がかかる)
+                  </li>
+                  <li>
+                    sudo ./install-tl -no-gui -profile installation.profile で止まっても途中から再開できるかも
+                  </li>
+                  <li>
+                    sudo /usr/local/texlive/????/bin/*/tlmgr path add でシンボリックリンクの追加
+                  </li>
+                </ol>
+            </li>
+            <li>
+              <h3>VScodeのインストール</h3>
+                <ol>
+                  <li>
+                    <a href=https://azure.microsoft.com/ja-jp/products/visual-studio-code/>公式サイト</a>からダウンロードして,指示に従いながらセットアップを行う
+                  </li>
+                  <li>
+                    拡張機能(横の検索)からLaTeX Workshopを入れる(LaTeX Utilitiesも入れても良い)(Local Historyはいれてはいけない)
+                  </li>
+                  <li>
+                    settingsからsettings.JSONを開いて設定する(以下は自分の設定)
+                  </li>
+                  <li>
+                    User Snippetsなどは好きにいじる
+                  </li>
+                </ol>
+            </li>
+            <li>
+              <h3>.latexmkrcの作成</h3>
+                <ol>
+                  ターミナルを開く
+                  <li>
+                    cd でホームディレクトリに移動する
+                  </li>
+                  <li>
+                    touch .latexmkrc でファイルを作る
+                  </li>
+                  <li>
+                    VScode上で開いて以下を貼り付けて保存する
+                  </li>
+                </ol>
+            </li>
+            完了.
+            あとは.texファイルをVScodeで作れば,command + sで上書き保存する時についでにビルドしてくれるし,command + ortion + vでPDFビュワーを別タブで開いてくれる
+          </ol>
     </main>
   </body>
 </html>
