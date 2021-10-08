@@ -89,13 +89,15 @@
                     <pre>
                       <code>
                         {
+                          // ---------- Editor ----------
+
                           // フォント サイズをピクセル単位で制御します。
                           "editor.fontSize": 15,
                           // フォント ファミリを制御します。
                           //"editor.fontFamily":"Ricty Diminished",
                           // 行の高さを制御します。
                           "editor.lineHeight": 0,
-                          // 1 つのタブに相当するスペースの数。
+                          // 1つのタブに相当するスペースの数。
                           "editor.tabSize": 2,
                           // 入力補完を表示する
                           "editor.quickSuggestions": false,
@@ -105,7 +107,7 @@
                           //"editor.quickSuggestionsDelay": 10,
                           // 括弧開きを入力したとき括弧閉じを自動的に入れる
                           //"editor.autoClosingBrackets": true,
-                          // 括弧同士に色をつけれる
+                          // 括弧同士に色をつける
                           //"editor.bracketPairColorization.enabled": true,
                           // 空白文字列の表示
                           "editor.renderWhitespace": "boundary",
@@ -115,12 +117,16 @@
                           "editor.cursorBlinking": "smooth",
                           // エディタのendなどを自動入力
                           //"editor.autoIndent": true,
-                          //?
-                          "window.zoomLevel": -1,
                           // インデントガイド(インデントに沿って縦線を表示)
                           "editor.renderIndentGuides": true,
                           // インデントの自動判定
                           "editor.detectIndentation": true,
+                          // ミニマップの表示
+                          "editor.minimap.enabled": false,
+                          // カラーテーマ
+                          "workbench.colorTheme": "Visual Studio Dark",
+                          // ウィンドウのズームレベル
+                          "window.zoomLevel": -1,
                           // 余分なホワイトスペースを削除
                           "files.trimTrailingWhitespace": true,
                           // Enable the extension.
@@ -130,8 +136,6 @@
                           // 新規ファイルはUntitledでファイル作成
                           //"workbench.startupEditor": "newUntitledFile",
                           //"workbench.sideBar.location": "left",
-                          // ミニマップの表示
-                          "editor.minimap.enabled": false,
                           // ファイルの末尾は改行で終わらせる
                           "files.insertFinalNewline": true,
                           // 拡張機能を自動更新
@@ -144,7 +148,13 @@
                           //"window.showFullPath": true,
                           //"explorer.confirmDelete": false,
                           // Quick Open で開いたエディターをプレビューとして表示するかどうかを制御します。
-                          //"workbench.editor.enablePreviewFromQuickOpen": false,
+                          "workbench.editor.enablePreviewFromQuickOpen": false,
+                          // プレビュー画面を開かない
+                          "workbench.editor.enablePreview": false,
+                          // 現在のタブの下線に色をつける
+                          "workbench.colorCustomizations": {
+                              "tab.activeBorder": "#0099ff"
+                            },
                           // ワークベンチのフォント エイリアシング方法を制御します。
                           //"workbench.fontAliasing": "antialiased",
                           // エディターのタブの大きさを制御します。
@@ -157,15 +167,9 @@
                           //"workbench.colorTheme": "Cobalt2",
                           //"workbench.iconTheme": "material-icon-theme",
                           //"breadcrumbs.enabled": true,
-                          "workbench.editor.enablePreview": false,
 
-                          "workbench.colorCustomizations": {
-                              "tab.activeBorder": "#0099ff"
-                            },
+                          // ---------- Terminal ----------
 
-                          /*
-                           * terminal
-                           */
                           // 実行するターミナル アプリケーションをカスタマイズします。
                           "terminal.external.osxExec": "Terminal.app",
                           // ターミナルのフォント サイズをピクセル単位で制御します。
@@ -183,9 +187,9 @@
                           //  }
                           //],
 
-                          "workbench.colorTheme": "Visual Studio Dark",
-
                           // ---------- Language ----------
+
+                          // タブストップ中にも入力補完を
                           "editor.suggest.snippetsPreventQuickSuggestions": false,
 
                           // ---------- LaTeX Workshop ----------
@@ -253,7 +257,6 @@
                           //TeX文章のカーソル位置でPDFを表示
                           "latex-workshop.synctex.afterBuild.enabled": true,
                       }
-
                       </code>
                     </pre>
                   <li>
