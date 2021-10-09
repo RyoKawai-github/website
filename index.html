@@ -4,6 +4,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Context-Style-Type" content="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!- 数式 ->
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" }},
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        },
+        "HTML-CSS": { matchFontHeight: false },
+        displayAlign: "left",
+        displayIndent: "2em"
+      });
+    </script>
     <title>RyoKawai</title>
   </head>
   <body>
@@ -19,7 +35,9 @@
       <h1>home</h1>
 
         <h2>test</h2>
-          メモように作ってみている.CSSはいつかいじる.olで箇条書きにならない.
+          <p>メモように作ってみている.CSSはいつかいじる.olで箇条書きにならないのはなぜだろう.</p>
+          <p>このページだけ数式が入力できるようになった</p>
+          <p>$\kappa(G) \leq \lambda(G) \leq \delta(G)$</p>
 
     </main>
   </body>

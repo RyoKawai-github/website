@@ -4,6 +4,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Context-Style-Type" content="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!- 数式 ->
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" }},
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        },
+        "HTML-CSS": { matchFontHeight: false },
+        displayAlign: "left",
+        displayIndent: "2em"
+      });
+    </script>
     <title>RyoKawai</title>
   </head>
   <body>
@@ -16,7 +32,10 @@
     </ul>
     <main>
 
-      <h1>tex</h1>
+      <h1>texのあれこれ</h1>
+        <p><a href=PDF/Space.pdf>空白やコンマについて</a></p>>
+
+      <h1>texを始める</h1>
         <p>TeXにも色々ある.おすすめを紹介しよう.</p>
 
         <h2><a href=https://www.texpad.com>TeXPad</a></h2>
@@ -88,175 +107,175 @@
                   </li>
                     <pre>
                       <code>
-                        {
-                          // ---------- Editor ----------
+{
+    // ---------- Editor ----------
 
-                          // フォント サイズをピクセル単位で制御します。
-                          "editor.fontSize": 15,
-                          // フォント ファミリを制御します。
-                          //"editor.fontFamily":"Ricty Diminished",
-                          // 行の高さを制御します。
-                          "editor.lineHeight": 0,
-                          // 1つのタブに相当するスペースの数。
-                          "editor.tabSize": 2,
-                          // 入力補完を表示する
-                          "editor.quickSuggestions": false,
-                          // 現在行をガターを含めてハイライトするので視認性が上がる
-                          "editor.renderLineHighlight": "all",
-                          // 入力補完の表示を何ms遅らせるか
-                          //"editor.quickSuggestionsDelay": 10,
-                          // 括弧開きを入力したとき括弧閉じを自動的に入れる
-                          //"editor.autoClosingBrackets": true,
-                          // 括弧同士に色をつける
-                          //"editor.bracketPairColorization.enabled": true,
-                          // 空白文字列の表示
-                          "editor.renderWhitespace": "boundary",
-                          // ウインドウ幅で折り返す
-                          "editor.wordWrap": "on",
-                          // カーソルがにゅるっと点滅する
-                          "editor.cursorBlinking": "smooth",
-                          // エディタのendなどを自動入力
-                          //"editor.autoIndent": true,
-                          // インデントガイド(インデントに沿って縦線を表示)
-                          "editor.renderIndentGuides": true,
-                          // インデントの自動判定
-                          "editor.detectIndentation": true,
-                          // ミニマップの表示
-                          "editor.minimap.enabled": false,
-                          // カラーテーマ
-                          "workbench.colorTheme": "Visual Studio Dark",
-                          // ウィンドウのズームレベル
-                          "window.zoomLevel": -1,
-                          // 余分なホワイトスペースを削除
-                          "files.trimTrailingWhitespace": true,
-                          // Enable the extension.
-                          //"guides.enabled": false,
-                          // Specifies the severity of the message when the classpath is incomplete for a Java file
-                          //"java.errors.incompleteClasspath.severity": "ignore",
-                          // 新規ファイルはUntitledでファイル作成
-                          //"workbench.startupEditor": "newUntitledFile",
-                          //"workbench.sideBar.location": "left",
-                          // ファイルの末尾は改行で終わらせる
-                          "files.insertFinalNewline": true,
-                          // 拡張機能を自動更新
-                          "extensions.autoUpdate": true,
-                          // codeコマンドで(ディレクトリではなく)ファイルを開いたときは、既に開いているウインドウがあればそこに表示する
-                          "window.openFilesInNewWindow": "off",
-                          //スクリーンリーダー(読み上げ機能)
-                          "editor.accessibilitySupport": "off",
-                          // タイトルバーにファイルのフルパスを表示する
-                          //"window.showFullPath": true,
-                          //"explorer.confirmDelete": false,
-                          // Quick Open で開いたエディターをプレビューとして表示するかどうかを制御します。
-                          "workbench.editor.enablePreviewFromQuickOpen": false,
-                          // プレビュー画面を開かない
-                          "workbench.editor.enablePreview": false,
-                          // 現在のタブの下線に色をつける
-                          "workbench.colorCustomizations": {
-                              "tab.activeBorder": "#0099ff"
-                            },
-                          // ワークベンチのフォント エイリアシング方法を制御します。
-                          //"workbench.fontAliasing": "antialiased",
-                          // エディターのタブの大きさを制御します。
-                          //"workbench.editor.tabSizing": "shrink",
-                          // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。
-                          //"workbench.startupEditor": "newUntitledFile",
-                          // 3 本の指で横方向にスワイプすると、開いているファイル間を移動できます。
-                          //"workbench.editor.swipeToNavigate": true,
-                          //"explorer.confirmDragAndDrop": false,
-                          //"workbench.colorTheme": "Cobalt2",
-                          //"workbench.iconTheme": "material-icon-theme",
-                          //"breadcrumbs.enabled": true,
+    // フォント サイズをピクセル単位で制御します。
+    "editor.fontSize": 15,
+    // フォント ファミリを制御します。
+    //"editor.fontFamily":"Ricty Diminished",
+    // 行の高さを制御します。
+    "editor.lineHeight": 0,
+    // 1つのタブに相当するスペースの数。
+    "editor.tabSize": 2,
+    // 入力補完を表示する
+    "editor.quickSuggestions": false,
+    // 現在行をガターを含めてハイライトするので視認性が上がる
+    "editor.renderLineHighlight": "all",
+    // 入力補完の表示を何ms遅らせるか
+    //"editor.quickSuggestionsDelay": 10,
+    // 括弧開きを入力したとき括弧閉じを自動的に入れる
+    //"editor.autoClosingBrackets": true,
+    // 括弧同士に色をつける
+    //"editor.bracketPairColorization.enabled": true,
+    // 空白文字列の表示
+    "editor.renderWhitespace": "boundary",
+    // ウインドウ幅で折り返す
+    "editor.wordWrap": "on",
+    // カーソルがにゅるっと点滅する
+    "editor.cursorBlinking": "smooth",
+    // エディタのendなどを自動入力
+    //"editor.autoIndent": true,
+    // インデントガイド(インデントに沿って縦線を表示)
+    "editor.renderIndentGuides": true,
+    // インデントの自動判定
+    "editor.detectIndentation": true,
+    // ミニマップの表示
+    "editor.minimap.enabled": false,
+    // カラーテーマ
+    "workbench.colorTheme": "Visual Studio Dark",
+    // ウィンドウのズームレベル
+    "window.zoomLevel": -1,
+    // 余分なホワイトスペースを削除
+    "files.trimTrailingWhitespace": true,
+    // Enable the extension.
+    //"guides.enabled": false,
+    // Specifies the severity of the message when the classpath is incomplete for a Java file
+    //"java.errors.incompleteClasspath.severity": "ignore",
+    // 新規ファイルはUntitledでファイル作成
+    //"workbench.startupEditor": "newUntitledFile",
+    //"workbench.sideBar.location": "left",
+    // ファイルの末尾は改行で終わらせる
+    "files.insertFinalNewline": true,
+    // 拡張機能を自動更新
+    "extensions.autoUpdate": true,
+    // codeコマンドで(ディレクトリではなく)ファイルを開いたときは、既に開いているウインドウがあればそこに表示する
+    "window.openFilesInNewWindow": "off",
+    //スクリーンリーダー(読み上げ機能)
+    "editor.accessibilitySupport": "off",
+    // タイトルバーにファイルのフルパスを表示する
+    //"window.showFullPath": true,
+    //"explorer.confirmDelete": false,
+    // Quick Open で開いたエディターをプレビューとして表示するかどうかを制御します。
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    // プレビュー画面を開かない
+    "workbench.editor.enablePreview": false,
+    // 現在のタブの下線に色をつける
+    "workbench.colorCustomizations": {
+        "tab.activeBorder": "#0099ff"
+      },
+    // ワークベンチのフォント エイリアシング方法を制御します。
+    //"workbench.fontAliasing": "antialiased",
+    // エディターのタブの大きさを制御します。
+    //"workbench.editor.tabSizing": "shrink",
+    // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。
+    //"workbench.startupEditor": "newUntitledFile",
+    // 3 本の指で横方向にスワイプすると、開いているファイル間を移動できます。
+    //"workbench.editor.swipeToNavigate": true,
+    //"explorer.confirmDragAndDrop": false,
+    //"workbench.colorTheme": "Cobalt2",
+    //"workbench.iconTheme": "material-icon-theme",
+    //"breadcrumbs.enabled": true,
 
-                          // ---------- Terminal ----------
+    // ---------- Terminal ----------
 
-                          // 実行するターミナル アプリケーションをカスタマイズします。
-                          "terminal.external.osxExec": "Terminal.app",
-                          // ターミナルのフォント サイズをピクセル単位で制御します。
-                          "terminal.integrated.fontSize": 15,
-                          // Terminalのフォント設定
-                          //"terminal.integrated.fontFamily": "Source Code Pro for Powerline",
-                          //"workbench.iconTheme": "material-icon-theme",
-                          //"workbench.statusBar.visible": true,
-                          //"workbench.colorTheme": "Cobalt2",
-                          //"githubPullRequests.hosts": [
-                          //  {
-                          //    "host": "https://github.com",
-                          //    "username": "oauth",
-                          //    "token": "system"
-                          //  }
-                          //],
+    // 実行するターミナル アプリケーションをカスタマイズします。
+    "terminal.external.osxExec": "Terminal.app",
+    // ターミナルのフォント サイズをピクセル単位で制御します。
+    "terminal.integrated.fontSize": 15,
+    // Terminalのフォント設定
+    //"terminal.integrated.fontFamily": "Source Code Pro for Powerline",
+    //"workbench.iconTheme": "material-icon-theme",
+    //"workbench.statusBar.visible": true,
+    //"workbench.colorTheme": "Cobalt2",
+    //"githubPullRequests.hosts": [
+    //  {
+    //    "host": "https://github.com",
+    //    "username": "oauth",
+    //    "token": "system"
+    //  }
+    //],
 
-                          // ---------- Language ----------
+    // ---------- Language ----------
 
-                          // タブストップ中にも入力補完を
-                          "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // タブストップ中にも入力補完を
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
 
-                          // ---------- LaTeX Workshop ----------
+    // ---------- LaTeX Workshop ----------
 
-                          // 使用パッケージのコマンドや環境の補完を有効にする
-                          "latex-workshop.intellisense.package.enabled": true,
+    // 使用パッケージのコマンドや環境の補完を有効にする
+    "latex-workshop.intellisense.package.enabled": true,
 
-                          // 生成ファイルを削除するときに対象とするファイル
-                          // デフォルト値に "*.synctex.gz" を追加
-                          "latex-workshop.latex.clean.fileTypes": [
-                              "*.aux", // 相互参照や目次の情報が入ったファイル
-                              "*.log", // ログファイル
-                              "*.bbl", // bibtex 参考文献リストを記述したファイル
-                              "*.blg", // bibtex ログファイル
-                              "*.idx", // makeindex 書き出された索引語句ファイル
-                              "*.ind", // makeindex 並び替えられた出力よう索引語句ファイル
-                              "*.ilg", // makeindex ログファイル
-                              "*.ist", // makeindex 索引スタイルファイル
-                              "*.toc", // \tableofcontents
-                              "*.lof", // \listoffigures
-                              "*.lot", // \listoftables
-                              "*.out",
-                              "*.acn",
-                              "*.acr",
-                              "*.alg",
-                              "*.glg",
-                              "*.glo", // \glossary
-                              "*.gls", // \glossary
-                              "*.fls",
-                              "*.fdb_latexmk",
-                              "*.snm",
-                              "*.nav",
-                              "*.dvi", //デバイスに依存しない組版結果のファイル dvipsで印刷
-                              "*.synctex.gz"
-                          ],
+    // 生成ファイルを削除するときに対象とするファイル
+    // デフォルト値に "*.synctex.gz" を追加
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux", // 相互参照や目次の情報が入ったファイル
+        "*.log", // ログファイル
+        "*.bbl", // bibtex 参考文献リストを記述したファイル
+        "*.blg", // bibtex ログファイル
+        "*.idx", // makeindex 書き出された索引語句ファイル
+        "*.ind", // makeindex 並び替えられた出力よう索引語句ファイル
+        "*.ilg", // makeindex ログファイル
+        "*.ist", // makeindex 索引スタイルファイル
+        "*.toc", // \tableofcontents
+        "*.lof", // \listoffigures
+        "*.lot", // \listoftables
+        "*.out",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo", // \glossary
+        "*.gls", // \glossary
+        "*.fls",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.nav",
+        "*.dvi", //デバイスに依存しない組版結果のファイル dvipsで印刷
+        "*.synctex.gz"
+    ],
 
-                          // 生成ファイルを "out" ディレクトリに吐き出す
-                          "latex-workshop.latex.outDir": "out",
+    // 生成ファイルを "out" ディレクトリに吐き出す
+    "latex-workshop.latex.outDir": "out",
 
-                          // ビルドのレシピ
-                          "latex-workshop.latex.recipes": [
-                              {
-                                  "name": "latexmk",
-                                  "tools": [
-                                      "latexmk"
-                                  ]
-                              },
-                          ],
+    // ビルドのレシピ
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+    ],
 
-                          // ビルドのレシピに使われるパーツ
-                          "latex-workshop.latex.tools": [
-                              {
-                                  "name": "latexmk",
-                                  "command": "latexmk",
-                                  "args": [
-                                      "-silent",
-                                      "-halt-on-error",
-                                      "-outdir=%OUTDIR%",
-                                      "%DOC%"
-                                  ],
-                              },
-                          ],
-                          //PDFの表示方法
-                          "latex-workshop.view.pdf.viewer": "tab",
-                          //TeX文章のカーソル位置でPDFを表示
-                          "latex-workshop.synctex.afterBuild.enabled": true,
-                      }
+    // ビルドのレシピに使われるパーツ
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-silent",
+                "-halt-on-error",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+        },
+    ],
+    //PDFの表示方法
+    "latex-workshop.view.pdf.viewer": "tab",
+    //TeX文章のカーソル位置でPDFを表示
+    "latex-workshop.synctex.afterBuild.enabled": true,
+}
                       </code>
                     </pre>
                   <li>
@@ -279,40 +298,40 @@
                   </li>
                   <pre>
                     <code>
-                      #!/usr/bin/env perl
+#!/usr/bin/env perl
 
-                      # LaTeX
-                      $latex = 'platex -synctex=1 -halt-on-error -file-line-error %O %S';
+# LaTeX
+$latex = 'platex -synctex=1 -halt-on-error -file-line-error %O %S';
 
-                      # BibTeX
-                      $bibtex = 'pbibtex %O %S';
-                      $biber = 'biber --bblencoding=utf8 -u -U --output_safechars %O %S';
+# BibTeX
+$bibtex = 'pbibtex %O %S';
+$biber = 'biber --bblencoding=utf8 -u -U --output_safechars %O %S';
 
-                      # index
-                      $makeindex = 'mendex %O -o %D %S';
+# index
+$makeindex = 'mendex %O -o %D %S';
 
-                      # コンパイルの回数
-                      $max_repeat = 5;
+# コンパイルの回数
+$max_repeat = 5;
 
-                      # DVI / PDF
-                      $dvipdf = 'dvipdfmx %O -o %D %S';
-                      $pdf_mode = 3;
+# DVI / PDF
+$dvipdf = 'dvipdfmx %O -o %D %S';
+$pdf_mode = 3;
 
-                      # preview
-                      $pvc_view_file_via_temporary = 0;
-                      if ($^O eq 'linux') {
-                          $dvi_previewer = "xdg-open %S";
-                          $pdf_previewer = "xdg-open %S";
-                      } elsif ($^O eq 'darwin') {
-                          $dvi_previewer = "open %S";
-                          $pdf_previewer = "open %S";
-                      } else {
-                          $dvi_previewer = "start %S";
-                          $pdf_previewer = "start %S";
-                      }
+# preview
+$pvc_view_file_via_temporary = 0;
+if ($^O eq 'linux') {
+    $dvi_previewer = "xdg-open %S";
+    $pdf_previewer = "xdg-open %S";
+} elsif ($^O eq 'darwin') {
+    $dvi_previewer = "open %S";
+    $pdf_previewer = "open %S";
+} else {
+    $dvi_previewer = "start %S";
+    $pdf_previewer = "start %S";
+}
 
-                      # clean up
-                      $clean_full_ext = "%R.synctex.gz"
+# clean up
+$clean_full_ext = "%R.synctex.gz"
                     </code>
                   </pre>
                 </ol>

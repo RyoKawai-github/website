@@ -4,6 +4,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Context-Style-Type" content="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!- 数式 ->
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" }},
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        },
+        "HTML-CSS": { matchFontHeight: false },
+        displayAlign: "left",
+        displayIndent: "2em"
+      });
+    </script>
     <title>RyoKawai</title>
   </head>
   <body>
@@ -17,7 +33,7 @@
     <main>
 
       <h1>math</h1>
-        <h2><a href="PDF/Graph.pdf">graph</a></h2>
+        <h2><a href="PDF/Graph.pdf">Graph</a></h2>
 
       <h1>過去のセミナー</h1>
         <h2><a href="PDF/20210721.pdf">2021/07/21</a></h2>
