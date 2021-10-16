@@ -4,22 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Context-Style-Type" content="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <!-- 数式 -->
-    <script type="text/javascript"
-      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        TeX: { equationNumbers: { autoNumber: "AMS" }},
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-          processEscapes: true
-        },
-        "HTML-CSS": { matchFontHeight: false },
-        displayAlign: "left",
-        displayIndent: "2em"
-      });
-    </script>
     <title>RyoKawai</title>
   </head>
   <body>
@@ -34,6 +18,79 @@
 
       <h1>texのあれこれ</h1>
         <p><a href=PDF/Space.pdf>空白やコンマについて</a></p>>
+
+        <h2>やってはいけないこと</h2>
+          <p>やってはいけないというより,古い情報を訂正する.TeXは昔のままのコマンドや仕様がネットに多いので,それを見て学ぶ人も多い.そのためいつかとんでもないことが起きそう.そうならないように今から気をつけていこうという記事.</p>
+          <h3>使ってはいけないコマンド</h3>
+            <h4>$$...$$</h4>
+              <p>Plain TeX(LaTeXのベース)のコマンドなので,そもそもTeXのコマンドではない. \[...\]や\begin{align}等を使おう.</p>
+
+            <h4>\usepackage{graphics}</h4>
+              <p>\usepackage{graphicx}を使おう.</p>
+
+            <h4>dvips,dvipdfm</h4>
+              <p>dvipdfmxを使おう.</p>
+
+            <h4>jarticle,jbook,jreport</h4>
+              <p>jsarticle,jsbook,jsreportを使おう.</p>
+
+            <h4>\begin{eqnarray}, \begin{eqnarray*}, \begin{displaymath}</h4>
+              <p>amsmath.styがサポートしていないので,空白がおかしくなることがある. \[...\]や\begin{align}等を使おう.</p>
+
+            <h4>\begin{figure} \begin{center}</h4>
+              <p>以下のような書き方が多い</p>
+              <pre>
+                <code>
+\begin{figure}
+  \begin{center}
+    \includegraphics{hoge}
+  \end{center}
+\end{figure}
+                </code>
+              </pre>
+              <p>がこっちの方がよい</p>
+              <pre>
+                <code>
+\begin{figure}
+  \centering
+  \includegraphics{hoge}
+\end{figure}
+                </code>
+              </pre>
+              <p>tableとかでも同じだが,センタリングには\centeringを使う.なぜなら空白がおかしくなるから.</p>
+
+            <h4>EPSの図</h4>
+              <p>PDFかPNGかJPEGを使う.</p>
+
+            <h4>\begin{figure} \begin{center}</h4>
+            <p>以下のような書き方が多い</p>
+            <pre>
+              <code>
+\begin{appendix}
+  \section{hoge}
+\end{appendix}
+              </code>
+            </pre>
+            <p>がこっちの方がよい</p>
+            <pre>
+              <code>
+\appendix
+\section{hoge}
+              </code>
+            </pre>
+          <h4>\usepackage{enumerate}</h4>
+            <p>\usepackage{enumitem}を使おう.</p>
+
+      <h1>memo</h1>
+        <p>graphicxとmendexは何もないとエラーを吐く</p>
+        <p>jsarticleにはchapterはないがpartはある.</p>
+        <p>local historyは無限にファイル生成する可能性が高いのでやめておくように.</p>
+        <p>indexは).や)$\backslash$の間に入れると文字を詰めてしまうしたまにエラーを出すから注意する.</p>
+        <p>github上だとhyperrefが死んでしまう.</p>
+        <p>indexでは@,!,|,etc.などが特殊な役割を持つので,数式モードで扱う時には""でエスケープするか他のvertなどでだいようする.</p>
+        <p>同じlabelをつけてもエラーは出ないが,\;refでは文章全体で一番最後の番号が参照される.</p>
+        <p>Tikzでは()の中に()は入れられないので,一回{}を挟む.</p>
+        <p>indexでは,@の後ろも含めて完全一致しない限りは別物だと判定される.</p>
 
       <h1>texを始める</h1>
         <p>TeXにも色々ある.おすすめを紹介しよう.</p>
