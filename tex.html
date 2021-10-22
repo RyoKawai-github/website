@@ -17,7 +17,7 @@
     <main>
 
       <h1>texのあれこれ</h1>
-        <p><a href=PDF/Space.pdf>空白やコンマについて</a></p>>
+        <p><a href=PDF/Space.pdf>空白やコンマ</a></p>について
 
         <h2>やってはいけないこと</h2>
           <p>やってはいけないというより, 古い情報を訂正する. TeXは昔のままのコマンドや仕様がネットに多いので, それを見て学ぶ人も多い. そのためいつかとんでもないことが起きそう. そうならないように今から気をつけていこうという記事.</p>
@@ -92,7 +92,30 @@
         <p>Tikzでは()の中に()は入れられないので,一回{}を挟む.</p>
         <p>indexでは,@の後ろも含めて完全一致しない限りは別物だと判定される.</p>
 
-      <h1>environment</h1>
+        <h2>改行(改ページ)</h2>
+          <p>
+            段落の改行は\parか空白行でできる.
+            空白行のほうがコードが見やすいが, 長くなったりするしまとまりがわかりにくいという意見もある.
+            定理や定義などの中の改段落は\parの方が見やすいのか？
+            段落の自下げは, \noindentを挟むことで防ぐことができる.
+          </p>
+          <p>
+            段落内の強制改行は\\または\linebreakで行う.
+            普通の改行では特に\\は使わない方がいいが, tableなどではよく\\が使用される.
+            \\*でその部分での改行の禁止, \\[幅]で改行幅の指定ができる.
+          </p>
+          <p>
+            改ページは\newpage, \clearpage, \pagebreakがある.
+            だいたいどれも同じである(たまにパッケージでどれかが使えなかったりする).
+            newpageを自分は使っている.
+          </p>
+
+        <h2>引用</h2>
+          <p>
+            \begin{quote}~\end{quote}で改段落で最初の字下げが行われず, 左に空白が確保される.
+            \begin{quotation}~\end{quotation}はquoteとほぼ同じだが, 字下げが行われる.
+          </p>
+
         <h2>脚注(footnote)</h2>
           <p>
             主には\footnote, \footnotemark, \footnotetextがある.
@@ -138,6 +161,12 @@
           詳しくは<a href=https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289>このサイト</a>を参照.
           mathtoolsには\DeclarePairedDelimiterという便利なコマンドがあり, 左右で挟むことが多い場合や, 集合はこれで定義しておくと便利だろう.
           ただしこのコマンドはbmと一緒に使うとエラーを吐くので注意する.
+        </p>
+        <p>
+          amsmathでのコマンドに\DeclareMathOperator{\***}{***}と\DeclareMathOperator*{\***}{***}がある.
+          前者がlog型, 後者がlim型である.
+          amsmathについてはパッケージガイドが翻訳されている.
+          <a href=https://www.latex-project.org/help/documentation/amsldoc_jpn.pdf>このサイト</a>にある.
         </p>
         <h2>footnpag</h2>
           <p>
@@ -213,7 +242,7 @@
                     拡張機能(横の検索)からLaTeX Workshopを入れる(LaTeX Utilitiesも入れても良い)(Local Historyはいれてはいけない)
                   </li>
                   <li>
-                    settingsからsettings.JSONを開いて設定する(以下は自分の設定)
+                    settingsからsettings.JSONを開いて設定する(以下は2021-10-01時点での自分の設定)
                   </li>
                     <pre>
                       <code>
@@ -446,8 +475,17 @@ $clean_full_ext = "%R.synctex.gz"
                   </pre>
                 </ol>
             </li>
-            完了.
-            あとは.texファイルをVScodeで作れば,command + sで上書き保存する時についでにビルドしてくれるし,command + ortion + vでPDFビュワーを別タブで開いてくれる
+            これでTeXは完了.
+            あとは.texファイルをVScodeで作れば,command + sで上書き保存する時についでにビルドしてくれるし,command + ortion + vでPDFビュワーを別タブで開いてくれる.
+            <li>
+              <h3>git</h3>
+                <ol>
+                  未編集
+                  <li>
+
+                  </li>
+                </ol>
+            </li>
           </ol>
     </main>
   </body>
