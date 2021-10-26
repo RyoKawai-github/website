@@ -172,6 +172,36 @@
           amsmathについてはパッケージガイドが翻訳されている.
           <a href=https://www.latex-project.org/help/documentation/amsldoc_jpn.pdf>このサイト</a>にある.
         </p>
+
+        <h2>amsthm, thmtools</h2>
+          <p>
+            定理環境のパッケージ.
+            特にthmtoolsはamsthmの拡張になっており,thmboxなどが使える.
+            需要があるらしいのでthmboxを使う環境の例をあげておこう,ただしこれはnote部分(定理の名前の部分)がイタリックになることを自分では回避できなかった.
+            また,footnoteが消えるのは仕様である.
+            詳しくは<a href=https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf>thmtoolsのパッケージドキュメント</a>を見て欲しい
+          </p>
+          <pre>
+            <code>
+
+\declaretheoremstyle[
+thmbox={
+  style=M,
+  bodystyle=\normalfont
+},
+spaceabove=3pt, spacebelow=3pt,
+numberlike=subsection,
+]{mystyle}
+
+% 定理環境
+\declaretheorem[style=mystyle, name=定義]{環境名}
+            </code>
+          </pre>
+          <p>
+            それぞれのコマンドはnewtheorem{環境名}[numberlike]{name}[numberwithin]に対応する.
+            newtheoremと衝突しないため,併用しても大丈夫だが,置き換えるのが無難な気がする.
+          </p>
+
         <h2>footnpag</h2>
           <p>
             footnoteをページごとに番号をリセットする.
