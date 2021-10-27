@@ -105,7 +105,8 @@
           </p>
           <p>
             段落内の強制改行は\\または\linebreakで行う.
-            普通の改行では特に\\は使わない方がいいが, tableなどではよく\\が使用される.
+            あまり使わない方がよいし,\\の後に空白行を挿入するとエラーを吐くことがおおい.
+            普通の改行では特に\\は使わない方がいいが, tableなどの環境上では改行で\\が使用される.
             \\*でその部分での改行の禁止, \\[幅]で改行幅の指定ができる.
           </p>
           <p>
@@ -177,13 +178,14 @@
           <p>
             定理環境のパッケージ.
             特にthmtoolsはamsthmの拡張になっており,thmboxなどが使える.
+            thmboxはthmboxパッケージを使うとnewtheoremの前にオプションとして追加できるようになるため,そちらで導入するという手もあるが, thmtoolsを導入した方が自由度が高い気がする.
             需要があるらしいのでthmboxを使う環境の例をあげておこう,ただしこれはnote部分(定理の名前の部分)がイタリックになることを自分では回避できなかった.
             また,footnoteが消えるのは仕様である.
-            詳しくは<a href=https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf>thmtoolsのパッケージドキュメント</a>を見て欲しい
+            詳しくは<a href=https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf>thmtoolsのパッケージドキュメント</a>を見て欲しい.
           </p>
           <pre>
             <code>
-
+% 定理のスタイル
 \declaretheoremstyle[
 thmbox={
   style=M,
@@ -199,8 +201,26 @@ numberlike=subsection,
           </pre>
           <p>
             それぞれのコマンドはnewtheorem{環境名}[numberlike]{name}[numberwithin]に対応する.
-            newtheoremと衝突しないため,併用しても大丈夫だが,置き換えるのが無難な気がする.
+            declarethoremはnewtheoremと衝突しない.
+            thmboxを入れた場合,proofがおかしくなることが多い.
+            そのような時はproofをカスタマイズすれば良い.
           </p>
+          <pre>
+            <code>
+% proofの再定義
+\declaretheoremstyle[
+  spaceabove=3pt, spacebelow=3pt,
+  headfont=\bfseries\itshape,
+  notefont=\bfseries,
+  notebraces={ (}{) },
+  postheadspace=1em,
+  numbered=no,
+  qed=$\square$
+]{myproof}
+\declaretheorem[name=Proof, style=myproof]{myproof}
+\renewenvironment{proof}{\begin{myproof}}{\end{myproof}}
+            </code>
+          </pre>
 
         <h2>footnpag</h2>
           <p>
