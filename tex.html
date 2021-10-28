@@ -31,6 +31,9 @@
             <h4>dvips,dvipdfm</h4>
               <p>dvipdfmxを使おう.</p>
 
+            <h4>:=</h4>
+              <p>mathtoolsの\coloneqqを使おう.</p>
+
             <h4>jarticle, jbook, jreport</h4>
               <p>jsarticle, jsbook, jsreportを使おう.</p>
 
@@ -59,8 +62,8 @@
               </pre>
               <p>tableとかでも同じだが, センタリングには\centeringを使う. なぜなら空白がおかしくなるから.</p>
 
-            <h4>EPSの図</h4>
-              <p>PDFかPNGかJPEGを使う.</p>
+          <h3>EPSの図</h3>
+            <p>PDFかPNGかJPEGを使う.</p>
 
             <h4>\begin{appendix}</h4>
             <p>以下のような書き方が多い</p>
@@ -84,12 +87,11 @@
       <h1>memo</h1>
         <p>graphicxとmendexは何もないとエラーを吐く</p>
         <p>jsarticleにはchapterはないがpartはある.</p>
-        <p>local historyは無限にファイル生成する可能性が高いのでやめておくように.</p>
+        <p>VScodeのlocal historyは無限にファイル生成する可能性が高いのでやめておくように.</p>
         <p>indexは).や)$\backslash$の間に入れると文字を詰めてしまうしたまにエラーを出すから注意する.</p>
         <p>github上だとhyperrefが死んでしまう.</p>
         <p>indexでは@,!,|,etc.などが特殊な役割を持つので,数式モードで扱う時には""でエスケープするか他のvertなどでだいようする.</p>
         <p>同じlabelをつけてもエラーは出ないが,\;refでは文章全体で一番最後の番号が参照される.</p>
-        <p>Tikzでは()の中に()は入れられないので,一回{}を挟む.</p>
         <p>indexでは,@の後ろも含めて完全一致しない限りは別物だと判定される.</p>
         <p>
           コマンド****が未定義かどうかは,本文中に\meaning****を記入することでで調べることができる.
@@ -221,6 +223,17 @@ numberlike=subsection,
 \renewenvironment{proof}{\begin{myproof}}{\end{myproof}}
             </code>
           </pre>
+
+        <h2>Tikz</h2>
+          <p>
+            詳しくは<a href=http://cremeronline.com/LaTeX/minimaltikz.pdf>こちら</a>.
+            Tikzでは()の中に()は入れられないので,一回{}を挟む.
+          </p>
+
+        <h2>xparse</h2>
+          <p>
+            詳しくは<a href=https://qiita.com/zr_tex8r/items/50168ad7087516c3e139>こちら</a>.
+          </p>
 
         <h2>footnpag</h2>
           <p>
