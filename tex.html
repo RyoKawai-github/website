@@ -1,566 +1,595 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="Context-Style-Type" content="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <title>RyoKawai</title>
-  </head>
-  <body>
-    <ul>
-      <li><a href="index.html" class="myButton_1">home</a></li>
-      <li><a href="math.html" class="myButton_1">math</a></li>
-      <li><a href="tex.html" class="myButton_1">TeX</a></li>
-      <li><a href="git.html" class="myButton_1">git</a></li>
-      <li><a href="memo.html" class="myButton_1">memo</a></li>
-    </ul>
-    <main>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Context-Style-Type" content="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <title>RyoKawai</title>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-inner">header</div>
+    </div>
+  </header>
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <ul class="navButton">
+          <li><a href="index.html">home</a></li>
+          <li><a href="math.html">math</a></li>
+          <li><a href="tex.html">TeX</a></li>
+          <li><a href="git.html">git</a></li>
+          <li><a href="memo.html">memo</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section>
+    <div class="container">
+      <main>
+        <div class="main-inner">
 
-      <h1>texのあれこれ</h1>
-        <p><a href=PDF/Space.pdf>空白やコンマ</a></p>について
+          <h1>texのあれこれ</h1>
+            <p><a href="PDF/Space.pdf" target="_blank">空白やコンマ</a>について</p>
 
-        <h2>やってはいけないこと</h2>
-          <p>
-            やってはいけないというより, 古い情報を訂正する.
-            TeXは昔のままのコマンドや仕様がネットに多いので, それを見て学ぶ人も多い.
-            そのためいつかとんでもないことが起きそう.
-            そうならないように今から気をつけていこうという記事.
-            <a href=https://qiita.com/birdwatcher/items/5ec42b35d84d3ee2ffbb>正しい論文の書き方</a>も参考にするといいかも.
-          </p>
-          <h3>使ってはいけないコマンド</h3>
-            <h4>$$...$$</h4>
-              <p>Plain TeX(LaTeXのベース)のコマンドなので,そもそもTeXのコマンドではない. \[...\]や\begin{align}等を使おう.</p>
+            <h2>やってはいけないこと</h2>
+              <p>
+                やってはいけないというより, 古い情報を訂正する.
+                TeXは昔のままのコマンドや仕様がネットに多いので, それを見て学ぶ人も多い.
+                そのためいつかとんでもないことが起きそう.
+                そうならないように今から気をつけていこうという記事.
+                <a href="https://qiita.com/birdwatcher/items/5ec42b35d84d3ee2ffbb" target="_blank">正しい論文の書き方</a>も参考にするといいかも.
+              </p>
+              <h3>使ってはいけないコマンド</h3>
+                <h4>$$...$$</h4>
+                  <p>Plain TeX(LaTeXのベース)のコマンドなので,そもそもTeXのコマンドではない. \[...\]や\begin{align}等を使おう.</p>
 
-            <h4>\usepackage{graphics}</h4>
-              <p>\usepackage{graphicx}を使おう.</p>
+                <h4>\usepackage{graphics}</h4>
+                  <p>\usepackage{graphicx}を使おう.</p>
 
-            <h4>dvips,dvipdfm</h4>
-              <p>dvipdfmxを使おう.</p>
+                <h4>dvips,dvipdfm</h4>
+                  <p>dvipdfmxを使おう.</p>
 
-            <h4>:=</h4>
-              <p>mathtoolsの\coloneqqを使おう.</p>
+                <h4>:=</h4>
+                  <p>mathtoolsの\coloneqqを使おう.</p>
 
-            <h4>jarticle, jbook, jreport</h4>
-              <p>jsarticle, jsbook, jsreportを使おう.</p>
+                <h4>jarticle, jbook, jreport</h4>
+                  <p>jsarticle, jsbook, jsreportを使おう.</p>
 
-            <h4>\begin{eqnarray}, \begin{eqnarray*}, \begin{displaymath}</h4>
-              <p>amsmath.styがサポートしていないので, 空白がおかしくなることがある. \[...\]や\begin{align}等を使おう.</p>
+                <h4>\begin{eqnarray}, \begin{eqnarray*}, \begin{displaymath}</h4>
+                  <p>amsmath.styがサポートしていないので, 空白がおかしくなることがある. \[...\]や\begin{align}等を使おう.</p>
 
-            <h4>\begin{figure} \begin{center}</h4>
-              <p>以下のような書き方が多い</p>
-              <pre>
-                <code>
+                <h4>\begin{figure} \begin{center}</h4>
+                  <p>以下のような書き方が多い</p>
+<pre>
+<code>
 \begin{figure}
   \begin{center}
     \includegraphics{hoge}
   \end{center}
 \end{figure}
-                </code>
-              </pre>
-              <p>がこっちの方がよい</p>
-              <pre>
-                <code>
+</code>
+</pre>
+                  <p>がこっちの方がよい</p>
+<pre>
+<code>
 \begin{figure}
   \centering
   \includegraphics{hoge}
 \end{figure}
-                </code>
-              </pre>
-              <p>tableとかでも同じだが, センタリングには\centeringを使う. なぜなら空白がおかしくなるから.</p>
+</code>
+</pre>
+                  <p>tableとかでも同じだが, センタリングには\centeringを使う. なぜなら空白がおかしくなるから.</p>
 
-          <h3>EPSの図</h3>
-            <p>PDFかPNGかJPEGを使う.</p>
+              <h3>EPSの図</h3>
+                <p>PDFかPNGかJPEGを使う.</p>
 
-            <h4>\begin{appendix}</h4>
-            <p>以下のような書き方が多い</p>
-            <pre>
-              <code>
+                <h4>\begin{appendix}</h4>
+                <p>以下のような書き方が多い</p>
+<pre>
+<code>
 \begin{appendix}
   \section{hoge}
 \end{appendix}
-              </code>
-            </pre>
-            <p>がこっちの方がよい</p>
-            <pre>
-              <code>
+</code>
+</pre>
+                <p>がこっちの方がよい</p>
+<pre>
+<code>
 \appendix
 \section{hoge}
-              </code>
-            </pre>
-          <h4>\usepackage{enumerate}</h4>
-            <p>\usepackage{enumitem}を使おう.</p>
+</code>
+</pre>
+              <h4>\usepackage{enumerate}</h4>
+                <p>\usepackage{enumitem}を使おう.</p>
 
-      <h1>memo</h1>
-        <p>graphicxとmendexは何もないとエラーを吐く</p>
-        <p>jsarticleにはchapterはないがpartはある.</p>
-        <p>VScodeのlocal historyは無限にファイル生成する可能性が高いのでやめておくように.</p>
-        <p>indexは).や)$\backslash$の間に入れると文字を詰めてしまうしたまにエラーを出すから注意する.</p>
-        <p>github上だとhyperrefが死んでしまう.</p>
-        <p>indexでは@,!,|,etc.などが特殊な役割を持つので,数式モードで扱う時には""でエスケープするか他のvertなどでだいようする.</p>
-        <p>同じlabelをつけてもエラーは出ないが,\;refでは文章全体で一番最後の番号が参照される.</p>
-        <p>indexでは,@の後ろも含めて完全一致しない限りは別物だと判定される.</p>
-        <p>
-          コマンド****が未定義かどうかは,本文中に\meaning****を記入することでで調べることができる.
-          未定義であればundefinedがかえってくる.
-        </p>
+          <h1>memo</h1>
+            <p>graphicxとmendexは何もないとエラーを吐く</p>
+            <p>jsarticleにはchapterはないがpartはある.</p>
+            <p>VScodeのlocal historyは無限にファイル生成する可能性が高いのでやめておくように.</p>
+            <p>indexは).や)$\backslash$の間に入れると文字を詰めてしまうしたまにエラーを出すから注意する.</p>
+            <p>github上だとhyperrefが死んでしまう.</p>
+            <p>indexでは@,!,|,etc.などが特殊な役割を持つので,数式モードで扱う時には""でエスケープするか他のvertなどでだいようする.</p>
+            <p>同じlabelをつけてもエラーは出ないが,\;refでは文章全体で一番最後の番号が参照される.</p>
+            <p>indexでは,@の後ろも含めて完全一致しない限りは別物だと判定される.</p>
+            <p>
+              コマンド****が未定義かどうかは,本文中に\meaning****を記入することでで調べることができる.
+              未定義であればundefinedがかえってくる.
+            </p>
 
-        <h2>改行(改ページ)</h2>
-          <p>
-            段落の改行は\parか空白行でできる.
-            空白行のほうがコードが見やすいが, 長くなったりするしまとまりがわかりにくいという意見もある.
-            定理や定義などの中の改段落は\parの方が見やすいのか？
-            段落の自下げは, \noindentを挟むことで防ぐことができる.
-          </p>
-          <p>
-            段落内の強制改行は\\または\linebreakで行う.
-            あまり使わない方がよいし,\\の後に空白行を挿入するとエラーを吐くことがおおい.
-            普通の改行では特に\\は使わない方がいいが, tableなどの環境上では改行で\\が使用される.
-            \\*でその部分での改行の禁止, \\[幅]で改行幅の指定ができる.
-          </p>
-          <p>
-            改ページは\newpage, \clearpage, \pagebreakがある.
-            だいたいどれも同じである(たまにパッケージでどれかが使えなかったりする).
-            newpageを自分は使っている.
-          </p>
+            <h2>改行(改ページ)</h2>
+              <p>
+                段落の改行は\parか空白行でできる.
+                空白行のほうがコードが見やすいが, 長くなったりするしまとまりがわかりにくいという意見もある.
+                定理や定義などの中の改段落は\parの方が見やすいのか？
+                段落の自下げは, \noindentを挟むことで防ぐことができる.
+              </p>
+              <p>
+                段落内の強制改行は\\または\linebreakで行う.
+                あまり使わない方がよいし,\\の後に空白行を挿入するとエラーを吐くことがおおい.
+                普通の改行では特に\\は使わない方がいいが, tableなどの環境上では改行で\\が使用される.
+                \\*でその部分での改行の禁止, \\[幅]で改行幅の指定ができる.
+              </p>
+              <p>
+                改ページは\newpage, \clearpage, \pagebreakがある.
+                だいたいどれも同じである(たまにパッケージでどれかが使えなかったりする).
+                newpageを自分は使っている.
+              </p>
 
-        <h2>引用</h2>
-          <p>
-            \begin{quote}~\end{quote}で改段落で最初の字下げが行われず, 左に空白が確保される.
-            \begin{quotation}~\end{quotation}はquoteとほぼ同じだが, 字下げが行われる.
-          </p>
+            <h2>引用</h2>
+              <p>
+                \begin{quote}~\end{quote}で改段落で最初の字下げが行われず, 左に空白が確保される.
+                \begin{quotation}~\end{quotation}はquoteとほぼ同じだが, 字下げが行われる.
+              </p>
 
-        <h2>脚注(footnote)</h2>
-          <p>
-            主には\footnote, \footnotemark, \footnotetextがある.
-            \footnote{#1}は\footnotemark \footnotetext{#1}だと思えば良い.
-            footnoteは\footnotetextが置いてある部分に対応するページの下に出る.
-            framedやthmboxなど, box系の環境ではほとんど\footnotetextが表示されないが, これは仕様である.
-            これを回避するために, \begin{}~\end{}の中に\footnotemarkを置いておき, その後に\footnotetextを記述する方法がある(だいたいはこれで回避できる).
-            この方法には欠点があり, \footnotetextはコード上でそれが記述してある部分でのカウンタ[footnote]の値を返すため, \begin{}~\end{}の中に\footnotemarkを2つ以上入れると\footnotetextの番号が正しくならない(同じ番号になったりする).
-            そこで強引にカウンタを調整する方法がある.
-          </p>
-          <pre>
-            <code>
+            <h2>脚注(footnote)</h2>
+              <p>
+                主には\footnote, \footnotemark, \footnotetextがある.
+                \footnote{#1}は\footnotemark \footnotetext{#1}だと思えば良い.
+                footnoteは\footnotetextが置いてある部分に対応するページの下に出る.
+                framedやthmboxなど, box系の環境ではほとんど\footnotetextが表示されないが, これは仕様である.
+                これを回避するために, \begin{}~\end{}の中に\footnotemarkを置いておき, その後に\footnotetextを記述する方法がある(だいたいはこれで回避できる).
+                この方法には欠点があり, \footnotetextはコード上でそれが記述してある部分でのカウンタ[footnote]の値を返すため, \begin{}~\end{}の中に\footnotemarkを2つ以上入れると\footnotetextの番号が正しくならない(同じ番号になったりする).
+                そこで強引にカウンタを調整する方法がある.
+              </p>
+<pre>
+<code>
 \begin{}
   ~
 \end{}
 \addtocounter{footnote}{-[文中の\footnotemarkの数]} % footnoteカウンタを文中の\footnotemarkの数だけ引く
 \stepcounter{footnote}\footnotetext{~} % footnoteカウンタを一つ増やして\footnotetextの文を表示(脚注のカウンタは[footnote]を参照する)
 \stepcounter{footnote}\footnotetext{~} % 同上
-            </code>
-          </pre>
-          <p>
-            しかし, この方法は新たに\footnotemarkを足したときに手作業で数字を変更しなければならない(多分なんかカウンタを作ればうまくいきそうだが試していない)のと, footnoteがページをまたぐことが多々あるので微妙である.
-          </p>
-          <p>
-            また, \renewcommand{\thefootnote}{*******{footnote}}でfootnoteのスタイルを変えることができる.
-            定理環境などを囲った方が見やすいという話はあるが, とりあえず囲わない方がよいきもする.
-            脚注に図を入れたりもできるが, それを頑張るぐらいなら本文に書いた方がいいという話がある.
-            脚注はあんまり書かない方がいいらしい(が, 自分用につくる時は特に気にしなくていい気がする).
-            MVLについては<a href=https://golden-lucky.hatenablog.com/entry/2019/12/24/002646>このサイト</a>に詳しく書いてあった.
-            footnpagパッケージを読み込むとページごとに脚注の番号を振ることができる.
-          </p>
+</code>
+</pre>
+              <p>
+                しかし, この方法は新たに\footnotemarkを足したときに手作業で数字を変更しなければならない(多分なんかカウンタを作ればうまくいきそうだが試していない)のと, footnoteがページをまたぐことが多々あるので微妙である.
+              </p>
+              <p>
+                また, \renewcommand{\thefootnote}{*******{footnote}}でfootnoteのスタイルを変えることができる.
+                定理環境などを囲った方が見やすいという話はあるが, とりあえず囲わない方がよいきもする.
+                脚注に図を入れたりもできるが, それを頑張るぐらいなら本文に書いた方がいいという話がある.
+                脚注はあんまり書かない方がいいらしい(が, 自分用につくる時は特に気にしなくていい気がする).
+                MVLについては<a href="https://golden-lucky.hatenablog.com/entry/2019/12/24/002646" target="_blank">このサイト</a>に詳しく書いてあった.
+                footnpagパッケージを読み込むとページごとに脚注の番号を振ることができる.
+              </p>
 
-      <h1>package</h1>
-        <h2>amssymb, amsmath, mathtools</h2>
-        <ol>
-          <li>amssymb:\mathbbなどのコマンドが使えるようになる.</li>
-          <li>amsmath:\begin{align}などの数式環境が使えるようになる.</li>
-          <li>mathtools:amsmathの拡張パッケージ.</li>
-        </ol>
-        <p>
-          とりあえず読み込んでおけば間違いない.
-          amsmathの数式環境については<a href=https://qiita.com/t_kemmochi/items/a4c390b4967b13f3afb7>このサイト</a>に詳しく書いてある.
-          実はmathtoolsを読み込むとamsmathも読み込まれるが, 明示的に読み込んだ方が良い.
-          詳しくは<a href=https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289>このサイト</a>を参照.
-          mathtoolsには\DeclarePairedDelimiterという便利なコマンドがあり, 左右で挟むことが多い場合や, 集合はこれで定義しておくと便利だろう.
-          ただしこのコマンドはbmと一緒に使うとエラーを吐くので注意する.
-        </p>
-        <p>
-          amsmathでのコマンドに\DeclareMathOperator{\***}{***}と\DeclareMathOperator*{\***}{***}がある.
-          前者がlog型, 後者がlim型である.
-          amsmathについてはパッケージガイドが翻訳されている.
-          <a href=https://www.latex-project.org/help/documentation/amsldoc_jpn.pdf>このサイト</a>にある.
-        </p>
+          <h1 id="tex_package">package</h1>
+            <h2>amssymb, amsmath, mathtools</h2>
+            <ol>
+              <li>amssymb:\mathbbなどのコマンドが使えるようになる.</li>
+              <li>amsmath:\begin{align}などの数式環境が使えるようになる.</li>
+              <li>mathtools:amsmathの拡張パッケージ.</li>
+            </ol>
+            <p>
+              とりあえず読み込んでおけば間違いない.
+              amsmathの数式環境については<a href="https://qiita.com/t_kemmochi/items/a4c390b4967b13f3afb7" target="_blank">このサイト</a>に詳しく書いてある.
+              実はmathtoolsを読み込むとamsmathも読み込まれるが, 明示的に読み込んだ方が良い.
+              詳しくは<a href="https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289" target="_blank">このサイト</a>を参照.
+              mathtoolsには\DeclarePairedDelimiterという便利なコマンドがあり, 左右で挟むことが多い場合や, 集合はこれで定義しておくと便利だろう.
+              ただしこのコマンドはbmと一緒に使うとエラーを吐くので注意する.
+            </p>
+            <p>
+              amsmathでのコマンドに\DeclareMathOperator{\***}{***}と\DeclareMathOperator*{\***}{***}がある.
+              前者がlog型, 後者がlim型である.
+              amsmathについてはパッケージガイドが翻訳されている.
+              <a href="https://www.latex-project.org/help/documentation/amsldoc_jpn.pdf" target="_blank">このサイト</a>にある.
+            </p>
 
-        <h2>amsthm, thmtools</h2>
-          <p>
-            定理環境のパッケージ.
-            特にthmtoolsはamsthmの拡張になっており,thmboxなどが使える.
-            thmboxはthmboxパッケージを使うとnewtheoremの前にオプションとして追加できるようになるため,そちらで導入するという手もあるが, thmtoolsを導入した方が自由度が高い気がする.
-            需要があるらしいのでthmboxを使う環境の例をあげておこう,ただしこれはnote部分(定理の名前の部分)がイタリックになることを自分では回避できなかった.
-            また,footnoteが消えるのは仕様である.
-            詳しくは<a href=https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf>thmtoolsのパッケージドキュメント</a>を見て欲しい.
-          </p>
-          <pre>
-            <code>
-% 定理のスタイル
-\declaretheoremstyle[
-thmbox={
-  style=M,
-  bodystyle=\normalfont
-},
-spaceabove=3pt, spacebelow=3pt,
-numberlike=subsection,
-]{mystyle}
+            <h2>amsthm, thmtools</h2>
+              <p>
+                定理環境のパッケージ.
+                特にthmtoolsはamsthmの拡張になっており,thmboxなどが使える.
+                thmboxはthmboxパッケージを使うとnewtheoremの前にオプションとして追加できるようになるため,そちらで導入するという手もあるが, thmtoolsを導入した方が自由度が高い気がする.
+                需要があるらしいのでthmboxを使う環境の例をあげておこう,ただしこれはnote部分(定理の名前の部分)がイタリックになることを自分では回避できなかった.
+                また,footnoteが消えるのは仕様である.
+                詳しくは<a href="https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf" target="_blank">thmtoolsのパッケージドキュメント</a>を見て欲しい.
+              </p>
+              <pre>
+                <code>
+    % 定理のスタイル
+    \declaretheoremstyle[
+    thmbox={
+      style=M,
+      bodystyle=\normalfont
+    },
+    spaceabove=3pt, spacebelow=3pt,
+    numberlike=subsection,
+    ]{mystyle}
 
-% 定理環境
-\declaretheorem[style=mystyle, name=定義]{環境名}
-            </code>
-          </pre>
-          <p>
-            それぞれのコマンドはnewtheorem{環境名}[numberlike]{name}[numberwithin]に対応する.
-            declarethoremはnewtheoremと衝突しない.
-            thmboxを入れた場合,proofがおかしくなることが多い.
-            そのような時はproofをカスタマイズすれば良い.
-          </p>
-          <pre>
-            <code>
-% proofの再定義
-\declaretheoremstyle[
-  spaceabove=3pt, spacebelow=3pt,
-  headfont=\bfseries\itshape,
-  notefont=\bfseries,
-  notebraces={ (}{) },
-  postheadspace=1em,
-  numbered=no,
-  qed=$\square$
-]{myproof}
-\declaretheorem[name=Proof, style=myproof]{myproof}
-\renewenvironment{proof}{\begin{myproof}}{\end{myproof}}
-            </code>
-          </pre>
+    % 定理環境
+    \declaretheorem[style=mystyle, name=定義]{環境名}
+                </code>
+              </pre>
+              <p>
+                それぞれのコマンドはnewtheorem{環境名}[numberlike]{name}[numberwithin]に対応する.
+                declarethoremはnewtheoremと衝突しない.
+                thmboxを入れた場合,proofがおかしくなることが多い.
+                そのような時はproofをカスタマイズすれば良い.
+              </p>
+              <pre>
+                <code>
+    % proofの再定義
+    \declaretheoremstyle[
+      spaceabove=3pt, spacebelow=3pt,
+      headfont=\bfseries\itshape,
+      notefont=\bfseries,
+      notebraces={ (}{) },
+      postheadspace=1em,
+      numbered=no,
+      qed=$\square$
+    ]{myproof}
+    \declaretheorem[name=Proof, style=myproof]{myproof}
+    \renewenvironment{proof}{\begin{myproof}}{\end{myproof}}
+                </code>
+              </pre>
 
-        <h2>Tikz</h2>
-          <p>
-            詳しくは<a href=http://cremeronline.com/LaTeX/minimaltikz.pdf>こちら</a>.
-            Tikzでは()の中に()は入れられないので,一回{}を挟む.
-          </p>
+            <h2>Tikz</h2>
+              <p>
+                詳しくは<a href="http://cremeronline.com/LaTeX/minimaltikz.pdf" target="_blank">こちら</a>.
+                Tikzでは()の中に()は入れられないので,一回{}を挟む.
+              </p>
 
-        <h2>xparse</h2>
-          <p>
-            詳しくは<a href=https://qiita.com/zr_tex8r/items/50168ad7087516c3e139>こちら</a>.
-          </p>
+            <h2>xparse</h2>
+              <p>
+                詳しくは<a href="https://qiita.com/zr_tex8r/items/50168ad7087516c3e139" target="_blank">こちら</a>.
+              </p>
 
-        <h2>footnpag</h2>
-          <p>
-            footnoteをページごとに番号をリセットする.
-            2回TeXにかける必要がある.
-          </p>
+            <h2>footnpag</h2>
+              <p>
+                footnoteをページごとに番号をリセットする.
+                2回TeXにかける必要がある.
+              </p>
 
-      <h1>texを始める</h1>
-        <p>TeXにも色々ある.おすすめを紹介しよう.</p>
+          <h1>texを始める</h1>
+            <p>TeXにも色々ある.おすすめを紹介しよう.</p>
 
-        <h2><a href=https://www.texpad.com>TeXPad</a></h2>
-          <p>mac系統でしか動かないが,とても使い勝手が良いらしい.環境構築が不要なのがとても良い.また,即時反映機能がある.日本語を使う時に設定が必要っぽい.有料である(macOS:4040円,iOS:3180円,2021/10/01現在)</p>
+            <h2><a href="https://www.texpad.com" target="_blank">TeXPad</a></h2>
+              <p>mac系統でしか動かないが,とても使い勝手が良いらしい.環境構築が不要なのがとても良い.また,即時反映機能がある.日本語を使う時に設定が必要っぽい.有料である(macOS:4040円,iOS:3180円,2021/10/01現在)</p>
 
-        <h2><a href=https://ja.overleaf.com>OverLeaf</a></h2>
-          <p>クラウド上で動かすTeX.めちゃくちゃ便利らしい.オンラインで動かさないといけない意外にデメリットはないのでは?</p>
+            <h2><a href="https://ja.overleaf.com" target="_blank">OverLeaf</a></h2>
+              <p>クラウド上で動かすTeX.めちゃくちゃ便利らしい.オンラインで動かさないといけない意外にデメリットはないのでは?</p>
 
-        <h2><a href=https://texwiki.texjp.org/?TeX%20Live>TeXLive</a>+<a href=https://azure.microsoft.com/ja-jp/products/visual-studio-code/>VScode</a>(+<a href=https://git-scm.com>git</a>)</h2>
-          <p>現在の自分の環境.環境構築が必要だし面倒だが,カスタマイズしやすくて使いやすい.以下で環境構築の方法をメモしておく.</p>
+            <h2><a href="https://texwiki.texjp.org/?TeX%20Live" target="_blank">TeXLive</a>+<a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" target="_blank">VScode</a>(+<a href="https://git-scm.com" target="_blank">git</a>)</h2>
+              <p>現在の自分の環境.環境構築が必要だし面倒だが,カスタマイズしやすくて使いやすい.以下で環境構築の方法をメモしておく.</p>
 
-        <h2>環境構築</h2>
-          <p>mac版TeXLive+VScode+(git+github)のmemo</p>
+            <h2>環境構築</h2>
+              <p>mac版TeXLive+VScode+(git+github)のmemo</p>
 
-          <ol>
-            <li>
-              <h3>ターミナルをzshに変更</h3>
-                <ol>
-                  ターミナルを開く
-                  <li>
-                    echo $SHELL で自分の現在のSHELLを確認
-                  </li>
-                  <li>
-                    cat /etc/shells で自分が使えるSHELLの確認
-                  </li>
-                  <li>
-                    /bin/zsh がなければzshのインストールをする
-                  </li>
-                  <li>
-                    chsh -s /bin/zsh を入力して再起動
-                  </li>
-                </ol>
-            </li>
-            <li>
-              <h3>TeXLiveのインストール</h3>
-                <ol>
-                  ターミナルでの操作を書いておく
-                  <li>
-                    curl -OL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz でミラーサイトからインストール
-                  </li>
-                  <li>
-                    tar xvf install-tl-unx.tar.gz で展開
-                  </li>
-                  <li>
-                    cd install-tl-2* でインストーラのディレクトリへ
-                  </li>
-                  <li>
-                    sudo ./install-tl -no-gui -repository http://mirror.ctan.org/systems/texlive/tlnet/ とするとActionが選べるので,Iを入力するとインストールが始まる(めちゃくちゃ時間がかかる)
-                  </li>
-                  <li>
-                    sudo ./install-tl -no-gui -profile installation.profile で止まっても途中から再開できるかも
-                  </li>
-                  <li>
-                    sudo /usr/local/texlive/????/bin/*/tlmgr path add でシンボリックリンクの追加
-                  </li>
-                </ol>
-            </li>
-            <li>
-              <h3>VScodeのインストール</h3>
-                <ol>
-                  <li>
-                    <a href=https://azure.microsoft.com/ja-jp/products/visual-studio-code/>公式サイト</a>からダウンロードして,指示に従いながらセットアップを行う
-                  </li>
-                  <li>
-                    拡張機能(横の検索)からLaTeX Workshopを入れる(LaTeX Utilitiesも入れても良い)(Local Historyはいれてはいけない)
-                  </li>
-                  <li>
-                    settingsからsettings.JSONを開いて設定する(以下は2021-10-01時点での自分の設定)
-                  </li>
-                    <pre>
-                      <code>
-{
-    // ---------- Editor ----------
+              <ol>
+                <li>
+                  <h3>ターミナルをzshに変更</h3>
+                    <ol>
+                      ターミナルを開く
+                      <li>
+                        echo $SHELL で自分の現在のSHELLを確認
+                      </li>
+                      <li>
+                        cat /etc/shells で自分が使えるSHELLの確認
+                      </li>
+                      <li>
+                        /bin/zsh がなければzshのインストールをする
+                      </li>
+                      <li>
+                        chsh -s /bin/zsh を入力して再起動
+                      </li>
+                    </ol>
+                </li>
+                <li>
+                  <h3>TeXLiveのインストール</h3>
+                    <ol>
+                      ターミナルでの操作を書いておく
+                      <li>
+                        curl -OL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz でミラーサイトからインストール
+                      </li>
+                      <li>
+                        tar xvf install-tl-unx.tar.gz で展開
+                      </li>
+                      <li>
+                        cd install-tl-2* でインストーラのディレクトリへ
+                      </li>
+                      <li>
+                        sudo ./install-tl -no-gui -repository http://mirror.ctan.org/systems/texlive/tlnet/ とするとActionが選べるので,Iを入力するとインストールが始まる(めちゃくちゃ時間がかかる)
+                      </li>
+                      <li>
+                        sudo ./install-tl -no-gui -profile installation.profile で止まっても途中から再開できるかも
+                      </li>
+                      <li>
+                        sudo /usr/local/texlive/????/bin/*/tlmgr path add でシンボリックリンクの追加
+                      </li>
+                    </ol>
+                </li>
+                <li>
+                  <h3>VScodeのインストール</h3>
+                    <ol>
+                      <li>
+                        <a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" target="_blank">公式サイト</a>からダウンロードして,指示に従いながらセットアップを行う
+                      </li>
+                      <li>
+                        拡張機能(横の検索)からLaTeX Workshopを入れる(LaTeX Utilitiesも入れても良い)(Local Historyはいれてはいけない)
+                      </li>
+                      <li>
+                        settingsからsettings.JSONを開いて設定する(以下は2021-10-01時点での自分の設定)
+                      </li>
+                        <pre>
+                          <code>
+    {
+        // ---------- Editor ----------
 
-    // フォント サイズをピクセル単位で制御します。
-    "editor.fontSize": 15,
-    // フォント ファミリを制御します。
-    //"editor.fontFamily":"Ricty Diminished",
-    // 行の高さを制御します。
-    "editor.lineHeight": 0,
-    // 1つのタブに相当するスペースの数。
-    "editor.tabSize": 2,
-    // 入力補完を表示する
-    "editor.quickSuggestions": false,
-    // 現在行をガターを含めてハイライトするので視認性が上がる
-    "editor.renderLineHighlight": "all",
-    // 入力補完の表示を何ms遅らせるか
-    //"editor.quickSuggestionsDelay": 10,
-    // 括弧開きを入力したとき括弧閉じを自動的に入れる
-    //"editor.autoClosingBrackets": true,
-    // 括弧同士に色をつける
-    //"editor.bracketPairColorization.enabled": true,
-    // 空白文字列の表示
-    "editor.renderWhitespace": "boundary",
-    // ウインドウ幅で折り返す
-    "editor.wordWrap": "on",
-    // カーソルがにゅるっと点滅する
-    "editor.cursorBlinking": "smooth",
-    // エディタのendなどを自動入力
-    //"editor.autoIndent": true,
-    // インデントガイド(インデントに沿って縦線を表示)
-    "editor.renderIndentGuides": true,
-    // インデントの自動判定
-    "editor.detectIndentation": true,
-    // ミニマップの表示
-    "editor.minimap.enabled": false,
-    // カラーテーマ
-    "workbench.colorTheme": "Visual Studio Dark",
-    // ウィンドウのズームレベル
-    "window.zoomLevel": -1,
-    // 余分なホワイトスペースを削除
-    "files.trimTrailingWhitespace": true,
-    // Enable the extension.
-    //"guides.enabled": false,
-    // Specifies the severity of the message when the classpath is incomplete for a Java file
-    //"java.errors.incompleteClasspath.severity": "ignore",
-    // 新規ファイルはUntitledでファイル作成
-    //"workbench.startupEditor": "newUntitledFile",
-    //"workbench.sideBar.location": "left",
-    // ファイルの末尾は改行で終わらせる
-    "files.insertFinalNewline": true,
-    // 拡張機能を自動更新
-    "extensions.autoUpdate": true,
-    // codeコマンドで(ディレクトリではなく)ファイルを開いたときは、既に開いているウインドウがあればそこに表示する
-    "window.openFilesInNewWindow": "off",
-    //スクリーンリーダー(読み上げ機能)
-    "editor.accessibilitySupport": "off",
-    // タイトルバーにファイルのフルパスを表示する
-    //"window.showFullPath": true,
-    //"explorer.confirmDelete": false,
-    // Quick Open で開いたエディターをプレビューとして表示するかどうかを制御します。
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    // プレビュー画面を開かない
-    "workbench.editor.enablePreview": false,
-    // 現在のタブの下線に色をつける
-    "workbench.colorCustomizations": {
-        "tab.activeBorder": "#0099ff"
-      },
-    // ワークベンチのフォント エイリアシング方法を制御します。
-    //"workbench.fontAliasing": "antialiased",
-    // エディターのタブの大きさを制御します。
-    //"workbench.editor.tabSizing": "shrink",
-    // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。
-    //"workbench.startupEditor": "newUntitledFile",
-    // 3 本の指で横方向にスワイプすると、開いているファイル間を移動できます。
-    //"workbench.editor.swipeToNavigate": true,
-    //"explorer.confirmDragAndDrop": false,
-    //"workbench.colorTheme": "Cobalt2",
-    //"workbench.iconTheme": "material-icon-theme",
-    //"breadcrumbs.enabled": true,
+        // フォント サイズをピクセル単位で制御します。
+        "editor.fontSize": 15,
+        // フォント ファミリを制御します。
+        //"editor.fontFamily":"Ricty Diminished",
+        // 行の高さを制御します。
+        "editor.lineHeight": 0,
+        // 1つのタブに相当するスペースの数。
+        "editor.tabSize": 2,
+        // 入力補完を表示する
+        "editor.quickSuggestions": false,
+        // 現在行をガターを含めてハイライトするので視認性が上がる
+        "editor.renderLineHighlight": "all",
+        // 入力補完の表示を何ms遅らせるか
+        //"editor.quickSuggestionsDelay": 10,
+        // 括弧開きを入力したとき括弧閉じを自動的に入れる
+        //"editor.autoClosingBrackets": true,
+        // 括弧同士に色をつける
+        //"editor.bracketPairColorization.enabled": true,
+        // 空白文字列の表示
+        "editor.renderWhitespace": "boundary",
+        // ウインドウ幅で折り返す
+        "editor.wordWrap": "on",
+        // カーソルがにゅるっと点滅する
+        "editor.cursorBlinking": "smooth",
+        // エディタのendなどを自動入力
+        //"editor.autoIndent": true,
+        // インデントガイド(インデントに沿って縦線を表示)
+        "editor.renderIndentGuides": true,
+        // インデントの自動判定
+        "editor.detectIndentation": true,
+        // ミニマップの表示
+        "editor.minimap.enabled": false,
+        // カラーテーマ
+        "workbench.colorTheme": "Visual Studio Dark",
+        // ウィンドウのズームレベル
+        "window.zoomLevel": -1,
+        // 余分なホワイトスペースを削除
+        "files.trimTrailingWhitespace": true,
+        // Enable the extension.
+        //"guides.enabled": false,
+        // Specifies the severity of the message when the classpath is incomplete for a Java file
+        //"java.errors.incompleteClasspath.severity": "ignore",
+        // 新規ファイルはUntitledでファイル作成
+        //"workbench.startupEditor": "newUntitledFile",
+        //"workbench.sideBar.location": "left",
+        // ファイルの末尾は改行で終わらせる
+        "files.insertFinalNewline": true,
+        // 拡張機能を自動更新
+        "extensions.autoUpdate": true,
+        // codeコマンドで(ディレクトリではなく)ファイルを開いたときは、既に開いているウインドウがあればそこに表示する
+        "window.openFilesInNewWindow": "off",
+        //スクリーンリーダー(読み上げ機能)
+        "editor.accessibilitySupport": "off",
+        // タイトルバーにファイルのフルパスを表示する
+        //"window.showFullPath": true,
+        //"explorer.confirmDelete": false,
+        // Quick Open で開いたエディターをプレビューとして表示するかどうかを制御します。
+        "workbench.editor.enablePreviewFromQuickOpen": false,
+        // プレビュー画面を開かない
+        "workbench.editor.enablePreview": false,
+        // 現在のタブの下線に色をつける
+        "workbench.colorCustomizations": {
+            "tab.activeBorder": "#0099ff"
+          },
+        // ワークベンチのフォント エイリアシング方法を制御します。
+        //"workbench.fontAliasing": "antialiased",
+        // エディターのタブの大きさを制御します。
+        //"workbench.editor.tabSizing": "shrink",
+        // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。
+        //"workbench.startupEditor": "newUntitledFile",
+        // 3 本の指で横方向にスワイプすると、開いているファイル間を移動できます。
+        //"workbench.editor.swipeToNavigate": true,
+        //"explorer.confirmDragAndDrop": false,
+        //"workbench.colorTheme": "Cobalt2",
+        //"workbench.iconTheme": "material-icon-theme",
+        //"breadcrumbs.enabled": true,
 
-    // ---------- Terminal ----------
+        // ---------- Terminal ----------
 
-    // 実行するターミナル アプリケーションをカスタマイズします。
-    "terminal.external.osxExec": "Terminal.app",
-    // ターミナルのフォント サイズをピクセル単位で制御します。
-    "terminal.integrated.fontSize": 15,
-    // Terminalのフォント設定
-    //"terminal.integrated.fontFamily": "Source Code Pro for Powerline",
-    //"workbench.iconTheme": "material-icon-theme",
-    //"workbench.statusBar.visible": true,
-    //"workbench.colorTheme": "Cobalt2",
-    //"githubPullRequests.hosts": [
-    //  {
-    //    "host": "https://github.com",
-    //    "username": "oauth",
-    //    "token": "system"
-    //  }
-    //],
+        // 実行するターミナル アプリケーションをカスタマイズします。
+        "terminal.external.osxExec": "Terminal.app",
+        // ターミナルのフォント サイズをピクセル単位で制御します。
+        "terminal.integrated.fontSize": 15,
+        // Terminalのフォント設定
+        //"terminal.integrated.fontFamily": "Source Code Pro for Powerline",
+        //"workbench.iconTheme": "material-icon-theme",
+        //"workbench.statusBar.visible": true,
+        //"workbench.colorTheme": "Cobalt2",
+        //"githubPullRequests.hosts": [
+        //  {
+        //    "host": "https://github.com",
+        //    "username": "oauth",
+        //    "token": "system"
+        //  }
+        //],
 
-    // ---------- Language ----------
+        // ---------- Language ----------
 
-    // タブストップ中にも入力補完を
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
+        // タブストップ中にも入力補完を
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
 
-    // ---------- LaTeX Workshop ----------
+        // ---------- LaTeX Workshop ----------
 
-    // 使用パッケージのコマンドや環境の補完を有効にする
-    "latex-workshop.intellisense.package.enabled": true,
+        // 使用パッケージのコマンドや環境の補完を有効にする
+        "latex-workshop.intellisense.package.enabled": true,
 
-    // 生成ファイルを削除するときに対象とするファイル
-    // デフォルト値に "*.synctex.gz" を追加
-    "latex-workshop.latex.clean.fileTypes": [
-        "*.aux", // 相互参照や目次の情報が入ったファイル
-        "*.log", // ログファイル
-        "*.bbl", // bibtex 参考文献リストを記述したファイル
-        "*.blg", // bibtex ログファイル
-        "*.idx", // makeindex 書き出された索引語句ファイル
-        "*.ind", // makeindex 並び替えられた出力よう索引語句ファイル
-        "*.ilg", // makeindex ログファイル
-        "*.ist", // makeindex 索引スタイルファイル
-        "*.toc", // \tableofcontents
-        "*.lof", // \listoffigures
-        "*.lot", // \listoftables
-        "*.out",
-        "*.acn",
-        "*.acr",
-        "*.alg",
-        "*.glg",
-        "*.glo", // \glossary
-        "*.gls", // \glossary
-        "*.fls",
-        "*.fdb_latexmk",
-        "*.snm",
-        "*.nav",
-        "*.dvi", //デバイスに依存しない組版結果のファイル dvipsで印刷
-        "*.synctex.gz"
-    ],
+        // 生成ファイルを削除するときに対象とするファイル
+        // デフォルト値に "*.synctex.gz" を追加
+        "latex-workshop.latex.clean.fileTypes": [
+            "*.aux", // 相互参照や目次の情報が入ったファイル
+            "*.log", // ログファイル
+            "*.bbl", // bibtex 参考文献リストを記述したファイル
+            "*.blg", // bibtex ログファイル
+            "*.idx", // makeindex 書き出された索引語句ファイル
+            "*.ind", // makeindex 並び替えられた出力よう索引語句ファイル
+            "*.ilg", // makeindex ログファイル
+            "*.ist", // makeindex 索引スタイルファイル
+            "*.toc", // \tableofcontents
+            "*.lof", // \listoffigures
+            "*.lot", // \listoftables
+            "*.out",
+            "*.acn",
+            "*.acr",
+            "*.alg",
+            "*.glg",
+            "*.glo", // \glossary
+            "*.gls", // \glossary
+            "*.fls",
+            "*.fdb_latexmk",
+            "*.snm",
+            "*.nav",
+            "*.dvi", //デバイスに依存しない組版結果のファイル dvipsで印刷
+            "*.synctex.gz"
+        ],
 
-    // 生成ファイルを "out" ディレクトリに吐き出す
-    "latex-workshop.latex.outDir": "out",
+        // 生成ファイルを "out" ディレクトリに吐き出す
+        "latex-workshop.latex.outDir": "out",
 
-    // ビルドのレシピ
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "latexmk",
-            "tools": [
-                "latexmk"
-            ]
-        },
-    ],
+        // ビルドのレシピ
+        "latex-workshop.latex.recipes": [
+            {
+                "name": "latexmk",
+                "tools": [
+                    "latexmk"
+                ]
+            },
+        ],
 
-    // ビルドのレシピに使われるパーツ
-    "latex-workshop.latex.tools": [
-        {
-            "name": "latexmk",
-            "command": "latexmk",
-            "args": [
-                "-silent",
-                "-halt-on-error",
-                "-outdir=%OUTDIR%",
-                "%DOC%"
-            ],
-        },
-    ],
-    //PDFの表示方法
-    "latex-workshop.view.pdf.viewer": "tab",
-    //TeX文章のカーソル位置でPDFを表示
-    "latex-workshop.synctex.afterBuild.enabled": true,
-}
-                      </code>
-                    </pre>
-                  <li>
-                    User Snippetsなどは好きにいじる
-                  </li>
-                </ol>
-            </li>
-            <li>
-              <h3>.latexmkrcの作成</h3>
-                <ol>
-                  ターミナルを開く
-                  <li>
-                    cd でホームディレクトリに移動する
-                  </li>
-                  <li>
-                    touch .latexmkrc でファイルを作る
-                  </li>
-                  <li>
-                    VScode上で開いて以下を貼り付けて保存する
-                  </li>
-                  <pre>
-                    <code>
-#!/usr/bin/env perl
+        // ビルドのレシピに使われるパーツ
+        "latex-workshop.latex.tools": [
+            {
+                "name": "latexmk",
+                "command": "latexmk",
+                "args": [
+                    "-silent",
+                    "-halt-on-error",
+                    "-outdir=%OUTDIR%",
+                    "%DOC%"
+                ],
+            },
+        ],
+        //PDFの表示方法
+        "latex-workshop.view.pdf.viewer": "tab",
+        //TeX文章のカーソル位置でPDFを表示
+        "latex-workshop.synctex.afterBuild.enabled": true,
+    }
+                          </code>
+                        </pre>
+                      <li>
+                        User Snippetsなどは好きにいじる
+                      </li>
+                    </ol>
+                </li>
+                <li>
+                  <h3>.latexmkrcの作成</h3>
+                    <ol>
+                      ターミナルを開く
+                      <li>
+                        cd でホームディレクトリに移動する
+                      </li>
+                      <li>
+                        touch .latexmkrc でファイルを作る
+                      </li>
+                      <li>
+                        VScode上で開いて以下を貼り付けて保存する
+                      </li>
+                      <pre>
+                        <code>
+    #!/usr/bin/env perl
 
-# LaTeX
-$latex = 'platex -synctex=1 -halt-on-error -file-line-error %O %S';
+    # LaTeX
+    $latex = 'platex -synctex=1 -halt-on-error -file-line-error %O %S';
 
-# BibTeX
-$bibtex = 'pbibtex %O %S';
-$biber = 'biber --bblencoding=utf8 -u -U --output_safechars %O %S';
+    # BibTeX
+    $bibtex = 'pbibtex %O %S';
+    $biber = 'biber --bblencoding=utf8 -u -U --output_safechars %O %S';
 
-# index
-$makeindex = 'mendex %O -o %D %S';
+    # index
+    $makeindex = 'mendex %O -o %D %S';
 
-# コンパイルの回数
-$max_repeat = 5;
+    # コンパイルの回数
+    $max_repeat = 5;
 
-# DVI / PDF
-$dvipdf = 'dvipdfmx %O -o %D %S';
-$pdf_mode = 3;
+    # DVI / PDF
+    $dvipdf = 'dvipdfmx %O -o %D %S';
+    $pdf_mode = 3;
 
-# preview
-$pvc_view_file_via_temporary = 0;
-if ($^O eq 'linux') {
-    $dvi_previewer = "xdg-open %S";
-    $pdf_previewer = "xdg-open %S";
-} elsif ($^O eq 'darwin') {
-    $dvi_previewer = "open %S";
-    $pdf_previewer = "open %S";
-} else {
-    $dvi_previewer = "start %S";
-    $pdf_previewer = "start %S";
-}
+    # preview
+    $pvc_view_file_via_temporary = 0;
+    if ($^O eq 'linux') {
+        $dvi_previewer = "xdg-open %S";
+        $pdf_previewer = "xdg-open %S";
+    } elsif ($^O eq 'darwin') {
+        $dvi_previewer = "open %S";
+        $pdf_previewer = "open %S";
+    } else {
+        $dvi_previewer = "start %S";
+        $pdf_previewer = "start %S";
+    }
 
-# clean up
-$clean_full_ext = "%R.synctex.gz"
-                    </code>
-                  </pre>
-                </ol>
-            </li>
-            これでTeXは完了.
-            あとは.texファイルをVScodeで作れば,command + sで上書き保存する時についでにビルドしてくれるし,command + ortion + vでPDFビュワーを別タブで開いてくれる.
-            <li>
-              <h3>git</h3>
-                <ol>
-                  未編集
-                  <li>
+    # clean up
+    $clean_full_ext = "%R.synctex.gz"
+                        </code>
+                      </pre>
+                    </ol>
+                </li>
+                これでTeXは完了.
+                あとは.texファイルをVScodeで作れば,command + sで上書き保存する時についでにビルドしてくれるし,command + ortion + vでPDFビュワーを別タブで開いてくれる.
+                <li>
+                  <h3>git</h3>
+                    <ol>
+                      未編集
+                      <li>
 
-                  </li>
-                </ol>
-            </li>
-          </ol>
-    </main>
-  </body>
+                      </li>
+                    </ol>
+                </li>
+              </ol>
+        </div>
+      </main>
+      <aside>
+        <div class="aside-inner">
+          <ul class="sidebar">
+            <li><a href="#tex_package">package</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="footer-inner">footer</div>
+    </div>
+  </footer>
+</body>
 </html>

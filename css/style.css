@@ -1,60 +1,158 @@
 ﻿@charset "UTF-8";
 
-ul{
-float :left;
-margin-right :60px
+html {
+	font-size: 14px;
 }
 
-li{
-list-style-type : none;
-margin :8px ;
+body {
+	margin: 0;
+}
+
+.container {
+	margin: 0 auto 0 auto;
+	padding: 0 16px 0 16px;
+}
+
+section .container {
+	display: flex;
+	flex-flow: row;
+}
+
+nav {
+	margin-bottom: 20px;
+}
+
+main {
+	flex: 0 0 1000px;
+}
+
+aside{
+	flex: 1 1 auto;
+	background-color: lightgrey;
+}
+
+.header-inner{
+	background-color: #4ca4e8;
+	padding: 10px 10px 10px 10px;
+}
+
+.nav-inner {
+	background-color: #b7dbf2;
+	padding: 10px 10px 10px 10px;
+}
+
+.main-inner {
+	background-color: #ffffbc;
+	padding: 20px 10px 20px 10px;
+}
+
+.aside-inner {
+	background-color: #4ca4e8;
+	padding: 20px 10px 20px 10px;
+}
+
+.footer-inner {
+	background-color: #9fb4f2;
+	margin-top: 20px;
+	padding: 10px 10px 10px 10px;
+}
+
+a {
+	color: #009dff;
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(243, 151, 45, 0.5);
+}
+a:visited {
+	color: #900090;
+}
+a:hover {
+	color: #b7dbf2;
+	text-decoration: underline;
+}
+a:active {
+	color: #4ca4e8;
+}
+
+table{
+	border-collapse: collapse;
+}
+th, td{
+	border: 1px solid #000000;
+	padding: 8px;
 }
 
 
-.myButton_1 {
+pre {
+	color: #ffffff;
+	background-color: #404040;
+	white-space: pre-wrap;
+	padding: 16px 16px;
+}
+
+.navButton {
+	display: flex;
+	justify-content: space-around;
+	list-style-type: none;
+	padding-left: 0;
+}
+.navButton li {
 	-moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
 	-webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
 	box-shadow: 0px 0px 0px 2px #9fb4f2;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
-	background:-moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
-	background:-webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
-	background:-o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
-	background:-ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
-	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
-	background-color:#7892c2;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-	border-radius:10px;
-	border:1px solid #4e6096;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	padding:12px 37px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #283966;
-width : 75% ;
-text-align :center ;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+	background: -moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background: -webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background: -o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background: -ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+	background-color: #7892c2;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #4e6096;
+	cursor: pointer;
+	font-family: Arial;
+	font-size: 20px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #283966;
+	text-align : center;
+	margin: 4px;
+	width: 25%;
+	flex: 1 1 auto;
 }
-.myButton_1:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
-	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
-	background-color:#476e9e;
+.navButton li a {
+	display: block;
+	padding: 12px 3px;
+	color: #ffffff;
 }
-.myButton_1:active {
-	position:relative;
-	top:1px;
+.navButton li:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+	background: -moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background: -webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background: -o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background: -ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color: #476e9e;
+}
+.navButton li a:hover {
+	color: #ffffff;
+	text-decoration: none;
+}
+.navButton li:active {
+	position: relative;
+	top: 1px;
 }
 
-
-main{
-float :left;
+.git_command_table tr td:nth-child(1) {
+	text-align: center;
+}
+.git_command_table table {
+	width: 100%;
+	height: 100%;
+}
+.git_command_table table tr td:nth-child(1) {
+	width: 20%;
 }
 
