@@ -249,6 +249,9 @@
               <p>
                 詳しくは<a href="http://cremeronline.com/LaTeX/minimaltikz.pdf" target="_blank">こちら</a>.
                 Tikzでは()の中に()は入れられないので,一回{}を挟む.
+                各パラメータは，同じ図または文でまとめる方がよい.
+                文章全体->図全体->個別の順で適用される.
+                文全体に適用する場合はプリアンブルに\tikzset{~}で記入, 同じ図(tikzpicture)の場合は\begin{tikzpicture}[~]のように記入する.
               </p>
 
             <h2>xparse</h2>
