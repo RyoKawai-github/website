@@ -206,44 +206,43 @@
                 また,footnoteが消えるのは仕様である.
                 詳しくは<a href="https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf" target="_blank">thmtoolsのパッケージドキュメント</a>を見て欲しい.
               </p>
-              <pre>
-                <code>
-    % 定理のスタイル
-    \declaretheoremstyle[
-    thmbox={
-      style=M,
-      bodystyle=\normalfont
-    },
-    spaceabove=3pt, spacebelow=3pt,
-    numberlike=subsection,
-    ]{mystyle}
-
-    % 定理環境
-    \declaretheorem[style=mystyle, name=定義]{環境名}
-                </code>
-              </pre>
+<pre>
+<code>
+% 定理のスタイル
+\declaretheoremstyle[
+thmbox={
+  style=M,
+  bodystyle=\normalfont
+},
+spaceabove=3pt, spacebelow=3pt,
+numberlike=subsection,
+]{mystyle
+% 定理環境
+\declaretheorem[style=mystyle, name=定義]{環境名}
+</code>
+</pre>
               <p>
                 それぞれのコマンドはnewtheorem{環境名}[numberlike]{name}[numberwithin]に対応する.
                 declarethoremはnewtheoremと衝突しない.
                 thmboxを入れた場合,proofがおかしくなることが多い.
                 そのような時はproofをカスタマイズすれば良い.
               </p>
-              <pre>
-                <code>
-    % proofの再定義
-    \declaretheoremstyle[
-      spaceabove=3pt, spacebelow=3pt,
-      headfont=\bfseries\itshape,
-      notefont=\bfseries,
-      notebraces={ (}{) },
-      postheadspace=1em,
-      numbered=no,
-      qed=$\square$
-    ]{myproof}
-    \declaretheorem[name=Proof, style=myproof]{myproof}
-    \renewenvironment{proof}{\begin{myproof}}{\end{myproof}}
-                </code>
-              </pre>
+<pre>
+<code>
+% proofの再定義
+\declaretheoremstyle[
+  spaceabove=3pt, spacebelow=3pt,
+  headfont=\bfseries\itshape,
+  notefont=\bfseries,
+  notebraces={ (}{) },
+  postheadspace=1em,
+  numbered=no,
+  qed=$\square$
+]{myproof}
+\declaretheorem[name=Proof, style=myproof]{myproof}
+\renewenvironment{proof}{\begin{myproof}}{\end{myproof}}
+</code>
+</pre>
 
             <h2>Tikz</h2>
               <p>
@@ -278,48 +277,47 @@
               <p>現在の自分の環境.環境構築が必要だし面倒だが,カスタマイズしやすくて使いやすい.以下で環境構築の方法をメモしておく.</p>
 
             <h2>環境構築</h2>
-              <p>mac版TeXLive+VScode+(git+github)のmemo</p>
-
+              <p>
+                mac版TeXLive+VScode+(git+github)のmemo.
+                実はあまり良い環境ではないが, ひとまず現行環境のメモとしておいておく.
+              </p>
               <ol>
                 <li>
                   <h3>ターミナルをzshに変更</h3>
+                  <p>ターミナル上で行う</p>
                     <ol>
-                      ターミナルを開く
                       <li>
-                        echo $SHELL で自分の現在のSHELLを確認
+                        <code>echo $SHELL</code>で自分の現在のSHELLを確認
                       </li>
                       <li>
-                        cat /etc/shells で自分が使えるSHELLの確認
+                        <code>cat /etc/shells</code>で自分が使えるSHELLの確認
                       </li>
                       <li>
-                        /bin/zsh がなければzshのインストールをする
+                        <code>/bin/zsh</code>がなければzshのインストールをする
                       </li>
                       <li>
-                        chsh -s /bin/zsh を入力して再起動
+                        <code>chsh -s /bin/zsh</code>を入力して再起動
                       </li>
                     </ol>
                 </li>
                 <li>
                   <h3>TeXLiveのインストール</h3>
+                  <p>ターミナル上で行う</p>
                     <ol>
-                      ターミナルでの操作を書いておく
                       <li>
-                        curl -OL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz でミラーサイトからインストール
+                        <code>curl -OL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz</code>でミラーサイトからインストール
                       </li>
                       <li>
-                        tar xvf install-tl-unx.tar.gz で展開
+                        <code>tar xvf install-tl-unx.tar.gz</code>で展開
                       </li>
                       <li>
-                        cd install-tl-2* でインストーラのディレクトリへ
+                        <code>cd install-tl-2*</code>でインストーラのディレクトリへ
                       </li>
                       <li>
-                        sudo ./install-tl -no-gui -repository http://mirror.ctan.org/systems/texlive/tlnet/ とするとActionが選べるので,Iを入力するとインストールが始まる(めちゃくちゃ時間がかかる)
+                        <code>sudo ./install-tl -no-gui -repository http://mirror.ctan.org/systems/texlive/tlnet/</code>とするとActionが選べるので,<code>I</code>を入力するとインストールが始まる(めちゃくちゃ時間がかかるため注意)(もし止まっても<code>sudo ./install-tl -no-gui -profile installation.profile</code>で途中から再開できるかも)
                       </li>
                       <li>
-                        sudo ./install-tl -no-gui -profile installation.profile で止まっても途中から再開できるかも
-                      </li>
-                      <li>
-                        sudo /usr/local/texlive/????/bin/*/tlmgr path add でシンボリックリンクの追加
+                        <code>sudo /usr/local/texlive/????/bin/*/tlmgr path add</code>でシンボリックリンクの追加
                       </li>
                     </ol>
                 </li>
@@ -335,179 +333,179 @@
                       <li>
                         settingsからsettings.JSONを開いて設定する(以下は2021-10-01時点での自分の設定)
                       </li>
-                        <pre>
-                          <code>
-    {
-        // ---------- Editor ----------
+<pre>
+<code>
+{
+    // ---------- Editor ----------
 
-        // フォント サイズをピクセル単位で制御します。
-        "editor.fontSize": 15,
-        // フォント ファミリを制御します。
-        //"editor.fontFamily":"Ricty Diminished",
-        // 行の高さを制御します。
-        "editor.lineHeight": 0,
-        // 1つのタブに相当するスペースの数。
-        "editor.tabSize": 2,
-        // 入力補完を表示する
-        "editor.quickSuggestions": false,
-        // 現在行をガターを含めてハイライトするので視認性が上がる
-        "editor.renderLineHighlight": "all",
-        // 入力補完の表示を何ms遅らせるか
-        //"editor.quickSuggestionsDelay": 10,
-        // 括弧開きを入力したとき括弧閉じを自動的に入れる
-        //"editor.autoClosingBrackets": true,
-        // 括弧同士に色をつける
-        //"editor.bracketPairColorization.enabled": true,
-        // 空白文字列の表示
-        "editor.renderWhitespace": "boundary",
-        // ウインドウ幅で折り返す
-        "editor.wordWrap": "on",
-        // カーソルがにゅるっと点滅する
-        "editor.cursorBlinking": "smooth",
-        // エディタのendなどを自動入力
-        //"editor.autoIndent": true,
-        // インデントガイド(インデントに沿って縦線を表示)
-        "editor.renderIndentGuides": true,
-        // インデントの自動判定
-        "editor.detectIndentation": true,
-        // ミニマップの表示
-        "editor.minimap.enabled": false,
-        // カラーテーマ
-        "workbench.colorTheme": "Visual Studio Dark",
-        // ウィンドウのズームレベル
-        "window.zoomLevel": -1,
-        // 余分なホワイトスペースを削除
-        "files.trimTrailingWhitespace": true,
-        // Enable the extension.
-        //"guides.enabled": false,
-        // Specifies the severity of the message when the classpath is incomplete for a Java file
-        //"java.errors.incompleteClasspath.severity": "ignore",
-        // 新規ファイルはUntitledでファイル作成
-        //"workbench.startupEditor": "newUntitledFile",
-        //"workbench.sideBar.location": "left",
-        // ファイルの末尾は改行で終わらせる
-        "files.insertFinalNewline": true,
-        // 拡張機能を自動更新
-        "extensions.autoUpdate": true,
-        // codeコマンドで(ディレクトリではなく)ファイルを開いたときは、既に開いているウインドウがあればそこに表示する
-        "window.openFilesInNewWindow": "off",
-        //スクリーンリーダー(読み上げ機能)
-        "editor.accessibilitySupport": "off",
-        // タイトルバーにファイルのフルパスを表示する
-        //"window.showFullPath": true,
-        //"explorer.confirmDelete": false,
-        // Quick Open で開いたエディターをプレビューとして表示するかどうかを制御します。
-        "workbench.editor.enablePreviewFromQuickOpen": false,
-        // プレビュー画面を開かない
-        "workbench.editor.enablePreview": false,
-        // 現在のタブの下線に色をつける
-        "workbench.colorCustomizations": {
-            "tab.activeBorder": "#0099ff"
-          },
-        // ワークベンチのフォント エイリアシング方法を制御します。
-        //"workbench.fontAliasing": "antialiased",
-        // エディターのタブの大きさを制御します。
-        //"workbench.editor.tabSizing": "shrink",
-        // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。
-        //"workbench.startupEditor": "newUntitledFile",
-        // 3 本の指で横方向にスワイプすると、開いているファイル間を移動できます。
-        //"workbench.editor.swipeToNavigate": true,
-        //"explorer.confirmDragAndDrop": false,
-        //"workbench.colorTheme": "Cobalt2",
-        //"workbench.iconTheme": "material-icon-theme",
-        //"breadcrumbs.enabled": true,
+    // フォント サイズをピクセル単位で制御します。
+    "editor.fontSize": 15,
+    // フォント ファミリを制御します。
+    //"editor.fontFamily":"Ricty Diminished",
+    // 行の高さを制御します。
+    "editor.lineHeight": 0,
+    // 1つのタブに相当するスペースの数。
+    "editor.tabSize": 2,
+    // 入力補完を表示する
+    "editor.quickSuggestions": false,
+    // 現在行をガターを含めてハイライトするので視認性が上がる
+    "editor.renderLineHighlight": "all",
+    // 入力補完の表示を何ms遅らせるか
+    //"editor.quickSuggestionsDelay": 10,
+    // 括弧開きを入力したとき括弧閉じを自動的に入れる
+    //"editor.autoClosingBrackets": true,
+    // 括弧同士に色をつける
+    //"editor.bracketPairColorization.enabled": true,
+    // 空白文字列の表示
+    "editor.renderWhitespace": "boundary",
+    // ウインドウ幅で折り返す
+    "editor.wordWrap": "on",
+    // カーソルがにゅるっと点滅する
+    "editor.cursorBlinking": "smooth",
+    // エディタのendなどを自動入力
+    //"editor.autoIndent": true,
+    // インデントガイド(インデントに沿って縦線を表示)
+    "editor.renderIndentGuides": true,
+    // インデントの自動判定
+    "editor.detectIndentation": true,
+    // ミニマップの表示
+    "editor.minimap.enabled": false,
+    // カラーテーマ
+    "workbench.colorTheme": "Visual Studio Dark",
+    // ウィンドウのズームレベル
+    "window.zoomLevel": -1,
+    // 余分なホワイトスペースを削除
+    "files.trimTrailingWhitespace": true,
+    // Enable the extension.
+    //"guides.enabled": false,
+    // Specifies the severity of the message when the classpath is incomplete for a Java file
+    //"java.errors.incompleteClasspath.severity": "ignore",
+    // 新規ファイルはUntitledでファイル作成
+    //"workbench.startupEditor": "newUntitledFile",
+    //"workbench.sideBar.location": "left",
+    // ファイルの末尾は改行で終わらせる
+    "files.insertFinalNewline": true,
+    // 拡張機能を自動更新
+    "extensions.autoUpdate": true,
+    // codeコマンドで(ディレクトリではなく)ファイルを開いたときは、既に開いているウインドウがあればそこに表示する
+    "window.openFilesInNewWindow": "off",
+    //スクリーンリーダー(読み上げ機能)
+    "editor.accessibilitySupport": "off",
+    // タイトルバーにファイルのフルパスを表示する
+    //"window.showFullPath": true,
+    //"explorer.confirmDelete": false,
+    // Quick Open で開いたエディターをプレビューとして表示するかどうかを制御します。
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    // プレビュー画面を開かない
+    "workbench.editor.enablePreview": false,
+    // 現在のタブの下線に色をつける
+    "workbench.colorCustomizations": {
+        "tab.activeBorder": "#0099ff"
+      },
+    // ワークベンチのフォント エイリアシング方法を制御します。
+    //"workbench.fontAliasing": "antialiased",
+    // エディターのタブの大きさを制御します。
+    //"workbench.editor.tabSizing": "shrink",
+    // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。
+    //"workbench.startupEditor": "newUntitledFile",
+    // 3 本の指で横方向にスワイプすると、開いているファイル間を移動できます。
+    //"workbench.editor.swipeToNavigate": true,
+    //"explorer.confirmDragAndDrop": false,
+    //"workbench.colorTheme": "Cobalt2",
+    //"workbench.iconTheme": "material-icon-theme",
+    //"breadcrumbs.enabled": true,
 
-        // ---------- Terminal ----------
+    // ---------- Terminal ----------
 
-        // 実行するターミナル アプリケーションをカスタマイズします。
-        "terminal.external.osxExec": "Terminal.app",
-        // ターミナルのフォント サイズをピクセル単位で制御します。
-        "terminal.integrated.fontSize": 15,
-        // Terminalのフォント設定
-        //"terminal.integrated.fontFamily": "Source Code Pro for Powerline",
-        //"workbench.iconTheme": "material-icon-theme",
-        //"workbench.statusBar.visible": true,
-        //"workbench.colorTheme": "Cobalt2",
-        //"githubPullRequests.hosts": [
-        //  {
-        //    "host": "https://github.com",
-        //    "username": "oauth",
-        //    "token": "system"
-        //  }
-        //],
+    // 実行するターミナル アプリケーションをカスタマイズします。
+    "terminal.external.osxExec": "Terminal.app",
+    // ターミナルのフォント サイズをピクセル単位で制御します。
+    "terminal.integrated.fontSize": 15,
+    // Terminalのフォント設定
+    //"terminal.integrated.fontFamily": "Source Code Pro for Powerline",
+    //"workbench.iconTheme": "material-icon-theme",
+    //"workbench.statusBar.visible": true,
+    //"workbench.colorTheme": "Cobalt2",
+    //"githubPullRequests.hosts": [
+    //  {
+    //    "host": "https://github.com",
+    //    "username": "oauth",
+    //    "token": "system"
+    //  }
+    //],
 
-        // ---------- Language ----------
+    // ---------- Language ----------
 
-        // タブストップ中にも入力補完を
-        "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // タブストップ中にも入力補完を
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
 
-        // ---------- LaTeX Workshop ----------
+    // ---------- LaTeX Workshop ----------
 
-        // 使用パッケージのコマンドや環境の補完を有効にする
-        "latex-workshop.intellisense.package.enabled": true,
+    // 使用パッケージのコマンドや環境の補完を有効にする
+    "latex-workshop.intellisense.package.enabled": true,
 
-        // 生成ファイルを削除するときに対象とするファイル
-        // デフォルト値に "*.synctex.gz" を追加
-        "latex-workshop.latex.clean.fileTypes": [
-            "*.aux", // 相互参照や目次の情報が入ったファイル
-            "*.log", // ログファイル
-            "*.bbl", // bibtex 参考文献リストを記述したファイル
-            "*.blg", // bibtex ログファイル
-            "*.idx", // makeindex 書き出された索引語句ファイル
-            "*.ind", // makeindex 並び替えられた出力よう索引語句ファイル
-            "*.ilg", // makeindex ログファイル
-            "*.ist", // makeindex 索引スタイルファイル
-            "*.toc", // \tableofcontents
-            "*.lof", // \listoffigures
-            "*.lot", // \listoftables
-            "*.out",
-            "*.acn",
-            "*.acr",
-            "*.alg",
-            "*.glg",
-            "*.glo", // \glossary
-            "*.gls", // \glossary
-            "*.fls",
-            "*.fdb_latexmk",
-            "*.snm",
-            "*.nav",
-            "*.dvi", //デバイスに依存しない組版結果のファイル dvipsで印刷
-            "*.synctex.gz"
-        ],
+    // 生成ファイルを削除するときに対象とするファイル
+    // デフォルト値に "*.synctex.gz" を追加
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux", // 相互参照や目次の情報が入ったファイル
+        "*.log", // ログファイル
+        "*.bbl", // bibtex 参考文献リストを記述したファイル
+        "*.blg", // bibtex ログファイル
+        "*.idx", // makeindex 書き出された索引語句ファイル
+        "*.ind", // makeindex 並び替えられた出力よう索引語句ファイル
+        "*.ilg", // makeindex ログファイル
+        "*.ist", // makeindex 索引スタイルファイル
+        "*.toc", // \tableofcontents
+        "*.lof", // \listoffigures
+        "*.lot", // \listoftables
+        "*.out",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo", // \glossary
+        "*.gls", // \glossary
+        "*.fls",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.nav",
+        "*.dvi", //デバイスに依存しない組版結果のファイル dvipsで印刷
+        "*.synctex.gz"
+    ],
 
-        // 生成ファイルを "out" ディレクトリに吐き出す
-        "latex-workshop.latex.outDir": "out",
+    // 生成ファイルを "out" ディレクトリに吐き出す
+    "latex-workshop.latex.outDir": "out",
 
-        // ビルドのレシピ
-        "latex-workshop.latex.recipes": [
-            {
-                "name": "latexmk",
-                "tools": [
-                    "latexmk"
-                ]
-            },
-        ],
+    // ビルドのレシピ
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+    ],
 
-        // ビルドのレシピに使われるパーツ
-        "latex-workshop.latex.tools": [
-            {
-                "name": "latexmk",
-                "command": "latexmk",
-                "args": [
-                    "-silent",
-                    "-halt-on-error",
-                    "-outdir=%OUTDIR%",
-                    "%DOC%"
-                ],
-            },
-        ],
-        //PDFの表示方法
-        "latex-workshop.view.pdf.viewer": "tab",
-        //TeX文章のカーソル位置でPDFを表示
-        "latex-workshop.synctex.afterBuild.enabled": true,
-    }
-                          </code>
-                        </pre>
+    // ビルドのレシピに使われるパーツ
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-silent",
+                "-halt-on-error",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+        },
+    ],
+    //PDFの表示方法
+    "latex-workshop.view.pdf.viewer": "tab",
+    //TeX文章のカーソル位置でPDFを表示
+    "latex-workshop.synctex.afterBuild.enabled": true,
+}
+</code>
+</pre>
                       <li>
                         User Snippetsなどは好きにいじる
                       </li>
@@ -515,55 +513,55 @@
                 </li>
                 <li>
                   <h3>.latexmkrcの作成</h3>
+                  <p>ターミナルを開く</p>
                     <ol>
-                      ターミナルを開く
                       <li>
-                        cd でホームディレクトリに移動する
+                        <code>cd</code>でホームディレクトリに移動する
                       </li>
                       <li>
-                        touch .latexmkrc でファイルを作る
+                        <code>touch .latexmkrc</code>でファイルを作る
                       </li>
                       <li>
                         VScode上で開いて以下を貼り付けて保存する
                       </li>
-                      <pre>
-                        <code>
-    #!/usr/bin/env perl
+<pre>
+<code>
+#!/usr/bin/env perl
 
-    # LaTeX
-    $latex = 'platex -synctex=1 -halt-on-error -file-line-error %O %S';
+# LaTeX
+$latex = 'platex -synctex=1 -halt-on-error -file-line-error %O %S';
 
-    # BibTeX
-    $bibtex = 'pbibtex %O %S';
-    $biber = 'biber --bblencoding=utf8 -u -U --output_safechars %O %S';
+# BibTeX
+$bibtex = 'pbibtex %O %S';
+$biber = 'biber --bblencoding=utf8 -u -U --output_safechars %O %S';
 
-    # index
-    $makeindex = 'mendex %O -o %D %S';
+# index
+$makeindex = 'mendex %O -o %D %S';
 
-    # コンパイルの回数
-    $max_repeat = 5;
+# コンパイルの回数
+$max_repeat = 5;
 
-    # DVI / PDF
-    $dvipdf = 'dvipdfmx %O -o %D %S';
-    $pdf_mode = 3;
+# DVI / PDF
+$dvipdf = 'dvipdfmx %O -o %D %S';
+$pdf_mode = 3;
 
-    # preview
-    $pvc_view_file_via_temporary = 0;
-    if ($^O eq 'linux') {
-        $dvi_previewer = "xdg-open %S";
-        $pdf_previewer = "xdg-open %S";
-    } elsif ($^O eq 'darwin') {
-        $dvi_previewer = "open %S";
-        $pdf_previewer = "open %S";
-    } else {
-        $dvi_previewer = "start %S";
-        $pdf_previewer = "start %S";
-    }
+# preview
+$pvc_view_file_via_temporary = 0;
+if ($^O eq 'linux') {
+    $dvi_previewer = "xdg-open %S";
+    $pdf_previewer = "xdg-open %S";
+} elsif ($^O eq 'darwin') {
+    $dvi_previewer = "open %S";
+    $pdf_previewer = "open %S";
+} else {
+    $dvi_previewer = "start %S";
+    $pdf_previewer = "start %S";
+}
 
-    # clean up
-    $clean_full_ext = "%R.synctex.gz"
-                        </code>
-                      </pre>
+# clean up
+$clean_full_ext = "%R.synctex.gz"
+</code>
+</pre>
                     </ol>
                 </li>
                 これでTeXは完了.
