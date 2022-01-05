@@ -176,34 +176,35 @@
               </p>
 
           <h1 id="tex_package">package</h1>
-            <h2>amssymb, amsmath, mathtools</h2>
-            <ol>
-              <li>amssymb:\mathbbなどのコマンドが使えるようになる.</li>
-              <li>amsmath:\begin{align}などの数式環境が使えるようになる.</li>
-              <li>mathtools:amsmathの拡張パッケージ.</li>
-            </ol>
-            <p>
-              とりあえず読み込んでおけば間違いない.
-              amsmathの数式環境については<a href="https://qiita.com/t_kemmochi/items/a4c390b4967b13f3afb7" target="_blank">このサイト</a>に詳しく書いてある.
-              実はmathtoolsを読み込むとamsmathも読み込まれるが, 明示的に読み込んだ方が良い.
-              詳しくは<a href="https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289" target="_blank">このサイト</a>を参照.
-              mathtoolsには\DeclarePairedDelimiterという便利なコマンドがあり, 左右で挟むことが多い場合や, 集合はこれで定義しておくと便利だろう.
-              ただしこのコマンドはbmと一緒に使うとエラーを吐くので注意する.
-            </p>
-            <p>
-              amsmathでのコマンドに\DeclareMathOperator{\***}{***}と\DeclareMathOperator*{\***}{***}がある.
-              前者がlog型, 後者がlim型である.
-              amsmathについてはパッケージガイドが翻訳されている.
-              <a href="https://www.latex-project.org/help/documentation/amsldoc_jpn.pdf" target="_blank">このサイト</a>にある.
-            </p>
-
-            <h2>amsthm, thmtools</h2>
+          <ul>
+            <li><h2>amssymb, amsmath, mathtools</h2>
+              <ul>
+                <li>amssymb:\mathbbなどのコマンドが使えるようになる.</li>
+                <li>amsmath:\begin{align}などの数式環境が使えるようになる.</li>
+                <li>mathtools:amsmathの拡張パッケージ.</li>
+              </ul>
+              <p>
+                数式環境たちなので, とりあえず読み込んでおけば間違いない.
+                amsmathの数式環境については<a href="https://qiita.com/t_kemmochi/items/a4c390b4967b13f3afb7" target="_blank">このサイト</a>に詳しく書いてある.
+                実はmathtoolsを読み込むとamsmathも読み込まれるが, 明示的に読み込んだ方が良い.
+                詳しくは<a href="https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289" target="_blank">このサイト</a>を参照するといい.
+                mathtoolsには\DeclarePairedDelimiterという便利なコマンドがあり, 左右で挟むことが多い場合や, 集合はこれで定義しておくと便利だろう.
+                ただしこのコマンドは\bmと一緒に使うとエラーを吐くので注意する.
+              </p>
+              <p>
+                amsmathでのコマンドに\DeclareMathOperator{\~}{~}と\DeclareMathOperator*{\~}{~}がある.
+                前者がlog型, 後者がlim型である.
+                違いは添字の場所で, 例えば\DeclareMathOperator{\A}{B}とプリアンブルに記入して, 本文で\A_{C}とすると出力としてはBの右下にCがくるが, \DeclareMathOperator*{\A}{B}とプリアンブルに記入して, 本文で\A_{C}とすると出力としてはBの真下にCがくる.
+                amsmathについてはパッケージガイドが翻訳され, <a href="https://www.latex-project.org/help/documentation/amsldoc_jpn.pdf" target="_blank">このサイト</a>にある.
+              </p>
+            </li>
+            <li><h2>amsthm, thmtools</h2>
               <p>
                 定理環境のパッケージ.
-                特にthmtoolsはamsthmの拡張になっており,thmboxなどが使える.
-                thmboxはthmboxパッケージを使うとnewtheoremの前にオプションとして追加できるようになるため,そちらで導入するという手もあるが, thmtoolsを導入した方が自由度が高い気がする.
-                需要があるらしいのでthmboxを使う環境の例をあげておこう,ただしこれはnote部分(定理の名前の部分)がイタリックになることを自分では回避できなかった.
-                また,footnoteが消えるのは仕様である.
+                特にthmtoolsはamsthmの拡張になっており, thmboxなどが使える.
+                thmboxはthmboxパッケージを使うとnewtheoremの前にオプションとして追加できるようになるため, そちらで導入するという手もあるが, thmtoolsを導入した方が自由度が高い気がする.
+                需要があるらしいのでthmboxを使う環境の例をあげておこう, ただしこれはnote部分(定理の名前の部分)がイタリックになることを自分では回避できなかった.
+                またfootnoteが消えるのは仕様である.
                 詳しくは<a href="https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf" target="_blank">thmtoolsのパッケージドキュメント</a>を見て欲しい.
               </p>
 <pre>
@@ -224,8 +225,9 @@ numberlike=subsection,
               <p>
                 それぞれのコマンドはnewtheorem{環境名}[numberlike]{name}[numberwithin]に対応する.
                 declarethoremはnewtheoremと衝突しない.
-                thmboxを入れた場合,proofがおかしくなることが多い.
-                そのような時はproofをカスタマイズすれば良い.
+                thmboxを入れた場合proof環境がおかしくなることが多い.
+                そのような時はproof環境をカスタマイズすれば良い.
+                以下に例をあげる.
               </p>
 <pre>
 <code>
@@ -243,26 +245,125 @@ numberlike=subsection,
 \renewenvironment{proof}{\begin{myproof}}{\end{myproof}}
 </code>
 </pre>
-
-            <h2>Tikz</h2>
+            </li>
+            <li><h2>otf, mathrsfs</h2>
+              <ul>
+                <li>otf:旧字体なども使えるようになる, 日本語書体パッケージ</li>
+                <li>mathrsfs:花文字が使えるようになる</li>
+              </ul>
               <p>
+                フォントをいじることができる.
+              </p>
+            </li>
+            <li><h2>xparse</h2>
+              <p>
+                コマンドの引数をめちゃくちゃにいじれる.
+                詳しくは<a href="https://qiita.com/zr_tex8r/items/50168ad7087516c3e139" target="_blank">こちら</a>.
+              </p>
+            </li>
+            <li><h2>enumitem</h2>
+              <p>
+                箇条書き環境.
+                一昔前まではenumerateが主流だったが, こちらの方が上位互換になっているので, こちらを使う方がいい.
+              </p>
+            </li>
+            <li><h2>ascmac</h2>
+              <p>
+                itemboxとかが使えるようになる.
+                詳しくは<a href="https://ctan.math.illinois.edu/macros/latex/contrib/ascmac/ascmac.pdf">パッケージガイド</a>を参照.
+              </p>
+            </li>
+            <li><h2>bm</h2>
+              <p>
+                数式内の特殊な文字等も太字にできるが, さまざまなパッケージと衝突するので, 自分はあまり使わない.
+              </p>
+            </li>
+            <li><h2>Tikz</h2>
+              <p>
+                図を描くために使うパッケージ.
                 詳しくは<a href="http://cremeronline.com/LaTeX/minimaltikz.pdf" target="_blank">こちら</a>.
                 Tikzでは()の中に()は入れられないので,一回{}を挟む.
                 各パラメータは，同じ図または文でまとめる方がよい.
                 文章全体->図全体->個別の順で適用される.
                 文全体に適用する場合はプリアンブルに\tikzset{~}で記入, 同じ図(tikzpicture)の場合は\begin{tikzpicture}[~]のように記入する.
               </p>
-
-            <h2>xparse</h2>
+            </li>
+            <li><h2>url</h2>
               <p>
-                詳しくは<a href="https://qiita.com/zr_tex8r/items/50168ad7087516c3e139" target="_blank">こちら</a>.
+                URLの書体を変えたり, hyperrefで外部サイトに飛べるようになる.
               </p>
-
-            <h2>footnpag</h2>
+            </li>
+            <li><h2>color</h2>
+              <p>
+                PDFに色をつけることができる.
+                ただしDVIファイルでは色は表示されないので注意.
+              </p>
+            </li>
+            <li><h2>geometry</h2>
+              <p>
+                用紙の余白の調整ができる.
+                \usepackage[margin= ]{geometry}と書いて一括で調整することもできるし, プリアンブルにgeometry{top= ,bottom= ,left= ,right= }と書くことで細かく調整できる.
+              </p>
+            </li>
+            <li><h2>makeidx</h2>
+              <p>
+                索引を生成する.
+                プリアンブルに\makeindexと記入することで索引を生成し, 本文で\printindexと記入するとその場所に索引を表示する.
+                なお, 一つも\indexを入れないとエラーを吐くので注意.
+                詳しくは<a href="https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90">こちら</a>.
+              </p>
+            </li>
+            <li><h2>hyperref</h2>
+              <p>
+                \ref, \cref, \cite, \index等で参照している場所に飛ぶような, PDF内リンク(ハイパーリンク)を生成する.
+                めちゃくちゃ便利だが, たまに変なバグが起こるようだ.
+              </p>
+            </li>
+            <li><h2>cleveref</h2>
+              <p>
+                hyperrefの後に読み込まないと番号がおかしくなったりエラーを吐きます.
+                めちゃくちゃ賢いrefだと思ってよい.
+                なんと番号だけでなく自動で環境名を認識して引っ張ってきてくれる.
+                例えばlabelをdefinition環境(番号1)の中に入れて\crefで呼び出すとdefinition1と記入される.
+                プリアンブルに\crefname{definition}{定義}{定義たち}などとしておくと, 定義1と記入される.
+                \crefname{環境名}{単数形}{複数形}と入力する.
+                \[\]は環境としてはequationと認識される(というかパッケージで再定義する).
+                詳しくは<a href="https://qiita.com/Hdan/items/8c59a7e0a3215ae32d74">こちら</a>.
+                自分は\usepackage[nameinlink]{cleveref}としている.
+              </p>
+            </li>
+            <li><h2>graphicx</h2>
+              <p>
+                画像を読み込めるパッケージ.
+                graphicsの上位互換なのでこちらを使うべき.
+                なぜかエラーを吐いているので今は自分は使ってない.
+              </p>
+            </li>
+            <li><h2>autonum</h2>
+              <p>
+                amsmath, hyperref, cleverefの後に読み込まないと, 番号がおかしかったりエラーを吐きます.
+                引用されていない式番号を自動で消去し, 番号を再度割り振る.
+                詳しくは<a href="https://konoyonohana.blog.fc2.com/blog-entry-53.html" target="_blank">こちら</a>.
+              </p>
+            </li>
+            <li><h2>ifthen</h2>
+              <p>
+                条件分岐ができるようになる.
+              </p>
+            </li>
+            <li><h2>calc</h2>
+              <p>
+                長さの計算ができるようになる.
+              </p>
+            </li>
+            <li><h2>footnpag</h2>
               <p>
                 footnoteをページごとに番号をリセットする.
                 2回TeXにかける必要がある.
               </p>
+            </li>
+            \pagestyle{empty} ページ番号を出力しない
+          </ul>
 
           <h1>texを始める</h1>
             <p>TeXにも色々ある.おすすめを紹介しよう.</p>
