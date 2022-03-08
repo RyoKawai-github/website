@@ -4,11 +4,24 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="Context-Style-Type" content="text/css" />
   <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script>
+    //共通パーツ読み込み
+     $(function() {
+     $("#header").load("header.html");
+     $("#nav").load("nav.html");
+     $("#footer").load("footer.html");
+    });
+    </script>
   <title>RyoKawai</title>
 </head>
 <body>
-  <iframe src="header.html" frameborder="0"></iframe>
-  <iframe src="nav.html" frameborder="0"></iframe>
+  <div id="header">
+    ここにheader.htmlが読み込まれる
+  </div>
+  <div id="nav">
+    ここにnav.htmlが読み込まれる
+  </div>
   <section>
     <div class="container">
       <main>
@@ -18,6 +31,18 @@
           <h2>test</h2>
           <p>最近は流星のロックマンがブーム</p>
           <p>QOLをあげていきたい</p>
+          <p>スリープを無効, 有効を切り替える</p>
+<pre>
+<code>
+sudo pmset -a disablesleep *
+</code>
+</pre>
+          <p>1で無効, 0で有効にできる. 確認は以下のコマンドでできる. </p>
+<pre>
+<code>
+pmset -g
+</code>
+</pre>
         </div>
       </main>
       <aside>
@@ -27,6 +52,8 @@
       </aside>
     </div>
   </section>
-  <iframe src="footer.html" frameborder="0"></iframe>
+  <div id="footer">
+    ここにfooter.htmlが読み込まれる
+  </div>
 </body>
 </html>
