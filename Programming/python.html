@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Context-Style-Type" content="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script>
+    //共通パーツ読み込み
+     $(function() {
+     $("#header").load("/Layout/header.html");
+     $("#nav").load("/Layout/nav.html");
+     $("#footer").load("/Layout/footer.html");
+    });
+    </script>
+  <title>RyoKawai</title>
+</head>
+<body>
+  <header id="header">
+    ここにheader.htmlが読み込まれる.
+  </header>
+  <nav id="nav">
+    ここにnav.htmlが読み込まれる.
+  </nav>
+  <section>
+    <div class="container">
+      <main>
+        <div class="main-inner">
+          <h1>環境構築</h1>
+          <p><a href="https://www.python.jp/install/anaconda/macos/install.html">ここ</a>を参照</p>
+
+          <h1>備忘録</h1>
+          <ul>
+            <li><p>listはなんの型でも入る. ndarrayは一つの型だがネストできる. listでは[1:][2][3]のような要素の取り出しも, ndarrayでは[1:,2,3]のようにできる. </p></li>
+            <li><p>強制終了はctrl+c or command+c. </p></li>
+          </ul>
+
+          <h1>Anaconda-command</h1>
+          <table class="Anaconda_command_table">
+            <thead>
+              <tr>
+                <th>command</th>
+                <th>move</th>
+                <th>option</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>conda info -e</td>
+                <td>存在している仮想環境のリストを表示</td>
+                <td>–envsでも可</td>
+              </tr>
+              <tr>
+                <td>conda create -n exp</td>
+                <td>名前の仮想環境を作成する</td>
+                <td>-nameでも可</td>
+              </tr>
+              <tr>
+                <td>conda create -n exp python=3.5</td>
+                <td>仮想環境expにpython3.5をインストールする. pythonのみだと最新をインストールする. python Anacondaとするとrootにある全てのライブラリが入る</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>conda activate exp</td>
+                <td>仮想環境expを起動する</td>
+                <td>windowsはcondaがいらない</td>
+              </tr>
+              <tr>
+                <td>conda deactivate</td>
+                <td>今いる仮想環境を終了する</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  conda install Lib
+                  conda install -c conda-forge Lib
+                  pip install Lib
+                </td>
+                <td>Libを今いる仮想環境にインストールする</td>
+                <td>
+                  activateをしていない場合はroot環境にはいる. condaのデフォルト場所にあるものは上, conda-forgeにあるものは真ん中, PyPI(Python Package Index)にあるものは下でインストールできる. -cは-channelでも可で, conda-forgeの入っているチャンネルそのライブラリの公式が推奨する方でやるのが良い.
+                  どっちでも良い場合はどちらかに統一した方が良いらしい(ごちゃごちゃになると環境が壊れたりするらしい).
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  conda uninstall Lib
+                  conda uninstall -c conda-forge Lib
+                  pip uninstall Lib
+                </td>
+                <td>Libを今いる仮想環境からアンインストールする</td>
+                <td>インストールした方でやる. これがわかりやすいという意味でも統一した方が良さそう. </td>
+              </tr>
+              <tr>
+                <td>conda list</td>
+                <td>今いる仮想環境に入っているライブラリの一覧を参照する</td>
+                <td>pip listもあるらしい</td>
+              </tr>
+              <tr>
+                <td>conda remove -n exp --all</td>
+                <td>仮想環境expを削除する</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h1>python-command</h1>
+          <table class="python_command_table">
+            <thead>
+              <tr>
+                <th>command</th>
+                <th>move</th>
+                <th>example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  if 条件式:
+                    処理
+                  elif:
+                    処理
+                  else:
+                    処理
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>for</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>for</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>with 開始と終了を必要とする処理</td>
+                <td>開始と終了を行ってくれる</td>
+                <td>
+                  with open("ファイル名", "r") as 変数:
+                  処理
+
+                  fileread = open("techacademy.txt", "r")
+                  処理
+                  fileread.close()
+                </td>
+              </tr>
+              <tr>
+                <td>set()</td>
+                <td>
+                  <a href="https://note.nkmk.me/python-set/">こちら</a>
+                  <a href="https://docs.python.org/ja/3/library/stdtypes.html#set-types-set-frozenset">こちら</a>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>len(list) or list.size</td>
+                <td>listの要素数を返す. </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>numpy.unique(ndarrayやlist)</td>
+                <td>ndarrayの要素のuniqueなものをソートしてndarray型で出力する.</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>np.unique(a, return_index=True, return_inverse=True, return_counts=True)</td>
+                <td>
+                  ndarrayの要素のuniqueなものをソートしたndarray型(以後u), uの各要素の最初にaに現れたインデックスのndarray型, uの各要素のインデックスをaで表すndarray型, uの各要素の出現回数のndarray型, のタプルが出力される.
+                  多次元配列の場合はフラットで処理されるが, axis=0などとすればその成分ごとにみる.
+                  <a href="https://numpy.org/doc/stable/reference/generated/numpy.unique.html">詳しくはここ</a>
+                </td>
+                <td>u, counts = numpy.unique([0,0,10,10,20,30], return_counts=True)
+                  u[counts == 1]
+                  #[20,30]
+                </td>
+              </tr>
+              <tr>
+                <td>type(object)</td>
+                <td>objectの型を出力</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>isinstance(object, class)</td>
+                <td>objectの型がclassだったらTrueを返す. classは型のタプル(int, str)などでも良い</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>numpy.array(list型のリスト)</td>
+                <td>list型をndarray型に変換</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>tolist(ndarray型のリスト)</td>
+                <td>ndarray型をlist型に変換</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+      <aside>
+        <div class="aside-inner">
+          side
+        </div>
+      </aside>
+    </div>
+  </section>
+  <footer id="footer">
+    ここにfooter.htmlが読み込まれる.
+  </footer>
+</body>
+</html>
