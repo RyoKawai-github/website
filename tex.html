@@ -221,8 +221,11 @@
 </pre>
               <p>
                 記入例は以下の通り. 
-                正しくは""で囲い, 特殊文字や大文字を維持する時は該当箇所を{}で囲うのが正しいようだが, 全体を囲っておけば問題は起きない. 
-                また, {}のみで囲う場合も見られる. 
+                正しくは""で囲い, 特殊文字や大文字を維持する時は該当箇所を{}で囲うのが正しい. 
+                {}で囲うとその部分はstyleを整形しないという認識で良いと思う. 
+                複数の著者がいる場合は「A and B and C」のように記入する. 
+                著者の記述について, 基本は「名 性」「first last」
+                詳しくは<a href="https://paper3510mm.github.io/latex/bibtex2.html">こちら</a>.
               </p>
               <pre>
 <code>
@@ -509,6 +512,12 @@ numberlike=subsection,
                 各パラメータは，同じ図または文でまとめる方がよい.
                 文章全体->図全体->個別の順で適用される.
                 文全体に適用する場合はプリアンブルに\tikzset{~}で記入, 同じ図(tikzpicture)の場合は\begin{tikzpicture}[~]のように記入する.
+              </p>
+            </li>
+            <li>
+              <h2>Tikz-3d</h2>
+              <p>
+                詳しくは<a href="https://ftp.kddilabs.jp/CTAN/graphics/pgf/contrib/tikz-3dplot/tikz-3dplot_documentation.pdf" target="_blank">こちら</a>.
               </p>
             </li>
             <li>
