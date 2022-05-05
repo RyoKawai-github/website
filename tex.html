@@ -210,19 +210,42 @@
             <li>
               <h2>参考文献(bibtex)</h2>
               <p>
-                bibファイルには,
+                bibファイルには, 以下のように記入していく. 
               </p>
               <pre>
 <code>
-@文献の種類{ï
-  文献のラベル,ï
+@文献の種類{文献のラベル,
   必須項目や任意項目
 }
 </code>
 </pre>
               <p>
-                のように記入していく.
-                一行だけコメントアウトするには
+                記入例は以下の通り. 
+                正しくは""で囲い, 特殊文字や大文字を維持する時は該当箇所を{}で囲うのが正しいようだが, 全体を囲っておけば問題は起きない. 
+                また, {}のみで囲う場合も見られる. 
+              </p>
+              <pre>
+<code>
+@Article{Article:Boyer_Algorithm,
+  AUTHOR = "{John M. Boyer and Wendy J. Myrvold}",
+  TITLE = "{On the Cutting Edge: Simplified $O(n)$ Planarity by Edge Addition}",
+  JOURNAL = "{Journal of Graph Algorithms and Applications}",
+  VOLUME = "{8}",
+  NUMBER = "{3}",
+  PAGES = "{241-273}",
+  YEAR = "{2004}",
+  URL = "{http://hinkali.com/Education/PlanarityTesting.pdf}"
+}
+@Misc{Misc:Shape_from_metric,
+  author = "{A. Chern, F. Kn\"oppel, U. Pinkall, P. Schr\"oder}",
+  title = "{Shape from metric}",
+  howpublished = "\url{https://dl.acm.org/doi/10.1145/3197517.3201276}"
+}
+</code>
+</pre>
+              <p>
+                引用論文中の一部分のコメントアウトはできない.
+                ファイル中で一行だけコメントアウトするには
               </p>
               <pre>
 <code>
@@ -232,7 +255,6 @@
               <p>
                 とする, 複数行の場合は,
               </p>
-
               <pre>
 <code>
 @comment{
@@ -243,7 +265,6 @@
 </pre>
               <p>
                 のようにする.
-                また, 引用論文中の一部分のコメントアウトはできない.
               </p>
               <p>
                 使用できるパラメータは以下の表を参照して欲しい.
@@ -253,7 +274,7 @@
                 <thead>
                   <tr>
                     <th>category(文献の種類)</th>
-                    <th>command</th>
+                    <th>command(大小文字の区別無し)</th>
                     <th>mandatory(必須項目)</th>
                     <th>option(任意項目)</th>
                   </tr>
@@ -359,6 +380,7 @@
                 styleの***は色々あるが, いつかまとめるかもしれない.
                 参考になりそうなのは<a href="https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles">ここ</a>とか.
                 alphaとapalike以外の大体は数字.
+                また, styleによって表示される情報も異なる. 
               </p>
             </li>
           </ul>
