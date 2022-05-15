@@ -38,34 +38,35 @@
             そうならないように今から気をつけていこうという記事.
             <a href="https://qiita.com/birdwatcher/items/5ec42b35d84d3ee2ffbb" target="_blank">正しい論文の書き方</a>も参考にするといいかも.
           </p>
-          <h3>使ってはいけないコマンド</h3>
-          <h4>$$...$$</h4>
-          <p>Plain TeX(LaTeXのベース)のコマンドなので,そもそもTeXのコマンドではない. \[...\]や\begin{align}等を使おう.</p>
-          </li>
-          <li>
-            <h4>\usepackage{graphics}</h4>
-            <p>\usepackage{graphicx}を使おう.</p>
-          </li>
-          <li>
-            <h4>dvips,dvipdfm</h4>
-            <p>dvipdfmxを使おう.</p>
-          </li>
-          <li>
-            <h4>:=</h4>
-            <p>mathtoolsの\coloneqqを使おう.</p>
-          </li>
-          <li>
-            <h4>jarticle, jbook, jreport</h4>
-            <p>jsarticle, jsbook, jsreportを使おう.</p>
-          </li>
-          <li>
-            <h4>\begin{eqnarray}, \begin{eqnarray*}, \begin{displaymath}</h4>
-            <p>amsmath.styがサポートしていないので, 空白がおかしくなることがある. \[...\]や\begin{align}等を使おう.</p>
-          </li>
-          <li>
-            <h4>\begin{figure} \begin{center}</h4>
-            <p>以下のような書き方が多い</p>
-            <pre>
+          <ul>
+            <li>
+              <h4>$$...$$</h4>
+              <p>Plain TeX(LaTeXのベース)のコマンドなので,そもそもTeXのコマンドではない. \[...\]や\begin{align}等を使おう.</p>
+            </li>
+            <li>
+              <h4>\usepackage{graphics}</h4>
+              <p>\usepackage{graphicx}を使おう.</p>
+            </li>
+            <li>
+              <h4>dvips,dvipdfm</h4>
+              <p>dvipdfmxを使おう.</p>
+            </li>
+            <li>
+              <h4>:=</h4>
+              <p>mathtoolsの\coloneqqを使おう.</p>
+            </li>
+            <li>
+              <h4>jarticle, jbook, jreport</h4>
+              <p>jsarticle, jsbook, jsreportを使おう.</p>
+            </li>
+            <li>
+              <h4>\begin{eqnarray}, \begin{eqnarray*}, \begin{displaymath}</h4>
+              <p>amsmath.styがサポートしていないので, 空白がおかしくなることがある. \[...\]や\begin{align}等を使おう.</p>
+            </li>
+            <li>
+              <h4>\begin{figure} \begin{center}</h4>
+              <p>以下のような書き方が多い</p>
+              <pre>
 <code>
 \begin{figure}
   \begin{center}
@@ -74,8 +75,8 @@
 \end{figure}
 </code>
 </pre>
-            <p>がこっちの方がよい</p>
-            <pre>
+              <p>がこっちの方がよい</p>
+              <pre>
 <code>
 \begin{figure}
   \centering
@@ -83,39 +84,40 @@
 \end{figure}
 </code>
 </pre>
-            <p>tableとかでも同じだが, センタリングには\centeringを使う. なぜなら空白がおかしくなるから.</p>
-          </li>
-          <li>
-            <h4>EPSの図</h4>
-            <p>PDFかPNGかJPEGを使う.</p>
-          </li>
-          <li>
-            <h4>\begin{appendix}</h4>
-            <p>以下のような書き方が多い</p>
-            <pre>
+              <p>tableとかでも同じだが, 空白がおかしくなることが稀にあるので, センタリングには\centeringを使う方が良さそう. </p>
+            </li>
+            <li>
+              <h4>EPSの図</h4>
+              <p>PDFかPNGかJPEGを使う.</p>
+            </li>
+            <li>
+              <h4>\begin{appendix}</h4>
+              <p>以下のような書き方が多い</p>
+              <pre>
 <code>
 \begin{appendix}
   \section{hoge}
 \end{appendix}
 </code>
 </pre>
-            <p>がこっちの方がよい</p>
-            <pre>
+              <p>がこっちの方がよい</p>
+              <pre>
 <code>
 \appendix
 \section{hoge}
 </code>
 </pre>
-          </li>
-          <li>
-            <h4>\usepackage{enumerate}</h4>
-            <p>\usepackage{enumitem}を使おう.</p>
-          </li>
+            </li>
+            <li>
+              <h4>\usepackage{enumerate}</h4>
+              <p><code>\usepackage{enumitem}</code>を使おう.</p>
+            </li>
+          </ul>
 
           <h1>memo</h1>
           <ul>
             <li>
-              <p>graphicxとmendexは何もないとエラーを吐く</p>
+              <p>graphicxとmakeidxは, 処理するものが何もないとエラーを吐く</p>
             </li>
             <li>
               <p>jsarticleにはchapterはないがpartはある.</p>
@@ -127,13 +129,10 @@
               <p>indexは).や)$\backslash$の間に入れると文字を詰めてしまうしたまにエラーを出すから注意する.</p>
             </li>
             <li>
-              <p>github上だとhyperrefが死んでしまう.</p>
+              <p>indexでは@, !, |, etc.などが特殊な役割を持つので, 数式モードで扱う時には""でエスケープするか他の<code>vert</code>などでだいようする.</p>
             </li>
             <li>
-              <p>indexでは@,!,|,etc.などが特殊な役割を持つので,数式モードで扱う時には""でエスケープするか他のvertなどでだいようする.</p>
-            </li>
-            <li>
-              <p>同じlabelをつけてもエラーは出ないが,\;refでは文章全体で一番最後の番号が参照される.</p>
+              <p>同じlabelをつけてもエラーは出ないが, refでは文章全体で一番最後の番号が参照される.</p>
             </li>
             <li>
               <p>indexでは,@の後ろも含めて完全一致しない限りは別物だと判定される.</p>
@@ -517,6 +516,10 @@ numberlike=subsection,
             <li>
               <h2>Tikz-3d</h2>
               <p>
+                3Dの図が綺麗にかけるようになる. 実はTikzだけでも3Dもどきの絵はかけるのだが, こちらで書いておく方が見栄えが良い. 
+                違いはいつかまとめたい. 
+                Tikzとifthenが必要. 
+                コードを書くか. 
                 詳しくは<a href="https://ftp.kddilabs.jp/CTAN/graphics/pgf/contrib/tikz-3dplot/tikz-3dplot_documentation.pdf" target="_blank">こちら</a>.
               </p>
             </li>
@@ -560,7 +563,6 @@ numberlike=subsection,
             <li>
               <h2>cleveref</h2>
               <p>
-                hyperrefの後に読み込まないと番号がおかしくなったりエラーを吐きます.
                 めちゃくちゃ賢いrefだと思ってよい.
                 なんと番号だけでなく自動で環境名を認識して引っ張ってきてくれる.
                 例えばlabelをdefinition環境(番号1)の中に入れて\crefで呼び出すとdefinition1と記入される.
@@ -568,6 +570,7 @@ numberlike=subsection,
                 \crefname{環境名}{単数形}{複数形}と入力する.
                 \[\]は環境としてはequationと認識される(というかパッケージで再定義する).
                 詳しくは<a href="https://qiita.com/Hdan/items/8c59a7e0a3215ae32d74">こちら</a>.
+                hyperrefの後に読み込まないと番号がおかしくなったりエラーを吐きます.
                 自分は\usepackage[nameinlink]{cleveref}としている.
               </p>
             </li>
@@ -611,24 +614,38 @@ numberlike=subsection,
 
           <h1>texを始める</h1>
           <p>TeXにも色々ある.おすすめを紹介しよう.</p>
-
-          <h2><a href="https://www.texpad.com" target="_blank">TeXPad</a></h2>
-          <p>
-            mac系統でしか動かないが,とても使い勝手が良いらしい.環境構築が不要なのがとても良い.また,即時反映機能がある.日本語を使う時に設定が必要っぽい.有料である(macOS:4040円,iOS:3180円,2021/10/01現在)
-          </p>
-
-          <h2><a href="https://ja.overleaf.com" target="_blank">OverLeaf</a></h2>
-          <p>クラウド上で動かすTeX.めちゃくちゃ便利らしい.オンラインで動かさないといけない意外にデメリットはないのでは?</p>
-
-          <h2><a href="https://texwiki.texjp.org/?TeX%20Live" target="_blank">TeXLive</a>+<a
-              href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" target="_blank">VScode</a>(+<a
-              href="https://git-scm.com" target="_blank">git</a>)</h2>
-          <p>現在の自分の環境.環境構築が必要だし面倒だが,カスタマイズしやすくて使いやすい.以下で環境構築の方法をメモしておく.</p>
+          <ul>
+            <li>
+              <h2><a href="https://www.texpad.com" target="_blank">TeXPad</a></h2>
+              <p>
+                mac系統でしか動かないが,とても使い勝手が良いらしい. 
+                環境構築が不要なのがとても良い. 
+                また, 即時反映機能がある. 
+                日本語を使う時に設定が必要っぽい. 
+                有料である(macOS:4040円,iOS:3180円,2021/10/01現在). 
+              </p>
+            </li>
+            <li>
+              <h2><a href="https://ja.overleaf.com" target="_blank">OverLeaf</a></h2>
+              <p>
+                クラウド上で動かすTeX.めちゃくちゃ便利らしい. 
+                オンラインで動かさないといけないこと意外にデメリットはないのでは?
+              </p>
+            </li>
+            <li>
+              <h2><a href="https://texwiki.texjp.org/?TeX%20Live" target="_blank">TeXLive</a>+<a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" target="_blank">VScode</a>(+<a href="https://git-scm.com" target="_blank">git</a>)</h2>
+              <p>
+                現在の自分の環境. 
+                環境構築が必要だし面倒だが, カスタマイズしやすくて使いやすい. 
+                以下で環境構築の方法をメモしておく. 
+              </p>
+            </li>
+          </ul>
 
           <h2>環境構築</h2>
           <p>
-            mac版TeXLive+VScode+(git+github)のmemo.
-            実はあまり良い環境ではないが, ひとまず現行環境のメモとしておいておく.
+            mac版TeXLive+VScode+(git+github)のmemo. 
+            実はあまり良い環境ではないが, ひとまず現行環境のメモとしておいておく. 
           </p>
           <ol>
             <li>
@@ -636,7 +653,7 @@ numberlike=subsection,
               <p>ターミナル上で行う</p>
               <ol>
                 <li>
-                  <code>echo $SHELL</code>で自分の現在のSHELLを確認
+                  <p><code>echo $SHELL</code>で自分の現在のSHELLを確認</p>
                 </li>
                 <li>
                   <code>cat /etc/shells</code>で自分が使えるSHELLの確認
@@ -654,7 +671,7 @@ numberlike=subsection,
               <p>ターミナル上で行う</p>
               <ol>
                 <li>
-                  <code>curl -OL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz</code>でミラーサイトからインストール
+                  <p><code>curl -OL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz</code>でミラーサイトからインストール</p>
                 </li>
                 <li>
                   <code>tar xvf install-tl-unx.tar.gz</code>で展開
@@ -674,38 +691,39 @@ numberlike=subsection,
               <h3>VScodeのインストール</h3>
               <ol>
                 <li>
-                  <a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/"
-                    target="_blank">公式サイト</a>からダウンロードして,指示に従いながらセットアップを行う
+                  <a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" target="_blank">公式サイト</a>からダウンロードして, 指示に従いながらセットアップを行う
                 </li>
                 <li>
                   拡張機能(横の検索)からLaTeX Workshopを入れる(LaTeX Utilitiesも入れても良い)(Local Historyはいれてはいけない)
                 </li>
                 <li>
-                  settingsからsettings.JSONを開いて設定する(以下は2021-10-01時点での自分の設定)
-                </li>
-                <p>以下settings.JSONは以下の場所にある. </p>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>OS</th>
-                      <th>path</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th>Windows</th>
-                      <th><code>%APPDATA%\Code\User\settings.json</code></th>
-                    </tr>
-                    <tr>
-                      <th>Mac</th>
-                      <th><code>$HOME/Library/Application Support/Code/User/settings.json</code></th>
-                    </tr>
-                    <tr>
-                      <th>Linux</th>
-                      <th><code>$HOME/.config/Code/User/settings.json</code></th>
-                    </tr>
-                  </tbody>
-                </table>
+                  <p>
+                    settingsからsettings.JSONを開いて設定する. 
+                    settings.JSONは以下の場所にある. 
+                  </p>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>OS</th>
+                        <th>path</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>Windows</th>
+                        <th><code>%APPDATA%\Code\User\settings.json</code></th>
+                      </tr>
+                      <tr>
+                        <th>Mac</th>
+                        <th><code>$HOME/Library/Application Support/Code/User/settings.json</code></th>
+                      </tr>
+                      <tr>
+                        <th>Linux</th>
+                        <th><code>$HOME/.config/Code/User/settings.json</code></th>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p>(以下は2021-10-01時点での自分の設定)</p>
                 <pre>
 <code>
 {
@@ -879,8 +897,9 @@ numberlike=subsection,
 }
 </code>
 </pre>
+                </li>
                 <li>
-                  User Snippetsなどは好きにいじる
+                  <p>User Snippetsなどは好きにいじる</p>
                 </li>
               </ol>
             </li>
@@ -937,8 +956,9 @@ $clean_full_ext = "%R.synctex.gz"
 </pre>
               </ol>
             </li>
-            これでTeXは完了.
-            あとは.texファイルをVScodeで作れば,command + sで上書き保存する時についでにビルドしてくれるし,command + ortion + vでPDFビュワーを別タブで開いてくれる.
+              <p>これでTeXは完了. 
+                あとは.texファイルをVScodeで作れば, command + sで上書き保存する時についでにビルドしてくれるし,command + ortion + vでPDFビュワーを別タブで開いてくれる. 
+              </p>
             <li>
               <h3>git</h3>
               <ol>

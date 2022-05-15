@@ -26,14 +26,39 @@
     <div class="container">
       <main>
         <div class="main-inner">
+          <h1>pythonとは？</h1>
+          <p>
+            pythonはプログラミング言語の一つで, 最近はよく使われている. 
+            ライブラリが多く, 先人たちが作り上げてきた素晴らしいコードなどを使うことができるため, 車輪の再発明をする必要がなくなる可能性が高い. 
+          </p>
+          <h3>メリット</h3>
+          <ul>
+            <li>車輪の再発明をする必要が少なく, 行いたいことが手軽に行える可能性が高い. </li>
+            <li>比較的わかりやすい文法で, 初学者にもとっつきやすい. </li>
+            <li>型推論などが用意されているので, 変数などの型を意識する必要が少ない. </li>
+          </ul>
+          <h3>デメリット</h3>
+          <ul>
+            <li>ライブラリなどを使わない場合, 大体遅い. </li>
+            <li>ライブラリやパッケージを調べるというコストがかかる. </li>
+          </ul>
           <h1>環境構築</h1>
-          <p><a href="https://www.python.jp/install/anaconda/macos/install.html">ここ</a>を参照</p>
-
+          <p>
+            <b>Python japanの公式ホームページにある<a href="https://www.python.jp/install/install.html">環境構築ガイド</a>がとてもよくまとまっているので, まずはこのページをみて環境構築を試みて欲しい. </b>
+            特に<a href="https://www.python.jp/install/docs/pypi_or_anaconda.html">PythonとAnaconda</a>はよく読むべきだと思う. 
+          </p>
+          
+          <h2>pythonをインストールする. </h2>
+          <p>
+            詳しくは<a href="https://www.python.jp/install/anaconda/macos/install.html">ここ</a>を参照. 
+          </p>
           <h1>備忘録</h1>
           <ul>
             <li><p>listはなんの型でも入る. ndarrayは一つの型だがネストできる. listでは[1:][2][3]のような要素の取り出しも, ndarrayでは[1:,2,3]のようにできる. </p></li>
             <li><p>強制終了はctrl+c or command+c. </p></li>
           </ul>
+
+          pip list -o | tail -n +3 | awk '{ print $1 }' | xargs -I arg pip install -U arg
 
           <h1>Anaconda-command</h1>
           <table class="Anaconda_command_table">
@@ -72,8 +97,8 @@
               </tr>
               <tr>
                 <td>
-                  conda install Lib
-                  conda install -c conda-forge Lib
+                  conda install Lib<br>
+                  conda install -c conda-forge Lib<br>
                   pip install Lib
                 </td>
                 <td>Libを今いる仮想環境にインストールする</td>

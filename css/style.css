@@ -72,6 +72,10 @@ a:hover {
 a:active {
 	color: #4ca4e8;
 }
+a[target="_blank"]::after {
+  content: '(別タブで開く)';
+  margin-left: 0.5em;
+}
 
 table{
 	border-collapse: collapse;
