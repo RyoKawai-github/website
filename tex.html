@@ -398,21 +398,19 @@
               </ul>
               <p>
                 数式環境たちなので, とりあえず読み込んでおけば間違いない.
-                amsmathの数式環境については<a href="https://qiita.com/t_kemmochi/items/a4c390b4967b13f3afb7"
-                  target="_blank">このサイト</a>に詳しく書いてある.
+                amsmathの数式環境については<a href="https://qiita.com/t_kemmochi/items/a4c390b4967b13f3afb7" target="_blank">このサイト</a>に詳しく書いてある.
                 実はmathtoolsを読み込むとamsmathも読み込まれるが, 明示的に読み込んだ方が良い.
-                詳しくは<a href="https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289"
-                  target="_blank">このサイト</a>を参照するといい.
+                詳しくは<a href="https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289" target="_blank">このサイト</a>を参照するといい.
                 mathtoolsには\DeclarePairedDelimiterという便利なコマンドがあり, 左右で挟むことが多い場合や, 集合はこれで定義しておくと便利だろう.
                 ただしこのコマンドは\bmと一緒に使うとエラーを吐くので注意する.
               </p>
               <p>
                 amsmathでのコマンドに\DeclareMathOperator{\~}{~}と\DeclareMathOperator*{\~}{~}がある.
                 前者がlog型, 後者がlim型である.
-                違いは添字の場所で, 例えば\DeclareMathOperator{\A}{B}とプリアンブルに記入して, 本文で\A_{C}とすると出力としてはBの右下にCがくるが,
-                \DeclareMathOperator*{\A}{B}とプリアンブルに記入して, 本文で\A_{C}とすると出力としてはBの真下にCがくる.
-                amsmathについてはパッケージガイドが翻訳され, <a href="https://www.latex-project.org/help/documentation/amsldoc_jpn.pdf"
-                  target="_blank">このサイト</a>にある.
+                違いは添字の場所で, 例えば\DeclareMathOperator{\A}{B}とプリアンブルに記入して, 本文で\A_{C}とすると出力としてはBの右下にCがくるが,\DeclareMathOperator*{\A}{B}とプリアンブルに記入して, 本文で\A_{C}とすると出力としてはBの真下にCがくる.
+                わかりやすいのでAとBは同じものを使うと良い.
+                また, 勝手にBはローマン体になる.
+                amsmathについてはパッケージガイドが翻訳され, <a href="https://www.latex-project.org/help/documentation/amsldoc_jpn.pdf" target="_blank">このサイト</a>にある.
               </p>
             </li>
             <li>
@@ -423,8 +421,7 @@
                 thmboxはthmboxパッケージを使うとnewtheoremの前にオプションとして追加できるようになるため, そちらで導入するという手もあるが, thmtoolsを導入した方が自由度が高い気がする.
                 需要があるらしいのでthmboxを使う環境の例をあげておこう, ただしこれはnote部分(定理の名前の部分)がイタリックになることを自分では回避できなかった.
                 またfootnoteが消えるのは仕様である.
-                詳しくは<a href="https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf"
-                  target="_blank">thmtoolsのパッケージドキュメント</a>を見て欲しい.
+                詳しくは<a href="https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf" target="_blank">thmtoolsのパッケージドキュメント</a>を見て欲しい.
               </p>
               <pre>
 <code>
