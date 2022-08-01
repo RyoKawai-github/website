@@ -7,7 +7,7 @@ const passButton = document.getElementById("pass");
 
 const changeTurn = () => {
   currentColor = 3 - currentColor;
-  
+
   if (currentColor === 1) {
     currentTurnText.textContent = "黒";
   } else {

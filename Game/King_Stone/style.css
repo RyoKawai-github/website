@@ -1,69 +1,82 @@
-html, body {
-  margin: 0;
-  background-color: #FFFFFF;
+html,
+body {
+	margin: 0;
+	background-color: #FFFFFF;
 }
 
 .board {
-  position: relative;
-  margin: 60px;
-  width: 600px;
-  height: 600px;
-  background-color: #DDDDDD;
+	position: relative;
+	margin: 60px;
+	width: 600px;
+	height: 600px;
+	background-color: #DDDDDD;
 }
 
 .square {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: #01c5fc;
-  /*cursor: pointer;*/
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #01c5fc;
+	/*cursor: pointer;*/
 }
 
 #square-template {
-  display: none;
-} 
+	display: none;
+}
+
+.target2 {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #fc9c01;
+	cursor: pointer;
+}
 
 .piece {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-radius: 30px;
-  background-color: #000000;
-  cursor: pointer;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	border-radius: 30px;
+	background-color: #000000;
+	cursor: pointer;
 }
 
 div .piece[data-name="king"] {
-  border: 5px solid #000000;
+	border: 5px solid #000000;
 }
+
 div .piece[data-name="stone"] {
-  border: 5px solid #FFFFFF;
+	border: 5px solid #FFFFFF;
 }
+
 div .piece[data-player="1"] {
-  background-color: #FF0000;
+	background-color: #FF0000;
 }
+
 div .piece[data-player="2"] {
-  background-color: #00FF00;
+	background-color: #00FF00;
 }
 
 .piece.active {
-  width: 40px;
-  height: 40px;
+	width: 40px;
+	height: 40px;
 }
 
 #piece-template {
-  display: none;
+	display: none;
 }
 
 .target {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: #dafc01;
-  cursor: pointer;
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #dafc01;
+	cursor: pointer;
 }
 
 #target-template {
-  display: none;
-} 
+	display: none;
+}

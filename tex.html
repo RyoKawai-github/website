@@ -1,72 +1,75 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="Context-Style-Type" content="text/css" />
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script>
-    //共通パーツ読み込み
-     $(function() {
-     $("#header").load("Layout/header.html");
-     $("#nav").load("Layout/nav.html");
-     $("#footer").load("Layout/footer.html");
-    });
-    </script>
-  <title>RyoKawai</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Context-Style-Type" content="text/css" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script>
+		//共通パーツ読み込み
+		$(function () {
+			$("#header").load("Layout/header.html");
+			$("#nav").load("Layout/nav.html");
+			$("#footer").load("Layout/footer.html");
+		});
+	</script>
+	<title>RyoKawai</title>
 </head>
+
 <body>
-  <header id="header">
-    ここにheader.htmlが読み込まれる.
-  </header>
-  <nav id="nav">
-    ここにnav.htmlが読み込まれる.
-  </nav>
-  <section>
-    <div class="container">
-      <main>
-        <div class="main-inner">
+	<header id="header">
+		ここにheader.htmlが読み込まれる.
+	</header>
+	<nav id="nav">
+		ここにnav.htmlが読み込まれる.
+	</nav>
+	<section>
+		<div class="container">
+			<main>
+				<div class="main-inner">
 
-          <h1>texのあれこれ</h1>
-          <p><a href="PDF/Space.pdf" target="_blank">空白やコンマ</a>について</p>
+					<h1>texのあれこれ</h1>
+					<p><a href="PDF/Space.pdf" target="_blank">空白やコンマ</a>について</p>
 
-          <h2>やってはいけないこと</h2>
-          <p>
-            やってはいけないというより, 古い情報を訂正する.
-            TeXは昔のままのコマンドや仕様がネットに多いので, それを見て学ぶ人も多い.
-            そのためいつかとんでもないことが起きそう.
-            そうならないように今から気をつけていこうという記事.
-            <a href="https://qiita.com/birdwatcher/items/5ec42b35d84d3ee2ffbb" target="_blank">正しい論文の書き方</a>も参考にするといいかも.
-          </p>
-          <ul>
-            <li>
-              <h4>$$...$$</h4>
-              <p>Plain TeX(LaTeXのベース)のコマンドなので,そもそもTeXのコマンドではない. \[...\]や\begin{align}等を使おう.</p>
-            </li>
-            <li>
-              <h4>\usepackage{graphics}</h4>
-              <p>\usepackage{graphicx}を使おう.</p>
-            </li>
-            <li>
-              <h4>dvips,dvipdfm</h4>
-              <p>dvipdfmxを使おう.</p>
-            </li>
-            <li>
-              <h4>:=</h4>
-              <p>mathtoolsの\coloneqqを使おう.</p>
-            </li>
-            <li>
-              <h4>jarticle, jbook, jreport</h4>
-              <p>jsarticle, jsbook, jsreportを使おう.</p>
-            </li>
-            <li>
-              <h4>\begin{eqnarray}, \begin{eqnarray*}, \begin{displaymath}</h4>
-              <p>amsmath.styがサポートしていないので, 空白がおかしくなることがある. \[...\]や\begin{align}等を使おう.</p>
-            </li>
-            <li>
-              <h4>\begin{figure} \begin{center}</h4>
-              <p>以下のような書き方が多い</p>
-              <pre>
+					<h2>やってはいけないこと</h2>
+					<p>
+						やってはいけないというより, 古い情報を訂正する.
+						TeXは昔のままのコマンドや仕様がネットに多いので, それを見て学ぶ人も多い.
+						そのためいつかとんでもないことが起きそう.
+						そうならないように今から気をつけていこうという記事.
+						<a href="https://qiita.com/birdwatcher/items/5ec42b35d84d3ee2ffbb"
+							target="_blank">正しい論文の書き方</a>も参考にするといいかも.
+					</p>
+					<ul>
+						<li>
+							<h4>$$...$$</h4>
+							<p>Plain TeX(LaTeXのベース)のコマンドなので,そもそもTeXのコマンドではない. \[...\]や\begin{align}等を使おう.</p>
+						</li>
+						<li>
+							<h4>\usepackage{graphics}</h4>
+							<p>\usepackage{graphicx}を使おう.</p>
+						</li>
+						<li>
+							<h4>dvips,dvipdfm</h4>
+							<p>dvipdfmxを使おう.</p>
+						</li>
+						<li>
+							<h4>:=</h4>
+							<p>mathtoolsの\coloneqqを使おう.</p>
+						</li>
+						<li>
+							<h4>jarticle, jbook, jreport</h4>
+							<p>jsarticle, jsbook, jsreportを使おう.</p>
+						</li>
+						<li>
+							<h4>\begin{eqnarray}, \begin{eqnarray*}, \begin{displaymath}</h4>
+							<p>amsmath.styがサポートしていないので, 空白がおかしくなることがある. \[...\]や\begin{align}等を使おう.</p>
+						</li>
+						<li>
+							<h4>\begin{figure} \begin{center}</h4>
+							<p>以下のような書き方が多い</p>
+							<pre>
 <code>
 \begin{figure}
   \begin{center}
@@ -75,8 +78,8 @@
 \end{figure}
 </code>
 </pre>
-              <p>がこっちの方がよい</p>
-              <pre>
+							<p>がこっちの方がよい</p>
+							<pre>
 <code>
 \begin{figure}
   \centering
@@ -84,105 +87,107 @@
 \end{figure}
 </code>
 </pre>
-              <p>tableとかでも同じだが, 空白がおかしくなることが稀にあるので, センタリングには\centeringを使う方が良さそう. </p>
-            </li>
-            <li>
-              <h4>EPSの図</h4>
-              <p>PDFかPNGかJPEGを使う.</p>
-            </li>
-            <li>
-              <h4>\begin{appendix}</h4>
-              <p>以下のような書き方が多い</p>
-              <pre>
+							<p>tableとかでも同じだが, 空白がおかしくなることが稀にあるので, センタリングには\centeringを使う方が良さそう. </p>
+						</li>
+						<li>
+							<h4>EPSの図</h4>
+							<p>PDFかPNGかJPEGを使う.</p>
+						</li>
+						<li>
+							<h4>\begin{appendix}</h4>
+							<p>以下のような書き方が多い</p>
+							<pre>
 <code>
 \begin{appendix}
   \section{hoge}
 \end{appendix}
 </code>
 </pre>
-              <p>がこっちの方がよい</p>
-              <pre>
+							<p>がこっちの方がよい</p>
+							<pre>
 <code>
 \appendix
 \section{hoge}
 </code>
 </pre>
-            </li>
-            <li>
-              <h4>\usepackage{enumerate}</h4>
-              <p><code>\usepackage{enumitem}</code>を使おう.</p>
-            </li>
-          </ul>
+						</li>
+						<li>
+							<h4>\usepackage{enumerate}</h4>
+							<p><code>\usepackage{enumitem}</code>を使おう.</p>
+						</li>
+					</ul>
 
-          <h1>memo</h1>
-          <ul>
-            <li>
-              <p>graphicxとmakeidxは, 処理するものが何もないとエラーを吐く</p>
-            </li>
-            <li>
-              <p>jsarticleにはchapterはないがpartはある.</p>
-            </li>
-            <li>
-              <p>VScodeのlocal historyは無限にファイル生成する可能性が高いのでやめておくように.</p>
-            </li>
-            <li>
-              <p>indexは).や)$\backslash$の間に入れると文字を詰めてしまうしたまにエラーを出すから注意する.</p>
-            </li>
-            <li>
-              <p>indexでは@, !, |, etc.などが特殊な役割を持つので, 数式モードで扱う時には""でエスケープするか他の<code>vert</code>などでだいようする.</p>
-            </li>
-            <li>
-              <p>同じlabelをつけてもエラーは出ないが, refでは文章全体で一番最後の番号が参照される.</p>
-            </li>
-            <li>
-              <p>indexでは,@の後ろも含めて完全一致しない限りは別物だと判定される.</p>
-            </li>
-            <li>
-              <p>
-                コマンド****が未定義かどうかは,本文中に\meaning****を記入することでで調べることができる.
-                未定義であればundefinedがかえってくる.
-              </p>
-            </li>
-            <li>
-              <h2>改行(改ページ)</h2>
-              <p>
-                段落の改行は\parか空白行でできる.
-                空白行のほうがコードが見やすいが, 長くなったりするしまとまりがわかりにくいという意見もある.
-                定理や定義などの中の改段落は\parの方が見やすいのか？
-                段落の自下げは, \noindentを挟むことで防ぐことができる.
-              </p>
-              <p>
-                段落内の強制改行は\\または\linebreakで行う.
-                あまり使わない方がよいらしいし,\\の後に空白行を挿入するとエラーを吐くことが多い.
-                tableなどの環境上では改行で\\が使用される.
-                \\*でその部分での改行の禁止, \\[幅]で改行幅の指定ができる.
-              </p>
-              <p>
-                改ページは\newpage, \clearpage, \pagebreakがある.
-                だいたいどれも同じである(たまにパッケージでどれかが使えなかったりする).
-                newpageを自分は使っている.
-              </p>
-            </li>
-            <li>
-              <h2>引用</h2>
-              <p>
-                \begin{quote}~\end{quote}で改段落で最初の字下げが行われず, 左に空白が確保される.
-                \begin{quotation}~\end{quotation}はquoteとほぼ同じだが, 字下げが行われる.
-              </p>
-            </li>
-            <li>
-              <h2>脚注(footnote)</h2>
-              <p>
-                主には\footnote, \footnotemark, \footnotetextがある.
-                \footnote{#1}は\footnotemark \footnotetext{#1}だと思えば良い.
-                footnoteは\footnotetextが置いてある部分に対応するページの下に出る.
-                framedやthmboxなど, box系の環境ではほとんど\footnotetextが表示されないが, これは仕様である.
-                これを回避するために, \begin{}~\end{}の中に\footnotemarkを置いておき, その後に\footnotetextを記述する方法がある(だいたいはこれで回避できる).
-                この方法には欠点があり, \footnotetextはコード上でそれが記述してある部分でのカウンタ[footnote]の値を返すため,
-                \begin{}~\end{}の中に\footnotemarkを2つ以上入れると\footnotetextの番号が正しくならない(同じ番号になったりする).
-                そこで強引にカウンタを調整する方法がある.
-              </p>
-              <pre>
+					<h1>memo</h1>
+					<ul>
+						<li>
+							<p>graphicxとmakeidxは, 処理するものが何もないとエラーを吐く</p>
+						</li>
+						<li>
+							<p>jsarticleにはchapterはないがpartはある.</p>
+						</li>
+						<li>
+							<p>VScodeのlocal historyは無限にファイル生成する可能性が高いのでやめておくように.</p>
+						</li>
+						<li>
+							<p>indexは).や)$\backslash$の間に入れると文字を詰めてしまうしたまにエラーを出すから注意する.</p>
+						</li>
+						<li>
+							<p>indexでは@, !, |, etc.などが特殊な役割を持つので, 数式モードで扱う時には""でエスケープするか他の<code>vert</code>などでだいようする.
+							</p>
+						</li>
+						<li>
+							<p>同じlabelをつけてもエラーは出ないが, refでは文章全体で一番最後の番号が参照される.</p>
+						</li>
+						<li>
+							<p>indexでは,@の後ろも含めて完全一致しない限りは別物だと判定される.</p>
+						</li>
+						<li>
+							<p>
+								コマンド****が未定義かどうかは,本文中に\meaning****を記入することでで調べることができる.
+								未定義であればundefinedがかえってくる.
+							</p>
+						</li>
+						<li>
+							<h2>改行(改ページ)</h2>
+							<p>
+								段落の改行は\parか空白行でできる.
+								空白行のほうがコードが見やすいが, 長くなったりするしまとまりがわかりにくいという意見もある.
+								定理や定義などの中の改段落は\parの方が見やすいのか？
+								段落の自下げは, \noindentを挟むことで防ぐことができる.
+							</p>
+							<p>
+								段落内の強制改行は\\または\linebreakで行う.
+								あまり使わない方がよいらしいし,\\の後に空白行を挿入するとエラーを吐くことが多い.
+								tableなどの環境上では改行で\\が使用される.
+								\\*でその部分での改行の禁止, \\[幅]で改行幅の指定ができる.
+							</p>
+							<p>
+								改ページは\newpage, \clearpage, \pagebreakがある.
+								だいたいどれも同じである(たまにパッケージでどれかが使えなかったりする).
+								newpageを自分は使っている.
+							</p>
+						</li>
+						<li>
+							<h2>引用</h2>
+							<p>
+								\begin{quote}~\end{quote}で改段落で最初の字下げが行われず, 左に空白が確保される.
+								\begin{quotation}~\end{quotation}はquoteとほぼ同じだが, 字下げが行われる.
+							</p>
+						</li>
+						<li>
+							<h2>脚注(footnote)</h2>
+							<p>
+								主には\footnote, \footnotemark, \footnotetextがある.
+								\footnote{#1}は\footnotemark \footnotetext{#1}だと思えば良い.
+								footnoteは\footnotetextが置いてある部分に対応するページの下に出る.
+								framedやthmboxなど, box系の環境ではほとんど\footnotetextが表示されないが, これは仕様である.
+								これを回避するために, \begin{}~\end{}の中に\footnotemarkを置いておき,
+								その後に\footnotetextを記述する方法がある(だいたいはこれで回避できる).
+								この方法には欠点があり, \footnotetextはコード上でそれが記述してある部分でのカウンタ[footnote]の値を返すため,
+								\begin{}~\end{}の中に\footnotemarkを2つ以上入れると\footnotetextの番号が正しくならない(同じ番号になったりする).
+								そこで強引にカウンタを調整する方法がある.
+							</p>
+							<pre>
 <code>
 \begin{}
   ~
@@ -192,41 +197,41 @@
 \stepcounter{footnote}\footnotetext{~} % 同上
 </code>
 </pre>
-              <p>
-                しかし, この方法は新たに\footnotemarkを足したときに手作業で数字を変更しなければならない(多分なんかカウンタを作ればうまくいきそうだが試していない)のと,
-                footnoteがページをまたぐことが多々あるので微妙である.
-              </p>
-              <p>
-                また, \renewcommand{\thefootnote}{*******{footnote}}でfootnoteのスタイルを変えることができる.
-                定理環境などを囲った方が見やすいという話はあるが, とりあえず囲わない方がよいきもする.
-                脚注に図を入れたりもできるが, それを頑張るぐらいなら本文に書いた方がいいという話がある.
-                脚注はあんまり書かない方がいいらしい(が, 自分用につくる時は特に気にしなくていい気がする).
-                MVLについては<a href="https://golden-lucky.hatenablog.com/entry/2019/12/24/002646"
-                  target="_blank">このサイト</a>に詳しく書いてあった.
-                footnpagパッケージを読み込むとページごとに脚注の番号を振ることができる.
-              </p>
-            </li>
-            <li>
-              <h2>参考文献(bibtex)</h2>
-              <p>
-                bibファイルには, 以下のように記入していく. 
-              </p>
-              <pre>
+							<p>
+								しかし, この方法は新たに\footnotemarkを足したときに手作業で数字を変更しなければならない(多分なんかカウンタを作ればうまくいきそうだが試していない)のと,
+								footnoteがページをまたぐことが多々あるので微妙である.
+							</p>
+							<p>
+								また, \renewcommand{\thefootnote}{*******{footnote}}でfootnoteのスタイルを変えることができる.
+								定理環境などを囲った方が見やすいという話はあるが, とりあえず囲わない方がよいきもする.
+								脚注に図を入れたりもできるが, それを頑張るぐらいなら本文に書いた方がいいという話がある.
+								脚注はあんまり書かない方がいいらしい(が, 自分用につくる時は特に気にしなくていい気がする).
+								MVLについては<a href="https://golden-lucky.hatenablog.com/entry/2019/12/24/002646"
+									target="_blank">このサイト</a>に詳しく書いてあった.
+								footnpagパッケージを読み込むとページごとに脚注の番号を振ることができる.
+							</p>
+						</li>
+						<li>
+							<h2>参考文献(bibtex)</h2>
+							<p>
+								bibファイルには, 以下のように記入していく.
+							</p>
+							<pre>
 <code>
 @文献の種類{文献のラベル,
   必須項目や任意項目
 }
 </code>
 </pre>
-              <p>
-                記入例は以下の通り. 
-                正しくは""で囲い, 特殊文字や大文字を維持する時は該当箇所を{}で囲うのが正しい. 
-                {}で囲うとその部分はstyleを整形しないという認識で良いと思う. 
-                複数の著者がいる場合は「A and B and C」のように記入する. 
-                著者の記述について, 基本は「名 性」「first last」
-                詳しくは<a href="https://paper3510mm.github.io/latex/bibtex2.html">こちら</a>.
-              </p>
-              <pre>
+							<p>
+								記入例は以下の通り.
+								正しくは""で囲い, 特殊文字や大文字を維持する時は該当箇所を{}で囲うのが正しい.
+								{}で囲うとその部分はstyleを整形しないという認識で良いと思う.
+								複数の著者がいる場合は「A and B and C」のように記入する.
+								著者の記述について, 基本は「名 性」「first last」
+								詳しくは<a href="https://paper3510mm.github.io/latex/bibtex2.html">こちら</a>.
+							</p>
+							<pre>
 <code>
 @Article{Article:Boyer_Algorithm,
   AUTHOR = "{John M. Boyer and Wendy J. Myrvold}",
@@ -245,19 +250,19 @@
 }
 </code>
 </pre>
-              <p>
-                引用論文中の一部分のコメントアウトはできない.
-                ファイル中で一行だけコメントアウトするには
-              </p>
-              <pre>
+							<p>
+								引用論文中の一部分のコメントアウトはできない.
+								ファイル中で一行だけコメントアウトするには
+							</p>
+							<pre>
 <code>
 %%...
 </code>
 </pre>
-              <p>
-                とする, 複数行の場合は,
-              </p>
-              <pre>
+							<p>
+								とする, 複数行の場合は,
+							</p>
+							<pre>
 <code>
 @comment{
 ...
@@ -265,165 +270,179 @@
 }
 </code>
 </pre>
-              <p>
-                のようにする.
-              </p>
-              <p>
-                使用できるパラメータは以下の表を参照して欲しい.
-                詳しくは<a href="http://www.yamamo10.jp/yamamoto/comp/latex/bibtex/bibtex.html">こちら</a>.
-              </p>
-              <table class="bibtex_command_table">
-                <thead>
-                  <tr>
-                    <th>category(文献の種類)</th>
-                    <th>command(大小文字の区別無し)</th>
-                    <th>mandatory(必須項目)</th>
-                    <th>option(任意項目)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>学術論文</td>
-                    <td>@article</td>
-                    <td>auther, title, journal year</td>
-                    <td>volume, number, pages, month, note</td>
-                  </tr>
-                  <tr>
-                    <td>博士論文</td>
-                    <td>@phdthesis</td>
-                    <td>author, title, school, year</td>
-                    <td>type, address, month, note</td>
-                  </tr>
-                  <tr>
-                    <td>修士論文</td>
-                    <td>@mastersthesis</td>
-                    <td>author, title, school, year</td>
-                    <td>type, address, month, note</td>
-                  </tr>
-                  <tr>
-                    <td>プロシーディングス</td>
-                    <td>@proceedings</td>
-                    <td>title, year</td>
-                    <td>editor, volume, number, series, address, month, organization, publisher, note</td>
-                  </tr>
-                  <tr>
-                    <td>プロシーディングスの一部</td>
-                    <td>@inproceedings</td>
-                    <td>author, title, booktitle, year</td>
-                    <td>editor, volume, number, series, pages, address, month, organization, publisher, note</td>
-                  </tr>
-                  <tr>
-                    <td>会議録</td>
-                    <td>@conference</td>
-                    <td>author, title, booktitle, year</td>
-                    <td>editor, volume, number, series, pages, address, month, organization, publisher, note</td>
-                  </tr>
-                  <tr>
-                    <td>書籍</td>
-                    <td>@book</td>
-                    <td>author または editor, title, publisher, year</td>
-                    <td>volume, number, series, address, edition, month, note</td>
-                  </tr>
-                  <tr>
-                    <td>小冊子</td>
-                    <td>@booklet</td>
-                    <td>title</td>
-                    <td>author, howpublished, address, month, year, note</td>
-                  </tr>
-                  <tr>
-                    <td>書籍の一部</td>
-                    <td>@inbook</td>
-                    <td>author または editor, title, chapter または pages, publisher, year</td>
-                    <td>volume, number, series, type, address, edition, month, year</td>
-                  </tr>
-                  <tr>
-                    <td>書籍の一部(表題あり)</td>
-                    <td>@incollection</td>
-                    <td>author, title, booktitle, publisher, year</td>
-                    <td>editor, volume, number, series, type, chapter, pages, address, edition, month, note</td>
-                  </tr>
-                  <tr>
-                    <td>マニュアル</td>
-                    <td>@manual</td>
-                    <td>title</td>
-                    <td>author, organization, address, edition, month, year, note</td>
-                  </tr>
-                  <tr>
-                    <td>技術報告書</td>
-                    <td>@techreport</td>
-                    <td>author, title, institution, year</td>
-                    <td>type, number, address, month, note</td>
-                  </tr>
-                  <tr>
-                    <td>未発表</td>
-                    <td>@unpublished</td>
-                    <td>author, title, note</td>
-                    <td>month, year</td>
-                  </tr>
-                  <tr>
-                    <td>その他</td>
-                    <td>@misc</td>
-                    <td>なし</td>
-                    <td>author, title, howpublished, month, year, note</td>
-                  </tr>
-                </tbody>
-              </table>
-              <p>
-                本文へは, 参考文献を挿入したい場所に\cite{ラベル名}を挿入し, 参考文献のリストを入れたい場所に
-              </p>
-              <pre>
+							<p>
+								のようにする.
+							</p>
+							<p>
+								使用できるパラメータは以下の表を参照して欲しい.
+								詳しくは<a href="http://www.yamamo10.jp/yamamoto/comp/latex/bibtex/bibtex.html">こちら</a>.
+							</p>
+							<table class="bibtex_command_table">
+								<thead>
+									<tr>
+										<th>category(文献の種類)</th>
+										<th>command(大小文字の区別無し)</th>
+										<th>mandatory(必須項目)</th>
+										<th>option(任意項目)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>学術論文</td>
+										<td>@article</td>
+										<td>auther, title, journal year</td>
+										<td>volume, number, pages, month, note</td>
+									</tr>
+									<tr>
+										<td>博士論文</td>
+										<td>@phdthesis</td>
+										<td>author, title, school, year</td>
+										<td>type, address, month, note</td>
+									</tr>
+									<tr>
+										<td>修士論文</td>
+										<td>@mastersthesis</td>
+										<td>author, title, school, year</td>
+										<td>type, address, month, note</td>
+									</tr>
+									<tr>
+										<td>プロシーディングス</td>
+										<td>@proceedings</td>
+										<td>title, year</td>
+										<td>editor, volume, number, series, address, month, organization, publisher,
+											note</td>
+									</tr>
+									<tr>
+										<td>プロシーディングスの一部</td>
+										<td>@inproceedings</td>
+										<td>author, title, booktitle, year</td>
+										<td>editor, volume, number, series, pages, address, month, organization,
+											publisher, note</td>
+									</tr>
+									<tr>
+										<td>会議録</td>
+										<td>@conference</td>
+										<td>author, title, booktitle, year</td>
+										<td>editor, volume, number, series, pages, address, month, organization,
+											publisher, note</td>
+									</tr>
+									<tr>
+										<td>書籍</td>
+										<td>@book</td>
+										<td>author または editor, title, publisher, year</td>
+										<td>volume, number, series, address, edition, month, note</td>
+									</tr>
+									<tr>
+										<td>小冊子</td>
+										<td>@booklet</td>
+										<td>title</td>
+										<td>author, howpublished, address, month, year, note</td>
+									</tr>
+									<tr>
+										<td>書籍の一部</td>
+										<td>@inbook</td>
+										<td>author または editor, title, chapter または pages, publisher, year</td>
+										<td>volume, number, series, type, address, edition, month, year</td>
+									</tr>
+									<tr>
+										<td>書籍の一部(表題あり)</td>
+										<td>@incollection</td>
+										<td>author, title, booktitle, publisher, year</td>
+										<td>editor, volume, number, series, type, chapter, pages, address, edition,
+											month, note</td>
+									</tr>
+									<tr>
+										<td>マニュアル</td>
+										<td>@manual</td>
+										<td>title</td>
+										<td>author, organization, address, edition, month, year, note</td>
+									</tr>
+									<tr>
+										<td>技術報告書</td>
+										<td>@techreport</td>
+										<td>author, title, institution, year</td>
+										<td>type, number, address, month, note</td>
+									</tr>
+									<tr>
+										<td>未発表</td>
+										<td>@unpublished</td>
+										<td>author, title, note</td>
+										<td>month, year</td>
+									</tr>
+									<tr>
+										<td>その他</td>
+										<td>@misc</td>
+										<td>なし</td>
+										<td>author, title, howpublished, month, year, note</td>
+									</tr>
+								</tbody>
+							</table>
+							<p>
+								本文へは, 参考文献を挿入したい場所に\cite{ラベル名}を挿入し, 参考文献のリストを入れたい場所に
+							</p>
+							<pre>
 <code>
 \bibliographystyle{***}
 \bibliography{文献データベースファイル名(.bibはつけない)}
 </code>
 </pre>
-              <p>
-                と書けば良い.
-                styleの***は色々あるが, いつかまとめるかもしれない.
-                参考になりそうなのは<a href="https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles">ここ</a>とか.
-                alphaとapalike以外の大体は数字.
-                また, styleによって表示される情報も異なる. 
-              </p>
-            </li>
-          </ul>
+							<p>
+								と書けば良い.
+								styleの***は色々あるが, いつかまとめるかもしれない.
+								参考になりそうなのは<a
+									href="https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles">ここ</a>とか.
+								alphaとapalike以外の大体は数字.
+								また, styleによって表示される情報も異なる.
+							</p>
+						</li>
+					</ul>
 
-          <h1 id="tex_package">package</h1>
-          <ul>
-            <li>
-              <h2>amssymb, amsmath, mathtools</h2>
-              <ul>
-                <li>amssymb:\mathbbなどのコマンドが使えるようになる.</li>
-                <li>amsmath:\begin{align}などの数式環境が使えるようになる.</li>
-                <li>mathtools:amsmathの拡張パッケージ.</li>
-              </ul>
-              <p>
-                数式環境たちなので, とりあえず読み込んでおけば間違いない.
-                amsmathの数式環境については<a href="https://qiita.com/t_kemmochi/items/a4c390b4967b13f3afb7" target="_blank">このサイト</a>に詳しく書いてある.
-                実はmathtoolsを読み込むとamsmathも読み込まれるが, 明示的に読み込んだ方が良い.
-                詳しくは<a href="https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289" target="_blank">このサイト</a>を参照するといい.
-                mathtoolsには\DeclarePairedDelimiterという便利なコマンドがあり, 左右で挟むことが多い場合や, 集合はこれで定義しておくと便利だろう.
-                ただしこのコマンドは\bmと一緒に使うとエラーを吐くので注意する.
-              </p>
-              <p>
-                amsmathでのコマンドに\DeclareMathOperator{\~}{~}と\DeclareMathOperator*{\~}{~}がある.
-                前者がlog型, 後者がlim型である.
-                違いは添字の場所で, 例えば\DeclareMathOperator{\A}{B}とプリアンブルに記入して, 本文で\A_{C}とすると出力としてはBの右下にCがくるが,\DeclareMathOperator*{\A}{B}とプリアンブルに記入して, 本文で\A_{C}とすると出力としてはBの真下にCがくる.
-                わかりやすいのでAとBは同じものを使うと良い.
-                また, 勝手にBはローマン体になる.
-                amsmathについてはパッケージガイドが翻訳され, <a href="https://www.latex-project.org/help/documentation/amsldoc_jpn.pdf" target="_blank">このサイト</a>にある.
-              </p>
-            </li>
-            <li>
-              <h2>amsthm, thmtools</h2>
-              <p>
-                定理環境のパッケージ.
-                特にthmtoolsはamsthmの拡張になっており, thmboxなどが使える.
-                thmboxはthmboxパッケージを使うとnewtheoremの前にオプションとして追加できるようになるため, そちらで導入するという手もあるが, thmtoolsを導入した方が自由度が高い気がする.
-                需要があるらしいのでthmboxを使う環境の例をあげておこう, ただしこれはnote部分(定理の名前の部分)がイタリックになることを自分では回避できなかった.
-                またfootnoteが消えるのは仕様である.
-                詳しくは<a href="https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf" target="_blank">thmtoolsのパッケージドキュメント</a>を見て欲しい.
-              </p>
-              <pre>
+					<h1 id="tex_package">package</h1>
+					<ul>
+						<li>
+							<h2>amssymb, amsmath, mathtools</h2>
+							<ul>
+								<li>amssymb:\mathbbなどのコマンドが使えるようになる.</li>
+								<li>amsmath:\begin{align}などの数式環境が使えるようになる.</li>
+								<li>mathtools:amsmathの拡張パッケージ.</li>
+							</ul>
+							<p>
+								数式環境たちなので, とりあえず読み込んでおけば間違いない.
+								amsmathの数式環境については<a href="https://qiita.com/t_kemmochi/items/a4c390b4967b13f3afb7"
+									target="_blank">このサイト</a>に詳しく書いてある.
+								実はmathtoolsを読み込むとamsmathも読み込まれるが, 明示的に読み込んだ方が良い.
+								詳しくは<a href="https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289"
+									target="_blank">このサイト</a>を参照するといい.
+								mathtoolsには\DeclarePairedDelimiterという便利なコマンドがあり, 左右で挟むことが多い場合や, 集合はこれで定義しておくと便利だろう.
+								ただしこのコマンドは\bmと一緒に使うとエラーを吐くので注意する.
+							</p>
+							<p>
+								amsmathでのコマンドに\DeclareMathOperator{\~}{~}と\DeclareMathOperator*{\~}{~}がある.
+								前者がlog型, 後者がlim型である.
+								違いは添字の場所で, 例えば\DeclareMathOperator{\A}{B}とプリアンブルに記入して,
+								本文で\A_{C}とすると出力としてはBの右下にCがくるが,\DeclareMathOperator*{\A}{B}とプリアンブルに記入して,
+								本文で\A_{C}とすると出力としてはBの真下にCがくる.
+								わかりやすいのでAとBは同じものを使うと良い.
+								また, 勝手にBはローマン体になる.
+								amsmathについてはパッケージガイドが翻訳され, <a
+									href="https://www.latex-project.org/help/documentation/amsldoc_jpn.pdf"
+									target="_blank">このサイト</a>にある.
+							</p>
+						</li>
+						<li>
+							<h2>amsthm, thmtools</h2>
+							<p>
+								定理環境のパッケージ.
+								特にthmtoolsはamsthmの拡張になっており, thmboxなどが使える.
+								thmboxはthmboxパッケージを使うとnewtheoremの前にオプションとして追加できるようになるため, そちらで導入するという手もあるが,
+								thmtoolsを導入した方が自由度が高い気がする.
+								需要があるらしいのでthmboxを使う環境の例をあげておこう, ただしこれはnote部分(定理の名前の部分)がイタリックになることを自分では回避できなかった.
+								またfootnoteが消えるのは仕様である.
+								詳しくは<a
+									href="https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/thmtools/doc/thmtools-manual.pdf"
+									target="_blank">thmtoolsのパッケージドキュメント</a>を見て欲しい.
+							</p>
+							<pre>
 <code>
 % 定理のスタイル
 \declaretheoremstyle[
@@ -438,14 +457,14 @@ numberlike=subsection,
 \declaretheorem[style=mystyle, name=定義]{環境名}
 </code>
 </pre>
-              <p>
-                それぞれのコマンドはnewtheorem{環境名}[numberlike]{name}[numberwithin]に対応する.
-                declarethoremはnewtheoremと衝突しない.
-                thmboxを入れた場合proof環境がおかしくなることが多い.
-                そのような時はproof環境をカスタマイズすれば良い.
-                以下に例をあげる.
-              </p>
-              <pre>
+							<p>
+								それぞれのコマンドはnewtheorem{環境名}[numberlike]{name}[numberwithin]に対応する.
+								declarethoremはnewtheoremと衝突しない.
+								thmboxを入れた場合proof環境がおかしくなることが多い.
+								そのような時はproof環境をカスタマイズすれば良い.
+								以下に例をあげる.
+							</p>
+							<pre>
 <code>
 % proofの再定義
 \declaretheoremstyle[
@@ -461,272 +480,285 @@ numberlike=subsection,
 \renewenvironment{proof}{\begin{myproof}}{\end{myproof}}
 </code>
 </pre>
-            </li>
-            <li>
-              <h2>otf, mathrsfs</h2>
-              <ul>
-                <li>otf:旧字体なども使えるようになる, 日本語書体パッケージ</li>
-                <li>mathrsfs:花文字が使えるようになる</li>
-              </ul>
-              <p>
-                フォントをいじることができる.
-              </p>
-            </li>
-            <li>
-              <h2>xparse</h2>
-              <p>
-                コマンドの引数をめちゃくちゃにいじれる.
-                詳しくは<a href="https://qiita.com/zr_tex8r/items/50168ad7087516c3e139" target="_blank">こちら</a>.
-              </p>
-            </li>
-            <li>
-              <h2>enumitem</h2>
-              <p>
-                箇条書き環境.
-                一昔前まではenumerateが主流だったが, こちらの方が上位互換になっているので, こちらを使う方がいい.
-              </p>
-            </li>
-            <li>
-              <h2>ascmac</h2>
-              <p>
-                itemboxとかが使えるようになる.
-                詳しくは<a href="https://ctan.math.illinois.edu/macros/latex/contrib/ascmac/ascmac.pdf">パッケージガイド</a>を参照.
-              </p>
-            </li>
-            <li>
-              <h2>bm</h2>
-              <p>
-                数式内の特殊な文字等も太字にできるが, さまざまなパッケージと衝突するので, 自分はあまり使わない.
-              </p>
-            </li>
-            <li>
-              <h2>Tikz</h2>
-              <p>
-                図を描くために使うパッケージ.
-                詳しくは<a href="http://cremeronline.com/LaTeX/minimaltikz.pdf" target="_blank">こちら</a>.
-                Tikzでは()の中に()は入れられないので,一回{}を挟む.
-                各パラメータは，同じ図または文でまとめる方がよい.
-                文章全体->図全体->個別の順で適用される.
-                文全体に適用する場合はプリアンブルに\tikzset{~}で記入, 同じ図(tikzpicture)の場合は\begin{tikzpicture}[~]のように記入する.
-              </p>
-            </li>
-            <li>
-              <h2>Tikz-3d</h2>
-              <p>
-                3Dの図が綺麗にかけるようになる. 実はTikzだけでも3Dもどきの絵はかけるのだが, こちらで書いておく方が見栄えが良い. 
-                違いはいつかまとめたい. 
-                Tikzとifthenが必要. 
-                コードを書くか. 
-                詳しくは<a href="https://ftp.kddilabs.jp/CTAN/graphics/pgf/contrib/tikz-3dplot/tikz-3dplot_documentation.pdf" target="_blank">こちら</a>.
-              </p>
-            </li>
-            <li>
-              <h2>url</h2>
-              <p>
-                URLの書体を変えたり, hyperrefで外部サイトに飛べるようになる.
-              </p>
-            </li>
-            <li>
-              <h2>color</h2>
-              <p>
-                PDFに色をつけることができる.
-                ただしDVIファイルでは色は表示されないので注意.
-              </p>
-            </li>
-            <li>
-              <h2>geometry</h2>
-              <p>
-                用紙の余白の調整ができる.
-                \usepackage[margin= ]{geometry}と書いて一括で調整することもできるし, プリアンブルにgeometry{top= ,bottom= ,left= ,right=
-                }と書くことで細かく調整できる.
-              </p>
-            </li>
-            <li>
-              <h2>makeidx</h2>
-              <p>
-                索引を生成する.
-                プリアンブルに\makeindexと記入することで索引を生成し, 本文で\printindexと記入するとその場所に索引を表示する.
-                なお, 一つも\indexを入れないとエラーを吐くので注意.
-                詳しくは<a href="https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90">こちら</a>.
-              </p>
-            </li>
-            <li>
-              <h2>hyperref</h2>
-              <p>
-                \ref, \cref, \cite, \index等で参照している場所に飛ぶような, PDF内リンク(ハイパーリンク)を生成する.
-                めちゃくちゃ便利だが, たまに変なバグが起こるようだ.
-              </p>
-            </li>
-            <li>
-              <h2>cleveref</h2>
-              <p>
-                めちゃくちゃ賢いrefだと思ってよい.
-                なんと番号だけでなく自動で環境名を認識して引っ張ってきてくれる.
-                例えばlabelをdefinition環境(番号1)の中に入れて\crefで呼び出すとdefinition1と記入される.
-                プリアンブルに\crefname{definition}{定義}{定義たち}などとしておくと, 定義1と記入される.
-                \crefname{環境名}{単数形}{複数形}と入力する.
-                \[\]は環境としてはequationと認識される(というかパッケージで再定義する).
-                詳しくは<a href="https://qiita.com/Hdan/items/8c59a7e0a3215ae32d74">こちら</a>.
-                hyperrefの後に読み込まないと番号がおかしくなったりエラーを吐きます.
-                自分は\usepackage[nameinlink]{cleveref}としている.
-              </p>
-            </li>
-            <li>
-              <h2>graphicx</h2>
-              <p>
-                画像を読み込めるパッケージ.
-                graphicsの上位互換なのでこちらを使うべき.
-                なぜかエラーを吐いているので今は自分は使ってない.
-              </p>
-            </li>
-            <li>
-              <h2>autonum</h2>
-              <p>
-                amsmath, hyperref, cleverefの後に読み込まないと, 番号がおかしかったりエラーを吐きます.
-                引用されていない式番号を自動で消去し, 番号を再度割り振る.
-                詳しくは<a href="https://konoyonohana.blog.fc2.com/blog-entry-53.html" target="_blank">こちら</a>.
-              </p>
-            </li>
-            <li>
-              <h2>ifthen</h2>
-              <p>
-                条件分岐ができるようになる.
-              </p>
-            </li>
-            <li>
-              <h2>calc</h2>
-              <p>
-                長さの計算ができるようになる.
-              </p>
-            </li>
-            <li>
-              <h2>footnpag</h2>
-              <p>
-                footnoteをページごとに番号をリセットする.
-                2回TeXにかける必要がある.
-              </p>
-            </li>
-            \pagestyle{empty} ページ番号を出力しない
-          </ul>
+						</li>
+						<li>
+							<h2>otf, mathrsfs</h2>
+							<ul>
+								<li>otf:旧字体なども使えるようになる, 日本語書体パッケージ</li>
+								<li>mathrsfs:花文字が使えるようになる</li>
+							</ul>
+							<p>
+								フォントをいじることができる.
+							</p>
+						</li>
+						<li>
+							<h2>xparse</h2>
+							<p>
+								コマンドの引数をめちゃくちゃにいじれる.
+								詳しくは<a href="https://qiita.com/zr_tex8r/items/50168ad7087516c3e139"
+									target="_blank">こちら</a>.
+							</p>
+						</li>
+						<li>
+							<h2>enumitem</h2>
+							<p>
+								箇条書き環境.
+								一昔前まではenumerateが主流だったが, こちらの方が上位互換になっているので, こちらを使う方がいい.
+							</p>
+						</li>
+						<li>
+							<h2>ascmac</h2>
+							<p>
+								itemboxとかが使えるようになる.
+								詳しくは<a
+									href="https://ctan.math.illinois.edu/macros/latex/contrib/ascmac/ascmac.pdf">パッケージガイド</a>を参照.
+							</p>
+						</li>
+						<li>
+							<h2>bm</h2>
+							<p>
+								数式内の特殊な文字等も太字にできるが, さまざまなパッケージと衝突するので, 自分はあまり使わない.
+							</p>
+						</li>
+						<li>
+							<h2>Tikz</h2>
+							<p>
+								図を描くために使うパッケージ.
+								詳しくは<a href="http://cremeronline.com/LaTeX/minimaltikz.pdf" target="_blank">こちら</a>.
+								Tikzでは()の中に()は入れられないので,一回{}を挟む.
+								各パラメータは，同じ図または文でまとめる方がよい.
+								文章全体->図全体->個別の順で適用される.
+								文全体に適用する場合はプリアンブルに\tikzset{~}で記入, 同じ図(tikzpicture)の場合は\begin{tikzpicture}[~]のように記入する.
+							</p>
+						</li>
+						<li>
+							<h2>Tikz-3d</h2>
+							<p>
+								3Dの図が綺麗にかけるようになる. 実はTikzだけでも3Dもどきの絵はかけるのだが, こちらで書いておく方が見栄えが良い.
+								違いはいつかまとめたい.
+								Tikzとifthenが必要.
+								コードを書くか.
+								詳しくは<a
+									href="https://ftp.kddilabs.jp/CTAN/graphics/pgf/contrib/tikz-3dplot/tikz-3dplot_documentation.pdf"
+									target="_blank">こちら</a>.
+							</p>
+						</li>
+						<li>
+							<h2>url</h2>
+							<p>
+								URLの書体を変えたり, hyperrefで外部サイトに飛べるようになる.
+							</p>
+						</li>
+						<li>
+							<h2>color</h2>
+							<p>
+								PDFに色をつけることができる.
+								ただしDVIファイルでは色は表示されないので注意.
+							</p>
+						</li>
+						<li>
+							<h2>geometry</h2>
+							<p>
+								用紙の余白の調整ができる.
+								\usepackage[margin= ]{geometry}と書いて一括で調整することもできるし, プリアンブルにgeometry{top= ,bottom= ,left=
+								,right=
+								}と書くことで細かく調整できる.
+							</p>
+						</li>
+						<li>
+							<h2>makeidx</h2>
+							<p>
+								索引を生成する.
+								プリアンブルに\makeindexと記入することで索引を生成し, 本文で\printindexと記入するとその場所に索引を表示する.
+								なお, 一つも\indexを入れないとエラーを吐くので注意.
+								詳しくは<a href="https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90">こちら</a>.
+							</p>
+						</li>
+						<li>
+							<h2>hyperref</h2>
+							<p>
+								\ref, \cref, \cite, \index等で参照している場所に飛ぶような, PDF内リンク(ハイパーリンク)を生成する.
+								めちゃくちゃ便利だが, たまに変なバグが起こるようだ.
+							</p>
+						</li>
+						<li>
+							<h2>cleveref</h2>
+							<p>
+								めちゃくちゃ賢いrefだと思ってよい.
+								なんと番号だけでなく自動で環境名を認識して引っ張ってきてくれる.
+								例えばlabelをdefinition環境(番号1)の中に入れて\crefで呼び出すとdefinition1と記入される.
+								プリアンブルに\crefname{definition}{定義}{定義たち}などとしておくと, 定義1と記入される.
+								\crefname{環境名}{単数形}{複数形}と入力する.
+								\[\]は環境としてはequationと認識される(というかパッケージで再定義する).
+								詳しくは<a href="https://qiita.com/Hdan/items/8c59a7e0a3215ae32d74">こちら</a>.
+								hyperrefの後に読み込まないと番号がおかしくなったりエラーを吐きます.
+								自分は\usepackage[nameinlink]{cleveref}としている.
+							</p>
+						</li>
+						<li>
+							<h2>graphicx</h2>
+							<p>
+								画像を読み込めるパッケージ.
+								graphicsの上位互換なのでこちらを使うべき.
+								なぜかエラーを吐いているので今は自分は使ってない.
+							</p>
+						</li>
+						<li>
+							<h2>autonum</h2>
+							<p>
+								amsmath, hyperref, cleverefの後に読み込まないと, 番号がおかしかったりエラーを吐きます.
+								引用されていない式番号を自動で消去し, 番号を再度割り振る.
+								詳しくは<a href="https://konoyonohana.blog.fc2.com/blog-entry-53.html"
+									target="_blank">こちら</a>.
+							</p>
+						</li>
+						<li>
+							<h2>ifthen</h2>
+							<p>
+								条件分岐ができるようになる.
+							</p>
+						</li>
+						<li>
+							<h2>calc</h2>
+							<p>
+								長さの計算ができるようになる.
+							</p>
+						</li>
+						<li>
+							<h2>footnpag</h2>
+							<p>
+								footnoteをページごとに番号をリセットする.
+								2回TeXにかける必要がある.
+							</p>
+						</li>
+						\pagestyle{empty} ページ番号を出力しない
+					</ul>
 
-          <h1>texを始める</h1>
-          <p>TeXにも色々ある.おすすめを紹介しよう.</p>
-          <ul>
-            <li>
-              <h2><a href="https://www.texpad.com" target="_blank">TeXPad</a></h2>
-              <p>
-                mac系統でしか動かないが,とても使い勝手が良いらしい. 
-                環境構築が不要なのがとても良い. 
-                また, 即時反映機能がある. 
-                日本語を使う時に設定が必要っぽい. 
-                有料である(macOS:4040円,iOS:3180円,2021/10/01現在). 
-              </p>
-            </li>
-            <li>
-              <h2><a href="https://ja.overleaf.com" target="_blank">OverLeaf</a></h2>
-              <p>
-                クラウド上で動かすTeX.めちゃくちゃ便利らしい. 
-                オンラインで動かさないといけないこと意外にデメリットはないのでは?
-              </p>
-            </li>
-            <li>
-              <h2><a href="https://texwiki.texjp.org/?TeX%20Live" target="_blank">TeXLive</a>+<a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" target="_blank">VScode</a>(+<a href="https://git-scm.com" target="_blank">git</a>)</h2>
-              <p>
-                現在の自分の環境. 
-                環境構築が必要だし面倒だが, カスタマイズしやすくて使いやすい. 
-                以下で環境構築の方法をメモしておく. 
-              </p>
-            </li>
-          </ul>
+					<h1>texを始める</h1>
+					<p>TeXにも色々ある.おすすめを紹介しよう.</p>
+					<ul>
+						<li>
+							<h2><a href="https://www.texpad.com" target="_blank">TeXPad</a></h2>
+							<p>
+								mac系統でしか動かないが,とても使い勝手が良いらしい.
+								環境構築が不要なのがとても良い.
+								また, 即時反映機能がある.
+								日本語を使う時に設定が必要っぽい.
+								有料である(macOS:4040円,iOS:3180円,2021/10/01現在).
+							</p>
+						</li>
+						<li>
+							<h2><a href="https://ja.overleaf.com" target="_blank">OverLeaf</a></h2>
+							<p>
+								クラウド上で動かすTeX.めちゃくちゃ便利らしい.
+								オンラインで動かさないといけないこと意外にデメリットはないのでは?
+							</p>
+						</li>
+						<li>
+							<h2><a href="https://texwiki.texjp.org/?TeX%20Live" target="_blank">TeXLive</a>+<a
+									href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/"
+									target="_blank">VScode</a>(+<a href="https://git-scm.com" target="_blank">git</a>)
+							</h2>
+							<p>
+								現在の自分の環境.
+								環境構築が必要だし面倒だが, カスタマイズしやすくて使いやすい.
+								以下で環境構築の方法をメモしておく.
+							</p>
+						</li>
+					</ul>
 
-          <h2>環境構築</h2>
-          <p>
-            mac版TeXLive+VScode+(git+github)のmemo. 
-            実はあまり良い環境ではないが, ひとまず現行環境のメモとしておいておく. 
-          </p>
-          <ol>
-            <li>
-              <h3>ターミナルをzshに変更</h3>
-              <p>ターミナル上で行う</p>
-              <ol>
-                <li>
-                  <p><code>echo $SHELL</code>で自分の現在のSHELLを確認</p>
-                </li>
-                <li>
-                  <code>cat /etc/shells</code>で自分が使えるSHELLの確認
-                </li>
-                <li>
-                  <code>/bin/zsh</code>がなければzshのインストールをする
-                </li>
-                <li>
-                  <code>chsh -s /bin/zsh</code>を入力して再起動
-                </li>
-              </ol>
-            </li>
-            <li>
-              <h3>TeXLiveのインストール</h3>
-              <p>ターミナル上で行う</p>
-              <ol>
-                <li>
-                  <p><code>curl -OL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz</code>でミラーサイトからインストール</p>
-                </li>
-                <li>
-                  <code>tar xvf install-tl-unx.tar.gz</code>で展開
-                </li>
-                <li>
-                  <code>cd install-tl-2*</code>でインストーラのディレクトリへ
-                </li>
-                <li>
-                  <code>sudo ./install-tl -no-gui -repository http://mirror.ctan.org/systems/texlive/tlnet/</code>とするとActionが選べるので,<code>I</code>を入力するとインストールが始まる(めちゃくちゃ時間がかかるため注意)(もし止まっても<code>sudo ./install-tl -no-gui -profile installation.profile</code>で途中から再開できるかも)
-                </li>
-                <li>
-                  <code>sudo /usr/local/texlive/????/bin/*/tlmgr path add</code>でシンボリックリンクの追加
-                </li>
-              </ol>
-            </li>
-            <li>
-              <h3>VScodeのインストール</h3>
-              <ol>
-                <li>
-                  <a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" target="_blank">公式サイト</a>からダウンロードして, 指示に従いながらセットアップを行う
-                </li>
-                <li>
-                  <p>
-                    拡張機能(横の検索)からLaTeX Workshopを入れる. 
-                    LaTeX Utilitiesも入れても良い. 
-                    <span class="del">Local Historyは無限にファイルが生成されてしまうのでいれてはいけない.</span>
-                    VScodeのver1.66から標準機能にファイル生成しないLocal Historyが組み込まれたため, 必要ない.
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    settingsからsettings.JSONを開いて設定する. 
-                    settings.JSONは以下の場所にある. 
-                  </p>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>OS</th>
-                        <th>path</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>Windows</th>
-                        <th><code>%APPDATA%\Code\User\settings.json</code></th>
-                      </tr>
-                      <tr>
-                        <th>Mac</th>
-                        <th><code>$HOME/Library/Application Support/Code/User/settings.json</code></th>
-                      </tr>
-                      <tr>
-                        <th>Linux</th>
-                        <th><code>$HOME/.config/Code/User/settings.json</code></th>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <p>(以下は2021-10-01時点での自分の設定)</p>
-                <pre>
+					<h2>環境構築</h2>
+					<p>
+						mac版TeXLive+VScode+(git+github)のmemo.
+						実はあまり良い環境ではないが, ひとまず現行環境のメモとしておいておく.
+					</p>
+					<ol>
+						<li>
+							<h3>ターミナルをzshに変更</h3>
+							<p>ターミナル上で行う</p>
+							<ol>
+								<li>
+									<p><code>echo $SHELL</code>で自分の現在のSHELLを確認</p>
+								</li>
+								<li>
+									<code>cat /etc/shells</code>で自分が使えるSHELLの確認
+								</li>
+								<li>
+									<code>/bin/zsh</code>がなければzshのインストールをする
+								</li>
+								<li>
+									<code>chsh -s /bin/zsh</code>を入力して再起動
+								</li>
+							</ol>
+						</li>
+						<li>
+							<h3>TeXLiveのインストール</h3>
+							<p>ターミナル上で行う</p>
+							<ol>
+								<li>
+									<p><code>curl -OL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz</code>でミラーサイトからインストール
+									</p>
+								</li>
+								<li>
+									<code>tar xvf install-tl-unx.tar.gz</code>で展開
+								</li>
+								<li>
+									<code>cd install-tl-2*</code>でインストーラのディレクトリへ
+								</li>
+								<li>
+									<code>sudo ./install-tl -no-gui -repository http://mirror.ctan.org/systems/texlive/tlnet/</code>とするとActionが選べるので,<code>I</code>を入力するとインストールが始まる(めちゃくちゃ時間がかかるため注意)(もし止まっても<code>sudo ./install-tl -no-gui -profile installation.profile</code>で途中から再開できるかも)
+								</li>
+								<li>
+									<code>sudo /usr/local/texlive/????/bin/*/tlmgr path add</code>でシンボリックリンクの追加
+								</li>
+							</ol>
+						</li>
+						<li>
+							<h3>VScodeのインストール</h3>
+							<ol>
+								<li>
+									<a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/"
+										target="_blank">公式サイト</a>からダウンロードして, 指示に従いながらセットアップを行う
+								</li>
+								<li>
+									<p>
+										拡張機能(横の検索)からLaTeX Workshopを入れる.
+										LaTeX Workshop は ver.8.27.0 時点で VSCode ver.1.67.0 以前のサポートを終了しているらしいので注意する.
+										LaTeX Utilitiesも入れても良い.
+										<span class="del">Local Historyは無限にファイルが生成されてしまうのでいれてはいけない.</span>
+										VScodeのver1.66から標準機能にファイル生成しないLocal Historyが組み込まれたため, 必要ない.
+									</p>
+								</li>
+								<li>
+									<p>
+										settingsからsettings.JSONを開いて設定する.
+										settings.JSONは以下の場所にある.
+									</p>
+									<table>
+										<thead>
+											<tr>
+												<th>OS</th>
+												<th>path</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>Windows</th>
+												<th><code>%APPDATA%\Code\User\settings.json</code></th>
+											</tr>
+											<tr>
+												<th>Mac</th>
+												<th><code>$HOME/Library/Application Support/Code/User/settings.json</code>
+												</th>
+											</tr>
+											<tr>
+												<th>Linux</th>
+												<th><code>$HOME/.config/Code/User/settings.json</code></th>
+											</tr>
+										</tbody>
+									</table>
+									<p>(以下は2021-10-01時点での自分の設定)</p>
+									<pre>
 <code>
 {
     // ---------- Editor ----------
@@ -794,7 +826,7 @@ numberlike=subsection,
     // 現在のタブの下線に色をつける
     "workbench.colorCustomizations": {
         "tab.activeBorder": "#0099ff"
-      },
+    },
     // ワークベンチのフォント エイリアシング方法を制御します。
     //"workbench.fontAliasing": "antialiased",
     // エディターのタブの大きさを制御します。
@@ -899,26 +931,26 @@ numberlike=subsection,
 }
 </code>
 </pre>
-                </li>
-                <li>
-                  <p>User Snippetsなどは好きにいじる</p>
-                </li>
-              </ol>
-            </li>
-            <li>
-              <h3>.latexmkrcの作成</h3>
-              <p>ターミナルを開く</p>
-              <ol>
-                <li>
-                  <code>cd</code>でホームディレクトリに移動する
-                </li>
-                <li>
-                  <code>touch .latexmkrc</code>でファイルを作る
-                </li>
-                <li>
-                  VScode上で開いて以下を貼り付けて保存する
-                </li>
-                <pre>
+								</li>
+								<li>
+									<p>User Snippetsなどは好きにいじる</p>
+								</li>
+							</ol>
+						</li>
+						<li>
+							<h3>.latexmkrcの作成</h3>
+							<p>ターミナルを開く</p>
+							<ol>
+								<li>
+									<code>cd</code>でホームディレクトリに移動する
+								</li>
+								<li>
+									<code>touch .latexmkrc</code>でファイルを作る
+								</li>
+								<li>
+									VScode上で開いて以下を貼り付けて保存する
+								</li>
+								<pre>
 <code>
 #!/usr/bin/env perl
 
@@ -956,34 +988,39 @@ if ($^O eq 'linux') {
 $clean_full_ext = "%R.synctex.gz"
 </code>
 </pre>
-              </ol>
-            </li>
-              <p>これでTeXは完了. 
-                あとは.texファイルをVScodeで作れば, command + sで上書き保存する時についでにビルドしてくれるし,command + ortion + vでPDFビュワーを別タブで開いてくれる. 
-              </p>
-            <li>
-              <h3>git</h3>
-              <ol>
-                未編集
-                <li>
+							</ol>
+						</li>
+						<p>
+							これでTeXは完了.
+							あとは.texファイルをVScodeで作れば, command + sで上書き保存する時についでにビルドしてくれるし,command + ortion +
+							vでPDFビュワーを別タブで開いてくれる.
+							texファイルで[Ctrl+Alt+J(Command+oprion+J)]を押すとPDFの該当箇所に飛べる.
+							PDFからtexファイルは[Ctrl+左クリック(Command+クリック)].
+						</p>
+						<li>
+							<h3>git</h3>
+							<ol>
+								未編集
+								<li>
 
-                </li>
-              </ol>
-            </li>
-          </ol>
-        </div>
-      </main>
-      <aside>
-        <div class="aside-inner">
-          <ul class="sidebar">
-            <li><a href="#tex_package">package</a></li>
-          </ul>
-        </div>
-      </aside>
-    </div>
-  </section>
-  <footer id="footer">
-    ここにfooter.htmlが読み込まれる.
-  </footer>
+								</li>
+							</ol>
+						</li>
+					</ol>
+				</div>
+			</main>
+			<aside>
+				<div class="aside-inner">
+					<ul class="sidebar">
+						<li><a href="#tex_package">package</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</section>
+	<footer id="footer">
+		ここにfooter.htmlが読み込まれる.
+	</footer>
 </body>
+
 </html>
