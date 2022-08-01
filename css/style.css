@@ -160,3 +160,8 @@ pre {
 	width: 20%;
 }
 
+span.del {/* 取り消し線 */
+  text-decoration-line: line-through;
+  text-decoration-style:solid;
+  text-decoration-color: black;
+}
