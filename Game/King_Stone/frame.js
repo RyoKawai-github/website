@@ -1,6 +1,10 @@
 // ******globalな色々な値の定義******
-var turn = 0;//FIXME:もうちょいなんかやりようがあるだろう
+var turn = 0;
+var log = "ログ\n";
+var checkmate = 0;
 const currentTurnText = document.getElementById("current-turn");
+const turnPlayerText = document.getElementById("turn-player");
+const logText = document.getElementById("log");
 const board = document.getElementById("board");
 const squareTemplate = document.getElementById("square-template");
 const pieceTemplate = document.getElementById("piece-template");
@@ -8,7 +12,7 @@ const targetTemplate = document.getElementById("target-template");
 var board_len = board.getBoundingClientRect().width / 2;
 // 盤面や初期配置について
 const board_size = 5;
-var board_coordinate_list = []
+const board_coordinate_list = []
 for (let x = 0; x < board_size; x++) {
 	for (let y = 0; y < board_size; y++) {
 		for (let z = 0; z < board_size; z++) {
@@ -36,10 +40,8 @@ var first_piece_set = [
 	[2, "stone", 4, [4, 2, 0]],
 ];
 
-// ******クラスの作成******
-// コマの移動
-
 // ******関数の定義******
+// ******コマ関係******
 // coordinateからdirectionの方向に動いた際の座標を返す
 const movePiece = (coordinate, direction) => {
 	let moved_coordinate = coordinate.slice();
@@ -58,6 +60,9 @@ const moveStone = (element, piece_coordinate_list) => {
 		moved_coordinate = movePiece(coordinate, i);
 		if (coordinateIn(board_coordinate_list, moved_coordinate) && !coordinateIn(piece_coordinate_list, moved_coordinate)) {
 			moved_coordinate_list.push(moved_coordinate);
+			const target_square = board.querySelectorAll('[data-coordinate="' + moved_coordinate + '"]')[0];
+			target_square.classList.add("target");
+			target_square.addEventListener('click', onClickTarget);
 		}
 	}
 	return moved_coordinate_list;
@@ -67,8 +72,11 @@ const moveKing = (element, piece_coordinate_list) => {
 	const coordinate = getCoordinate(element);
 	let check_coordinate_list = [coordinate];
 	let moved_coordinate_list = [coordinate];
-	while (check_coordinate_list[0]) {
-		let check_coordinate = check_coordinate_list[0];
+	//let checked_coordinate_list = [coordinate];
+	//while (check_coordinate_list[0]) {
+	for (let check_coordinate of check_coordinate_list) {
+		//let check_coordinate = check_coordinate_list[0];
+		//console.log(check_coordinate);
 		for (let i of [0, 1, 2, 3, 4, 5]) {
 			let moved_coordinate = check_coordinate.slice();
 			let check_mc = movePiece(moved_coordinate, i);
@@ -76,23 +84,39 @@ const moveKing = (element, piece_coordinate_list) => {
 				moved_coordinate = movePiece(moved_coordinate, i);
 				check_mc = movePiece(moved_coordinate, i);
 			}
+			const target_square = board.querySelectorAll('[data-coordinate="' + moved_coordinate + '"]')[0];
 			if (!coordinateIn(moved_coordinate_list, moved_coordinate)) {
-				moved_coordinate_list.push([moved_coordinate]);
-				if (coordinateIn(piece_coordinate_list, check_mc)) {
-					const collide_piece = board.querySelectorAll('[data-coordinate="' + check_mc + '"]')[1];
-					const player = collide_piece.getAttribute("data-player");
-					const name = collide_piece.getAttribute("data-name");
-					if (player == turn % 2 + 1 && name == "stone") {
+				moved_coordinate_list.push(moved_coordinate);
+				//const target_square = board.querySelectorAll('[data-coordinate="' + moved_coordinate + '"]')[0];
+				target_square.classList.add("target");
+				target_square.addEventListener('click', onClickTarget);
+			}
+			if (coordinateIn(piece_coordinate_list, check_mc)) {
+				const collide_piece = board.querySelectorAll('[data-coordinate="' + check_mc + '"]')[1];//FIXME:index1ではなく取得したい
+				const player = collide_piece.getAttribute("data-player");
+				const name = collide_piece.getAttribute("data-name");
+				if (player == turn % 2 + 1 && name == "stone") {
+					if (!coordinateIn(check_coordinate_list, moved_coordinate)) {
 						check_coordinate_list.push(moved_coordinate);
+					}
+				}
+				if (player == 2 - turn % 2 && name == "king") {
+					if (!coordinateEq(moved_coordinate, coordinate)) {
+						target_square.removeEventListener('click', onClickTarget);
+						target_square.classList.remove("target");
+						target_square.classList.add("checkmate");
+						target_square.addEventListener('click', onClickCheckmate);
 					}
 				}
 			}
 		}
-		check_coordinate_list.shift();
+		//check_coordinate_list.shift();
 	}
 	moved_coordinate_list.shift();
 	return moved_coordinate_list;
 }
+
+// ******座標の関係******
 // 座標をもらうとその位置に配置する関数
 const visualize = (element, coordinate) => {
 	x = coordinate[0] * square_padding;
@@ -106,6 +130,10 @@ const visualize = (element, coordinate) => {
 const getCoordinate = (element) => {
 	return element.getAttribute("data-coordinate").split(',').map(str => parseInt(str, 10));
 }
+// 座標c1とc2が等しいかどうか
+const coordinateEq = (c1, c2) => {
+	return c1[0] == c2[0] && c1[1] == c2[1] && c1[2] == c2[2];
+}
 // 座標の配列c_listに座標coが入っているか
 const coordinateIn = (c_list, co) => {
 	return c_list.some((c) => c[0] == co[0] && c[1] == co[1] && c[2] == co[2]);
@@ -114,31 +142,38 @@ const coordinateIn = (c_list, co) => {
 const coordinateDel = (c_list, co) => {
 	return c_list.filter((c) => !(c[0] == co[0] && c[1] == co[1] && c[2] == co[2]));
 }
-// 座標の配列A,Bに対してA-Bを出力する(不要)
+// 座標の配列A,Bに対してA-Bを出力する FIXME:消去する
 const coordinateMatrixDiff = (A, B) => {
 	return A.filter((a) => !B.some((b) => a[0] == b[0] && a[1] == b[1] && a[2] == b[2]));
+}
+
+// ******操作関係******
+// targetを全て削除する
+const targetAllDel = () => {
+	const checkmates = board.getElementsByClassName("checkmate");
+	while (checkmates[0]) {//FIXME: add onClick
+		checkmates[0].removeEventListener('click', onClickCheckmate);
+		checkmates[0].classList.remove("checkmate");
+	}
+	const targets = board.getElementsByClassName("target");
+	while (targets[0]) {
+		targets[0].removeEventListener('click', onClickTarget);
+		targets[0].classList.remove("target");
+	}
 }
 // コマをクリックした場合の動作
 const onClickPiece = (e) => {
 	const element = e.target;
-	if (element.getAttribute("data-player") == turn % 2 + 1) {
+	if (element.getAttribute("data-player") == turn % 2 + 1 && checkmate == 0) {
 		if (element.classList.contains("active")) {
 			element.classList.remove("active");
-			const targets = board.getElementsByClassName("target");
-			while (targets[0]) {
-				targets[0].remove();
-			}
+			targetAllDel();
 		} else {
 			const other_active_piece = board.getElementsByClassName("piece active")[0];
-			if (other_active_piece) {
-				other_active_piece.classList.remove("active");
-			}
-			const targets = board.getElementsByClassName("target");
-			while (targets[0]) {
-				targets[0].remove();
-			}
+			if (other_active_piece) { other_active_piece.classList.remove("active"); }
+			targetAllDel();
 			element.classList.add("active");
-			createTargets(element);
+			setTargets(element);
 		}
 	}
 }
@@ -147,16 +182,35 @@ const onClickTarget = (e) => {
 	const element = e.target;
 	const target_piece = board.getElementsByClassName("piece active")[0];
 	const coordinate = getCoordinate(element);
+	let logger = "move:[" + target_piece.getAttribute("data-coordinate") + "] -> [" + coordinate + "]\n";
 	target_piece.setAttribute("data-coordinate", coordinate);
 	visualize(target_piece, coordinate);// 可視化
 	target_piece.classList.remove("active");
-	const targets = board.getElementsByClassName("target");
-	while (targets[0]) {
-		targets[0].remove();
-	}
-	// ターンを経過させる
+	targetAllDel();
+	// ターンを経過させるFIXME:ここも改善
 	turn += 1;
-	currentTurnText.textContent = turn % 2 + 1;
+	log = log + logger;
+	currentTurnText.innerText = "ターン: " + turn;
+	turnPlayerText.innerText = "現在の手番: player" + (turn % 2 + 1);
+	logText.innerText = log;
+}
+// チェックメイトをクリックした場合の動作
+const onClickCheckmate = (e) => {
+	const element = e.target;
+	const target_piece = board.getElementsByClassName("piece active")[0];
+	const coordinate = getCoordinate(element);
+	let logger = "move:[" + target_piece.getAttribute("data-coordinate") + "] -> [" + coordinate + "]\n";
+	target_piece.setAttribute("data-coordinate", coordinate);
+	visualize(target_piece, coordinate);// 可視化
+	target_piece.classList.remove("active");
+	targetAllDel();
+	// ターンを経過させるFIXME:ここも改善
+	turn += 1;
+	log = log + logger;
+	checkmate += 1;
+	currentTurnText.innerText = "ターン: " + turn;
+	turnPlayerText.innerText = "GameSet  Winner: player" + ((turn - 1) % 2 + 1);
+	logText.innerText = log;
 }
 // マス目の設置
 const createSquares = () => {
@@ -180,38 +234,23 @@ const createPieces = (piece_set) => {
 		piece.setAttribute("data-coordinate", piece_value[3]);
 
 		visualize(piece, piece_value[3]); // 可視化
-		piece.addEventListener('click', (e) => {
-			onClickPiece(e);
-		})
+		piece.addEventListener('click', (e) => { onClickPiece(e); })
 		board.appendChild(piece); //マス目のHTML要素を盤に追加
 	}
 };
 // ターゲットの設置
-const createTargets = (element) => {
+const setTargets = (element) => {
 	const pieces = board.getElementsByClassName("piece");
 	const coordinate = getCoordinate(element);
 	let piece_coordinate_list = [];
-	for (const piece of pieces) {
-		piece_coordinate_list.push(getCoordinate(piece));
-	}
+	for (const piece of pieces) { piece_coordinate_list.push(getCoordinate(piece)); }
 	piece_coordinate_list = coordinateDel(piece_coordinate_list, coordinate);
-	let coordinate_list = [];
 	if (element.getAttribute("data-name") == "stone") {
-		coordinate_list = moveStone(element, piece_coordinate_list);
+		moveStone(element, piece_coordinate_list);
 	} else if (element.getAttribute("data-name") == "king") {
-		coordinate_list = moveKing(element, piece_coordinate_list);
+		moveKing(element, piece_coordinate_list);
 	} else {
 		console.log("else");
-	}
-	for (const target_coordinate of coordinate_list) {
-		const target = targetTemplate.cloneNode(true); //テンプレートから要素をクローン
-		target.removeAttribute("id"); //テンプレート用のid属性を削除
-		target.setAttribute("data-coordinate", target_coordinate);// dataに値を持たせる
-		visualize(target, target_coordinate);// 可視化
-		target.addEventListener('click', (e) => {
-			onClickTarget(e);
-		})
-		board.appendChild(target); //マス目のHTML要素を盤に追加
 	}
 };
 

@@ -12,15 +12,18 @@
 
 <body>
 	<!-- 現在の手番を表示する -->
-	<p>現在の手番はplayer<span id="current-turn">1</span>です</p>
+	<p>
+		player1: 赤 player2: 緑 <a href="rule.md">ルール</a><br>
+		<span id="current-turn">ターン: 0</span><br>
+		<span id="turn-player">現在の手番: player1</span>
+	</p>
 	<!-- 盤 -->
 	<div id="board" class="board"></div>
 	<!-- 各マスを描画するためのテンプレート -->
 	<div id="square-template" class="square"></div>
 	<!-- 各コマを描画するためのテンプレート -->
 	<div id="piece-template" class="piece"></div>
-	<!-- 各コマの移動範囲を描画するためのテンプレート -->
-	<div id="target-template" class="target"></div>
+	<p><span id="log">ログ</span></p>
 	<script src="frame.js"></script>
 </body>
 
