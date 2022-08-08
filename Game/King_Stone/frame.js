@@ -72,11 +72,7 @@ const moveKing = (element, piece_coordinate_list) => {
 	const coordinate = getCoordinate(element);
 	let check_coordinate_list = [coordinate];
 	let moved_coordinate_list = [coordinate];
-	//let checked_coordinate_list = [coordinate];
-	//while (check_coordinate_list[0]) {
 	for (let check_coordinate of check_coordinate_list) {
-		//let check_coordinate = check_coordinate_list[0];
-		//console.log(check_coordinate);
 		for (let i of [0, 1, 2, 3, 4, 5]) {
 			let moved_coordinate = check_coordinate.slice();
 			let check_mc = movePiece(moved_coordinate, i);
@@ -87,7 +83,6 @@ const moveKing = (element, piece_coordinate_list) => {
 			const target_square = board.querySelectorAll('[data-coordinate="' + moved_coordinate + '"]')[0];
 			if (!coordinateIn(moved_coordinate_list, moved_coordinate)) {
 				moved_coordinate_list.push(moved_coordinate);
-				//const target_square = board.querySelectorAll('[data-coordinate="' + moved_coordinate + '"]')[0];
 				target_square.classList.add("target");
 				target_square.addEventListener('click', onClickTarget);
 			}
@@ -101,16 +96,13 @@ const moveKing = (element, piece_coordinate_list) => {
 					}
 				}
 				if (player == 2 - turn % 2 && name == "king") {
-					if (!coordinateEq(moved_coordinate, coordinate)) {
-						target_square.removeEventListener('click', onClickTarget);
-						target_square.classList.remove("target");
-						target_square.classList.add("checkmate");
-						target_square.addEventListener('click', onClickCheckmate);
-					}
+					target_square.removeEventListener('click', onClickTarget);
+					target_square.classList.remove("target");
+					target_square.classList.add("checkmate");
+					target_square.addEventListener('click', onClickCheckmate);
 				}
 			}
 		}
-		//check_coordinate_list.shift();
 	}
 	moved_coordinate_list.shift();
 	return moved_coordinate_list;
@@ -142,16 +134,12 @@ const coordinateIn = (c_list, co) => {
 const coordinateDel = (c_list, co) => {
 	return c_list.filter((c) => !(c[0] == co[0] && c[1] == co[1] && c[2] == co[2]));
 }
-// 座標の配列A,Bに対してA-Bを出力する FIXME:消去する
-const coordinateMatrixDiff = (A, B) => {
-	return A.filter((a) => !B.some((b) => a[0] == b[0] && a[1] == b[1] && a[2] == b[2]));
-}
 
 // ******操作関係******
 // targetを全て削除する
 const targetAllDel = () => {
 	const checkmates = board.getElementsByClassName("checkmate");
-	while (checkmates[0]) {//FIXME: add onClick
+	while (checkmates[0]) {
 		checkmates[0].removeEventListener('click', onClickCheckmate);
 		checkmates[0].classList.remove("checkmate");
 	}
@@ -176,7 +164,22 @@ const onClickPiece = (e) => {
 			setTargets(element);
 		}
 	}
-}
+};
+// ターゲットの設置
+const setTargets = (element) => {
+	const pieces = board.getElementsByClassName("piece");
+	const coordinate = getCoordinate(element);
+	let piece_coordinate_list = [];
+	for (const piece of pieces) { piece_coordinate_list.push(getCoordinate(piece)); }
+	piece_coordinate_list = coordinateDel(piece_coordinate_list, coordinate);
+	if (element.getAttribute("data-name") == "stone") {
+		moveStone(element, piece_coordinate_list);
+	} else if (element.getAttribute("data-name") == "king") {
+		moveKing(element, piece_coordinate_list);
+	} else {
+		console.log("else");
+	}
+};
 // ターゲットをクリックした場合の動作
 const onClickTarget = (e) => {
 	const element = e.target;
@@ -193,7 +196,7 @@ const onClickTarget = (e) => {
 	currentTurnText.innerText = "ターン: " + turn;
 	turnPlayerText.innerText = "現在の手番: player" + (turn % 2 + 1);
 	logText.innerText = log;
-}
+};
 // チェックメイトをクリックした場合の動作
 const onClickCheckmate = (e) => {
 	const element = e.target;
@@ -211,7 +214,7 @@ const onClickCheckmate = (e) => {
 	currentTurnText.innerText = "ターン: " + turn;
 	turnPlayerText.innerText = "GameSet  Winner: player" + ((turn - 1) % 2 + 1);
 	logText.innerText = log;
-}
+};
 // マス目の設置
 const createSquares = () => {
 	for (const coordinate of board_coordinate_list) {
@@ -236,21 +239,6 @@ const createPieces = (piece_set) => {
 		visualize(piece, piece_value[3]); // 可視化
 		piece.addEventListener('click', (e) => { onClickPiece(e); })
 		board.appendChild(piece); //マス目のHTML要素を盤に追加
-	}
-};
-// ターゲットの設置
-const setTargets = (element) => {
-	const pieces = board.getElementsByClassName("piece");
-	const coordinate = getCoordinate(element);
-	let piece_coordinate_list = [];
-	for (const piece of pieces) { piece_coordinate_list.push(getCoordinate(piece)); }
-	piece_coordinate_list = coordinateDel(piece_coordinate_list, coordinate);
-	if (element.getAttribute("data-name") == "stone") {
-		moveStone(element, piece_coordinate_list);
-	} else if (element.getAttribute("data-name") == "king") {
-		moveKing(element, piece_coordinate_list);
-	} else {
-		console.log("else");
 	}
 };
 
