@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Context-Style-Type" content="text/css" />
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<script>
+	</script>
+	<title>Catan</title>
+</head>
+
+<body>
+	<!-- 現在の手番を表示する -->
+	<table id="player_name_table">
+		<thead>
+			<tr>
+				<td>player</td>
+				<td>name</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td data-player="1">1p</td>
+				<td contenteditable="true">player1</td>
+			</tr>
+			<tr>
+				<td data-player="2">2p</td>
+				<td contenteditable="true">player2</td>
+			</tr>
+			<tr>
+				<td data-player="3">3p</td>
+				<td contenteditable="true">player3</td>
+			</tr>
+			<tr>
+				<td data-player="4">4p</td>
+				<td contenteditable="true">player4</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		<span id="current-turn"></span><br>
+		<span id="current-player"></span>
+	</p>
+	<div id="status">
+		<div class="Operation">
+			<div id="board" class="board"></div>
+			<p><span id="message">地形を入力してください</span></p>
+			<button type="button" onclick="">地形の決定</button>
+			<button type="button" onclick="onClickGoNextTurn()">ターンをすすめる</button>
+		</div>
+		<table class="player_status">
+			<thead>
+				<tr>
+					<td>name</td>
+					<td data-player="1">1p</td>
+					<td data-player="2">2p</td>
+					<td data-player="3">3p</td>
+					<td data-player="4">4p</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Settlement(開拓地)</td>
+					<td>5</td>
+					<td>5</td>
+					<td>5</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>City(街)</td>
+					<td>4</td>
+					<td>4</td>
+					<td>4</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>Road(道)</td>
+					<td>15</td>
+					<td>15</td>
+					<td>15</td>
+					<td>15</td>
+				</tr>
+				<tr>
+					<td>Brick(レンガ)</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>Lumber(木材)</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>Wool(羊毛)</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>Grain(小麦)</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>Ore(鉱石)</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- 道 -->
+	<div id="road-template" class="road" data-player="0"></div>
+	<!-- 地形 -->
+	<div id="terrain-template" class="terrain" data-terrain="Desert" data-number="0"></div>
+	<!-- 交差点 -->
+	<div id="crossroads-template" class="crossroads" data-player="0"></div>
+
+	<div class="terrain_cont"></div>
+
+	<button type="button" onclick="onClickLogPrint()">ログの保存</button>
+	<p><span id="log"></span></p>
+	<script src="frame.js"></script>
+</body>
+
+</html>

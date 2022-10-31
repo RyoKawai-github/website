@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>test</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../BookList/style.css">
+</head>
+
+<body>
+	<!-- 入力部分 -->
+	<p style="color: red;font-weight: bold;font-size: large;">! PCでgoogle
+		Chromeを利用することをお勧めします。それ以外の環境ではpopが印刷できない可能性があります。</p>
+	<p>ISBN(10桁は13桁に補正されます。10桁の最後の数字がXの場合は0を記入してください。): <input type="number" id="inputBookISBN" placeholder="[-]不要"
+			min="1000000000" max="9999999999999" value="9784478107256"></p>
+	<p>シリーズ名: <input type="text" id="inputBookSeries"> (九コレに記載がない場合は省略可)</p>
+	<p>本のURL(九コレのURL): <input type="url" id="inputBookURL" placeholder="http://hdl.handle.net/2324/" size="40"
+			value="http://hdl.handle.net/2324/1"></p>
+	<p>本の分類(請求記号の百の位(0-9)): <input type="number" id="inputBookClass" min="0" max="9" value="0"></p>
+	<p>本のタイトル: <input type="text" id="inputBookTitle" size="50" value="うおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお">
+	</p>
+	<p>本の著者(九コレの「責任表示」の欄をコピー(末尾の「著」や「他」「et.all」などまで全て)): <input type="text" id="inputBookAuthor" size="50"
+			value="ロバートマックレーン"></p>
+	<p>本の発行年月: <input type="number" id="inputBookPublicationYear" min="0" max="9999" value="2020">年<input type="number"
+			id="inputBookPublicationMonth" value="2" min="1" max="12">月 (九コレに記載がない場合は省略可)</p>
+	<p>投稿日: <input type="date" id="inputReviewDate" value="2020-02-03"></p>
+	<p>投稿者の名前(ニックネーム): <input type="text" id="inputReviewName" value="匿名" size="20"></p>
+	<p>レビュー本文</p>
+	<p><textarea id="inputReviewText" rows="12"
+			cols="30">ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</textarea>
+	</p>
+	<!-- メッセージ部分 -->
+	<p id="errorMessage">このメッセージが表示されている場合は、ページを再読み込みしてください。</p>
+	<!-- ボタン部分 -->
+	<input type="button" class="madeButton" value="確認" onclick="onClickCheckData()">
+	<!-- 確認部分 -->
+	<div id="bookImgCheckBox"></div>
+	<!-- 出力部分-->
+	<div id="outputHTMLandPrint"></div>
+	<script type="text/javascript" src="qrcode.min.js"></script>
+	<script src="frame.js"></script>
+	<script src="../BookList/frame.js"></script>
+</body>
+
+</html>

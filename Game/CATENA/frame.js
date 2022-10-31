@@ -1,6 +1,6 @@
 // ******globalな色々な値の定義******
 var turn = 0;
-var log = "ログ\n";
+var log = "";
 var checkmate = 0;
 const currentTurnText = document.getElementById("current-turn");
 const turnPlayerText = document.getElementById("turn-player");
@@ -241,9 +241,20 @@ const createPieces = (piece_set) => {
 		board.appendChild(piece); //マス目のHTML要素を盤に追加
 	}
 };
+// チェックメイトをクリックした場合の動作
+const onClickLogPrint = () => {
+	let ary = log.split(''); // 配列形式に変換（後述のBlobで全要素出力）
+	let blob = new Blob(ary, { type: "text/plan" }); // テキスト形式でBlob定義
+	let link = document.createElement('a'); // HTMLのaタグを作成
+	link.href = URL.createObjectURL(blob); // aタグのhref属性を作成
+	link.download = 'log.txt'; // aタグのdownload属性を作成
+	link.click(); // 定義したaタグをクリック（実行）
+};
 
 // ******最初に処理する内容******
 window.onload = () => {
 	createSquares();
 	createPieces(first_piece_set);
+	const log_print = document.getElementById("log_print");
+	log_print.addEventListener('click', (e) => { onClickLogPrint(); })
 };

@@ -69,3 +69,16 @@ div .piece[data-player="2"] {
 	cursor: pointer;
 	z-index: 1;
 }
+
+#log_print {
+	display: inline-block;
+	background-color: #4ca4e8;
+	color: #FFFFFF;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#log::before {
+	content: "ログ";
+	display: block;
+}
