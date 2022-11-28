@@ -1,0 +1,119 @@
+#List_Table {
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	font-size: 14px;
+}
+
+#List_Table tr {
+	cursor: pointer;
+	border-bottom: solid 1px #778ca3;
+	color: #000000;
+	text-decoration: none;
+	width: 100%;
+}
+
+#List_Table tr:hover {
+	background: #EEEEEE;
+}
+
+#List_Table tr td:nth-child(1) {
+	width: 12%;
+}
+
+#List_Table tr td:nth-child(2) {
+	width: 12%;
+}
+
+#List_Table tr td:nth-child(3) {
+	font-weight: bold;
+}
+
+#List_Table th {
+	cursor: pointer;
+	background-color: #DDFFFF;
+	border: 1px solid #888888;
+	padding-left: 4px;
+}
+
+#List_Table td {
+	padding: 3px;
+}
+
+#List_Table select {
+	font-size: 12px;
+}
+
+/* カテゴリの設定 */
+#List_Table .cat0:before,
+#List_Table .cat1:before,
+#List_Table .cat2:before,
+#List_Table .cat3:before,
+#List_Table .cat4:before,
+#List_Table .cat5:before,
+#List_Table .cat6:before,
+#List_Table .cat7:before,
+#List_Table .cat8:before,
+#List_Table .cat9:before {
+	display: inline-block;
+	padding: 2px;
+	padding-left: 20px;
+	border-radius: 10px;
+	width: 80%;
+	color: #FFFFFF;
+	font-size: 12px;
+	text-align: left;
+	text-indent: -10px;
+}
+
+#List_Table .cat0:before {
+	content: "0 総記";
+	background-color: #000000;
+}
+
+#List_Table .cat1:before {
+	content: "1 哲学";
+	background-color: #990099;
+}
+
+#List_Table .cat2:before {
+	content: "2 歴史";
+	background-color: #DDAA22;
+}
+
+#List_Table .cat3:before {
+	content: "3 社会科学";
+	background-color: #FFFF00;
+	color: #000000;
+}
+
+#List_Table .cat4:before {
+	content: "4 自然科学";
+	background-color: #70D000;
+}
+
+#List_Table .cat5:before {
+	content: "5 技術";
+	background-color: #008800;
+}
+
+#List_Table .cat6:before {
+	content: "6 産業";
+	background-color: #00BBFF;
+}
+
+#List_Table .cat7:before {
+	content: "7 芸術";
+	background-color: #2090FF;
+}
+
+#List_Table .cat8:before {
+	content: "8 言語";
+	background-color: #FF2299;
+}
+
+#List_Table .cat9:before {
+	content: "9 文学";
+	background-color: #EE1111;
+}

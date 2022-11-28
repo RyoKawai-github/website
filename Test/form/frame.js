@@ -13,6 +13,30 @@ const ReviewText = document.getElementById("inputReviewText");
 const ErrorMessage = document.getElementById("errorMessage");
 const BookImgCheckBox = document.getElementById("bookImgCheckBox");
 const OutputHTMLandPrint = document.getElementById("outputHTMLandPrint");
+const BookPageURLList = [
+	"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925929",
+	"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925930",
+	"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925931",
+	"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925932",
+	"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925933",
+	"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925934",
+	"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925935",
+	"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925937",
+	"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925938",
+	"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925940"
+];
+
+const CatchPage = async (URL, ID) => {
+	const page = await fetch(URL);
+	const html = await page.text();
+	const dom = new DOMParser().parseFromString(html, 'text/html');
+	const domTarget = dom.querySelector('#ISBN_' + ID);
+	if (domTarget != null) {
+		console.log("True");
+	} else {
+		console.log("False");
+	}
+}
 
 const onClickPrintHTMLcontent = (_id) => {
 	// 印刷範囲をコピーしてbody直下に置く
@@ -91,17 +115,15 @@ const onClickMakeData = () => {
 	const Message1 = document.createElement("div");
 	const Message2 = document.createElement("div");
 	const Message3 = document.createElement("div");
-	const Message4 = document.createElement("div");
 	const HTMLCode1 = document.createElement("pre");
 	const HTMLCode2 = document.createElement("pre");
-	const HTMLCode3 = document.createElement("pre");
 
 	const QRcode = document.createElement("div");
 
 	const BookList = document.createElement("ul");
 	BookList.setAttribute("id", "BookList");
-	const ReviewList = document.createElement("ul");
-	ReviewList.setAttribute("id", "ReviewList");
+	const ReviewList = document.createElement("table");
+	ReviewList.setAttribute("id", "List_Table");
 
 	const popBox = document.createElement("div");
 	popBox.setAttribute("id", "popBox");
@@ -126,8 +148,6 @@ const onClickMakeData = () => {
 	ButtonSave1.classList.add("madeButton");
 	const ButtonSave2 = document.createElement("input");
 	ButtonSave2.classList.add("madeButton");
-	const ButtonSave3 = document.createElement("input");
-	ButtonSave3.classList.add("madeButton");
 
 	const ButtonClip1 = document.createElement("input");
 	ButtonClip1.classList.add("madeButton");
@@ -138,15 +158,9 @@ const onClickMakeData = () => {
 
 	const ButtonPrint = document.createElement("input");
 	ButtonPrint.classList.add("madeButton");
-	// メッセージの作成
-	Message0.innerHTML = "<h1>Step 0: プレビュー</h1><p>各ページのプレビューです。実際に追加した場合の表示内容を確認し、問題がなければ次のStepに進んでください。</p>";
-	Message1.innerHTML = "<h1>Step 1: 分野別ブックレビューへの追加</h1><p>「クリップボードにコピー」を押して、<a href=\"\" target=\"_blank\">こちらのページ</a>の該当箇所に追加してください。\nうまくいかない場合は「保存(出力)」を押して、slackなどで共有してください。</p>";
-	Message2.innerText = "以下はレビューの概要です。全て(空白も含めて)コピーして、レビュー一覧のリストの先頭に追加してください。";
-	Message3.innerText = "以下はpopに使うQRコードです。うまく表示されない場合は、下のリンクをコピーして、chromeのQRコード作成機能を使用して作成してください。";
-	Message4.innerText = "以下はpopです。英語の場合は黄色になっています。PC版のgoogle ChromeかFirefoxでPDFに出力することができます。1回目はうまく印刷されないことが多いため、うまく印刷できない場合は2-3回押してください。";
 	// コードの作成
 	const BookList_Text =
-		"<li id=\"" + _ISBN + "\">\n" +
+		"<li id=\"ISBN_" + _ISBN + "\">\n" +
 		"\t<div class=\"BookBox\"><a href=\"" + _URL + "\">\n" +
 		"\t\t<div class=\"ImgBox\"><img src=\"" + _ImageURL + "\" alt=\"" + _Title + "\"></div>\n" +
 		"\t\t<div class=\"DetailBox\">\n" +
@@ -173,13 +187,21 @@ const onClickMakeData = () => {
 	BookList.innerHTML = BookList_Text;
 	HTMLCode1.innerText = BookList_Text;
 	const ReviewList_Text =
-		"\t\t<tr data-href=\"https://guides.lib.kyushu-u.ac.jp/bookreview/booklist/class0" + _Class + "#" + _ISBN + "\"><td><time>" + _Date + "</time></td><td class=\"cat" + _Class + "\"></td><td>" + _Title + "</td></tr>\n";
+		"\t\t<tr data-href=\"https://guides.lib.kyushu-u.ac.jp/bookreview/booklist/class0" + _Class + "#ISBN_" + _ISBN + "\"><td><time>" + _Date + "</time></td><td class=\"cat" + _Class + "\"></td><td>" + _Title + "</td></tr>\n";
+	ReviewList.innerHTML = "<thead><tr><th>Date</th><th>Category</th><th>Title</th></tr></thead>" + ReviewList_Text + "</table>";
 	HTMLCode2.innerText = ReviewList_Text;
-	const QR_URL_Text = "https://guides.lib.kyushu-u.ac.jp/bookreview/booklist/class0" + _Class + "#" + _ISBN + "\n";
-	HTMLCode3.innerText = QR_URL_Text;
+	const BookList_Page_URL = "https://guides.lib.kyushu-u.ac.jp/bookreview/booklist/class0" + _Class + "#ISBN_" + _ISBN;
+	// ISBNの存在判定
+	CatchPage(BookPageURLList[_Class], _ISBN);
+	console.log("これが最後にあるか？");
+	// メッセージの作成
+	Message0.innerHTML = "<h1>Step 0: プレビュー</h1><p>各ページのプレビューです。実際に追加した場合の表示内容を確認し、問題がなければ次のStepに進んでください。</p><p>ここの値は実験用です：</p>";
+	Message1.innerHTML = "<h1>Step 1: 分野別ブックレビューへの追加</h1><p>「クリップボードにコピー」を押して、<a href=\"" + BookPageURLList[_Class] + "\" target=\"_blank\">こちらのページ</a>の該当箇所に追加してください。うまくいかない場合は「保存(出力)」を押して、slackなどで共有してください。</p>";
+	Message2.innerHTML = "<h1>Step 2: レビュー一覧への追加</h1><p>「クリップボードにコピー」を押して、<a href=\"https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6925921\" target=\"_blank\">こちらのページ</a>の該当箇所に追加してください。うまくいかない場合は「保存(出力)」を押して、slackなどで共有してください。</p>";
+	Message3.innerHTML = "<h1>Step 3: popの保存</h1><p>「pop印刷」を押して, PDFで保存してください。1回目はうまく印刷されないことが多いため、うまく印刷できない場合は2-3回押してください。</p><p><span style=\"color: red;font-weight: bold;\">注意: </span>縦で保存してください。「詳細設定」を開いて倍率が100%になっているのを確認してください。</p > ";
 	// QRCodeの作成
 	const _QRcode = new QRCode(QRcode, {
-		text: QR_URL_Text,
+		text: BookList_Page_URL,
 		width: 256,
 		height: 256,
 		colorDark: "#ffffff",
@@ -215,21 +237,19 @@ const onClickMakeData = () => {
 	ButtonPrint.setAttribute('onclick', "onClickPrintHTMLcontent(\"popBox\")");
 	// 要素の設置
 	OutputHTMLandPrint.appendChild(Message0);
-	OutputHTMLandPrint.appendChild(BookList);
 	OutputHTMLandPrint.appendChild(Message1);
-	OutputHTMLandPrint.appendChild(HTMLCode1);
-	OutputHTMLandPrint.appendChild(ButtonSave1);
-	OutputHTMLandPrint.appendChild(ButtonClip1);
 	OutputHTMLandPrint.appendChild(Message2);
-	OutputHTMLandPrint.appendChild(HTMLCode2);
-	OutputHTMLandPrint.appendChild(ButtonSave2);
-	OutputHTMLandPrint.appendChild(ButtonClip2);
-	//OutputHTMLandPrint.appendChild(Message3);
-	//OutputHTMLandPrint.appendChild(HTMLCode3);
-	//OutputHTMLandPrint.appendChild(ButtonSave3);
-	OutputHTMLandPrint.appendChild(Message4);
-	OutputHTMLandPrint.appendChild(popBox);
-	OutputHTMLandPrint.appendChild(ButtonPrint);
+	OutputHTMLandPrint.appendChild(Message3);
+	Message0.appendChild(ReviewList);
+	Message0.appendChild(BookList);
+	Message1.appendChild(HTMLCode1);
+	Message1.appendChild(ButtonClip1);
+	Message1.appendChild(ButtonSave1);
+	Message2.appendChild(HTMLCode2);
+	Message2.appendChild(ButtonClip2);
+	Message2.appendChild(ButtonSave2);
+	Message3.appendChild(popBox);
+	Message3.appendChild(ButtonPrint);
 	popBox.appendChild(popTitle);
 	popBox.appendChild(popAuthor);
 	popBox.appendChild(popBox1);
@@ -345,21 +365,25 @@ const onClickCheckData = () => {
 		}
 		// 要素の作成
 		const Box = document.createElement("div");
-		const AttentionMessage = document.createElement("p");
+		const AttentionMessage = document.createElement("div");
 		AttentionMessage.setAttribute("id", "AttentionMessage");
+		const AttentionMessageList = document.createElement("ul");
 		const Message = document.createElement("p");
 		const image_E = new Image();
 		const image_J = new Image();
 		const image_T = new Image();
 		// メッセージの作成
+		AttentionMessage.innerHTML = "<p>以下の部分が入力されていません。入力内容に間違いはありませんか？</p>"
+		AttentionMessageList.innerHTML = "";
 		if (BookSeries.value == "") {
-			if (BookPublicationYear.value == "") {
-				AttentionMessage.innerText = "シリーズ名および発行年月が入力されていません。入力内容は間違いないでしょうか？"
-			} else {
-				AttentionMessage.innerText = "シリーズ名が入力されていません。入力内容は間違いないでしょうか？"
-			}
-		} else if (BookPublicationYear.value == "") {
-			AttentionMessage.innerText = "発行年月が入力されていません。入力内容は間違いないでしょうか？"
+			AttentionMessageList.innerHTML += "<li>シリーズ名</li>";
+		}
+		if (BookPublicationYear.value == "") {
+			AttentionMessageList.innerHTML += "<li>発行年月</li>";
+		}
+		AttentionMessage.appendChild(AttentionMessageList);
+		if (AttentionMessageList.innerHTML == "") {
+			AttentionMessage.innerHTML = "";
 		}
 		Message.innerText = "以下の画像から書影を選び、クリックしてください";
 		// URLの追加

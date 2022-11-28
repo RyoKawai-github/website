@@ -11,6 +11,7 @@ pre {
 	tab-size: 4;
 	white-space: pre-wrap;
 	background-color: #EEEEEE;
+	border: 2px solid black;
 	padding: 10px;
 }
 
@@ -23,16 +24,13 @@ pre {
 	font-size: 12pt;
 }
 
-#errorMessage {
+#errorMessage,
+#AttentionMessage {
 	color: red;
 	font-weight: bold;
 }
 
-#AttentionMessage {
-	color: red;
-}
-
-#bookImgCheckBox div {
+#bookImgCheckBox div:not(#AttentionMessage) {
 	display: flex;
 }
 
@@ -40,11 +38,24 @@ pre {
 	width: 100px;
 	object-fit: contain;
 	margin: 10px;
+	border: 3px solid #84043d;
+}
+
+#outputHTMLandPrint>div {
+	margin: 20px 0;
+	padding: 10px;
+	border: 5px solid #84043d;
+	border-radius: 10px;
 }
 
 #outputHTMLandPrint h1 {
 	font-size: large;
 	font-weight: bold;
+}
+
+#outputHTMLandPrint #popBox {
+	transform: scale(0.9);
+	transform-origin: left;
 }
 
 #popBox {
