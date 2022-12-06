@@ -32,9 +32,11 @@ const CatchPage = async (URL, ID) => {
 	const dom = new DOMParser().parseFromString(html, 'text/html');
 	const domTarget = dom.querySelector('#ISBN_' + ID);
 	if (domTarget != null) {
-		console.log("True");
+		console.log("ISBNが同じ本があるか:True");
+		return 1;
 	} else {
-		console.log("False");
+		console.log("ISBNが同じ本があるか:False");
+		throw 0;
 	}
 }
 
@@ -191,9 +193,6 @@ const onClickMakeData = () => {
 	ReviewList.innerHTML = "<thead><tr><th>Date</th><th>Category</th><th>Title</th></tr></thead>" + ReviewList_Text + "</table>";
 	HTMLCode2.innerText = ReviewList_Text;
 	const BookList_Page_URL = "https://guides.lib.kyushu-u.ac.jp/bookreview/booklist/class0" + _Class + "#ISBN_" + _ISBN;
-	// ISBNの存在判定
-	CatchPage(BookPageURLList[_Class], _ISBN);
-	console.log("これが最後にあるか？");
 	// メッセージの作成
 	Message0.innerHTML = "<h1>Step 0: プレビュー</h1><p>各ページのプレビューです。実際に追加した場合の表示内容を確認し、問題がなければ次のStepに進んでください。</p><p>ここの値は実験用です：</p>";
 	Message1.innerHTML = "<h1>Step 1: 分野別ブックレビューへの追加</h1><p>「クリップボードにコピー」を押して、<a href=\"" + BookPageURLList[_Class] + "\" target=\"_blank\">こちらのページ</a>の該当箇所に追加してください。うまくいかない場合は「保存(出力)」を押して、slackなどで共有してください。</p>";
@@ -355,69 +354,145 @@ const onClickCheckData = () => {
 	// エラーメッセージの出力
 	ErrorMessage.innerText = ErrorMessage_Text;
 	if (!ErrorMessage_Text) {
-		// 発行年月日の作成
-		let BookPublication = "";
-		if (!BookPublicationYear.value == "") {
-			BookPublication += BookPublicationYear.value;
-			if (!BookPublicationMonth.value == "") {
-				BookPublication += "-" + BookPublicationMonth.value;
-			}
-		}
-		// 要素の作成
-		const Box = document.createElement("div");
-		const AttentionMessage = document.createElement("div");
-		AttentionMessage.setAttribute("id", "AttentionMessage");
-		const AttentionMessageList = document.createElement("ul");
-		const Message = document.createElement("p");
-		const image_E = new Image();
-		const image_J = new Image();
-		const image_T = new Image();
-		// メッセージの作成
-		AttentionMessage.innerHTML = "<p>以下の部分が入力されていません。入力内容に間違いはありませんか？</p>"
-		AttentionMessageList.innerHTML = "";
-		if (BookSeries.value == "") {
-			AttentionMessageList.innerHTML += "<li>シリーズ名</li>";
-		}
-		if (BookPublicationYear.value == "") {
-			AttentionMessageList.innerHTML += "<li>発行年月</li>";
-		}
-		AttentionMessage.appendChild(AttentionMessageList);
-		if (AttentionMessageList.innerHTML == "") {
-			AttentionMessage.innerHTML = "";
-		}
-		Message.innerText = "以下の画像から書影を選び、クリックしてください";
-		// URLの追加
-		image_E.src = "https://syndetics.com/index.aspx?isbn=" + BookISBN.value + "/LC.GIF&client=springshare";
-		image_J.src = "https://www.hanmoto.com/bd/img/" + BookISBN.value + "_600.jpg";
-		image_T.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
-		// URLがない場合はCuter本棚の画像を表示
-		image_E.onerror = () => {
-			image_E.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
-		}
-		image_J.onerror = () => {
-			image_J.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
-		}
-		// 各画像にデータの値とクリックした時の処理を配置
-		for (const image of [image_E, image_J, image_T]) {
-			image.setAttribute("data-ISBN", BookISBN.value);
-			image.setAttribute("data-Series", BookSeries.value);
-			image.setAttribute("data-URL", BookURL.value);
-			image.setAttribute("data-Class", BookClass.value);
-			image.setAttribute("data-Title", BookTitle.value);
-			image.setAttribute("data-Author", BookAuthor.value);
-			image.setAttribute("data-Publication", BookPublication);
-			image.setAttribute("data-Date", ReviewDate.value);
-			image.setAttribute("data-Name", ReviewName.value);
-			image.setAttribute("data-Text", ReviewText.value);
-			image.setAttribute('onclick', "onClickMakeData()");
-		}
-		// 要素の設置
-		BookImgCheckBox.appendChild(AttentionMessage);
-		BookImgCheckBox.appendChild(Message);
-		BookImgCheckBox.appendChild(Box);
-		Box.appendChild(image_E);
-		Box.appendChild(image_J);
-		Box.appendChild(image_T);
+		// ISBNの存在判定
+		CatchPage(BookPageURLList[BookClass.value], BookISBN.value)
+			.then(value => {
+				console.log("Trueの処理");
+				const AttentionMessage = document.createElement("div");
+				AttentionMessage.setAttribute("id", "AttentionMessage");
+				// メッセージの作成
+				AttentionMessage.innerHTML = "<p>分野別ブックレビューコレクション:分野" + BookClass.value + "のページに同じ本があります。</p>"
+				BookImgCheckBox.appendChild(AttentionMessage);
+			})
+			.catch(value => {
+				console.log("Falseの処理");
+				// 発行年月日の作成
+				let BookPublication = "";
+				if (!BookPublicationYear.value == "") {
+					BookPublication += BookPublicationYear.value;
+					if (!BookPublicationMonth.value == "") {
+						BookPublication += "-" + BookPublicationMonth.value;
+					}
+				}
+				// 要素の作成
+				const Box = document.createElement("div");
+				const AttentionMessage = document.createElement("div");
+				AttentionMessage.setAttribute("id", "AttentionMessage");
+				const AttentionMessageList = document.createElement("ul");
+				const Message = document.createElement("p");
+				const image_E = new Image();
+				const image_J = new Image();
+				const image_T = new Image();
+				// メッセージの作成
+				AttentionMessage.innerHTML = "<p>以下の部分が入力されていません。入力内容に間違いはありませんか？</p>"
+				AttentionMessageList.innerHTML = "";
+				if (BookSeries.value == "") {
+					AttentionMessageList.innerHTML += "<li>シリーズ名</li>";
+				}
+				if (BookPublicationYear.value == "") {
+					AttentionMessageList.innerHTML += "<li>発行年月</li>";
+				}
+				AttentionMessage.appendChild(AttentionMessageList);
+				if (AttentionMessageList.innerHTML == "") {
+					AttentionMessage.innerHTML = "";
+				}
+				Message.innerText = "以下の画像から書影を選び、クリックしてください";
+				// URLの追加
+				image_E.src = "https://syndetics.com/index.aspx?isbn=" + BookISBN.value + "/LC.GIF&client=springshare";
+				image_J.src = "https://www.hanmoto.com/bd/img/" + BookISBN.value + "_600.jpg";
+				image_T.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
+				// URLがない場合はCuter本棚の画像を表示
+				image_E.onerror = () => {
+					image_E.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
+				}
+				image_J.onerror = () => {
+					image_J.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
+				}
+				// 各画像にデータの値とクリックした時の処理を配置
+				for (const image of [image_E, image_J, image_T]) {
+					image.setAttribute("data-ISBN", BookISBN.value);
+					image.setAttribute("data-Series", BookSeries.value);
+					image.setAttribute("data-URL", BookURL.value);
+					image.setAttribute("data-Class", BookClass.value);
+					image.setAttribute("data-Title", BookTitle.value);
+					image.setAttribute("data-Author", BookAuthor.value);
+					image.setAttribute("data-Publication", BookPublication);
+					image.setAttribute("data-Date", ReviewDate.value);
+					image.setAttribute("data-Name", ReviewName.value);
+					image.setAttribute("data-Text", ReviewText.value);
+					image.setAttribute('onclick', "onClickMakeData()");
+				}
+				// 要素の設置
+				BookImgCheckBox.appendChild(AttentionMessage);
+				BookImgCheckBox.appendChild(Message);
+				BookImgCheckBox.appendChild(Box);
+				Box.appendChild(image_E);
+				Box.appendChild(image_J);
+				Box.appendChild(image_T);
+			});
+		//		// 発行年月日の作成
+		//		let BookPublication = "";
+		//		if (!BookPublicationYear.value == "") {
+		//			BookPublication += BookPublicationYear.value;
+		//			if (!BookPublicationMonth.value == "") {
+		//				BookPublication += "-" + BookPublicationMonth.value;
+		//			}
+		//		}
+		//		// 要素の作成
+		//		const Box = document.createElement("div");
+		//		const AttentionMessage = document.createElement("div");
+		//		AttentionMessage.setAttribute("id", "AttentionMessage");
+		//		const AttentionMessageList = document.createElement("ul");
+		//		const Message = document.createElement("p");
+		//		const image_E = new Image();
+		//		const image_J = new Image();
+		//		const image_T = new Image();
+		//		// メッセージの作成
+		//		AttentionMessage.innerHTML = "<p>以下の部分が入力されていません。入力内容に間違いはありませんか？</p>"
+		//		AttentionMessageList.innerHTML = "";
+		//		if (BookSeries.value == "") {
+		//			AttentionMessageList.innerHTML += "<li>シリーズ名</li>";
+		//		}
+		//		if (BookPublicationYear.value == "") {
+		//			AttentionMessageList.innerHTML += "<li>発行年月</li>";
+		//		}
+		//		AttentionMessage.appendChild(AttentionMessageList);
+		//		if (AttentionMessageList.innerHTML == "") {
+		//			AttentionMessage.innerHTML = "";
+		//		}
+		//		Message.innerText = "以下の画像から書影を選び、クリックしてください";
+		//		// URLの追加
+		//		image_E.src = "https://syndetics.com/index.aspx?isbn=" + BookISBN.value + "/LC.GIF&client=springshare";
+		//		image_J.src = "https://www.hanmoto.com/bd/img/" + BookISBN.value + "_600.jpg";
+		//		image_T.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
+		//		// URLがない場合はCuter本棚の画像を表示
+		//		image_E.onerror = () => {
+		//			image_E.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
+		//		}
+		//		image_J.onerror = () => {
+		//			image_J.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
+		//		}
+		//		// 各画像にデータの値とクリックした時の処理を配置
+		//		for (const image of [image_E, image_J, image_T]) {
+		//			image.setAttribute("data-ISBN", BookISBN.value);
+		//			image.setAttribute("data-Series", BookSeries.value);
+		//			image.setAttribute("data-URL", BookURL.value);
+		//			image.setAttribute("data-Class", BookClass.value);
+		//			image.setAttribute("data-Title", BookTitle.value);
+		//			image.setAttribute("data-Author", BookAuthor.value);
+		//			image.setAttribute("data-Publication", BookPublication);
+		//			image.setAttribute("data-Date", ReviewDate.value);
+		//			image.setAttribute("data-Name", ReviewName.value);
+		//			image.setAttribute("data-Text", ReviewText.value);
+		//			image.setAttribute('onclick', "onClickMakeData()");
+		//		}
+		//		// 要素の設置
+		//		BookImgCheckBox.appendChild(AttentionMessage);
+		//		BookImgCheckBox.appendChild(Message);
+		//		BookImgCheckBox.appendChild(Box);
+		//		Box.appendChild(image_E);
+		//		Box.appendChild(image_J);
+		//		Box.appendChild(image_T);
 	} else {
 		alert(ErrorMessage_Text);
 	}

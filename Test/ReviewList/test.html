@@ -11,7 +11,7 @@
 
 <body>
 	<label for="cat_filter">分野別の絞り込み</label>
-	<select id="cat_filter" onchange="onClickButtonTableFilterOnClass()">
+	<select id="cat_filter" onchange="onClickButtonTableFilterOnClass(this)">
 		<option value="cat">all</option>
 		<option value="cat0">0 総記</option>
 		<option value="cat1">1 哲学</option>
@@ -25,8 +25,9 @@
 		<option value="cat9">9 文学</option>
 	</select>
 	<label for="search_title">本のタイトルで検索</label>
-	<input type="text" id="search_title"> <input type="button" value="絞り込む" id="button1"> <input type="button"
-		value="すべて表示" id="button2">
+	<input type="text" id="search_title">
+	<input type="button" value="絞り込む" id="button1" onclick="onClickButtonTableFilterOnTitle()">
+	<input type="button" value="すべて表示" id="button2" onclick="onClickButtonTableShowAll()">
 	<p>水色の部分を押すとソートできます。</p>
 	<table id="List_Table">
 		<thead>
