@@ -1,0 +1,196 @@
+:root {
+	--pop-color-jp: #78ADFF;
+	--pop-color-eng: #FFBA67;
+}
+
+.print-off {
+	display: none;
+}
+
+pre {
+	tab-size: 4;
+	white-space: pre-wrap;
+	background-color: #EEEEEE;
+	border: 2px solid black;
+	padding: 10px;
+}
+
+.madeButton {
+	margin: 10px;
+	border: 4pt solid #66DDDD;
+	border-radius: 8pt;
+	background-color: #FFFFFF;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+#errorMessage,
+#AttentionMessage {
+	color: red;
+	font-weight: bold;
+}
+
+#bookImgCheckBox div:not(#AttentionMessage) {
+	display: flex;
+}
+
+#bookImgCheckBox img {
+	width: 100px;
+	object-fit: contain;
+	margin: 10px;
+	border: 3px solid #84043d;
+}
+
+#outputHTMLandPrint>div {
+	margin: 20px 0;
+	padding: 10px;
+	border: 5px solid #84043d;
+	border-radius: 10px;
+}
+
+#outputHTMLandPrint h1 {
+	font-size: large;
+	font-weight: bold;
+}
+
+#outputHTMLandPrint #popBox {
+	transform: scale(0.9);
+	transform-origin: left;
+}
+
+#popBox {
+	border: 8pt solid var(--pop-color-jp);
+	border-radius: 34pt;
+	padding: 0;
+	width: 400pt;
+	box-sizing: content-box;
+	position: relative;
+}
+
+#popBox.popEng {
+	border: 8pt solid var(--pop-color-eng);
+}
+
+#popBox::before {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	left: 270pt;
+	bottom: -46pt;
+	border-style: solid;
+	border-width: 45pt 18pt 0 54pt;
+	border-color: var(--pop-color-jp) transparent transparent transparent;
+}
+
+#popBox.popEng::before {
+	border-color: var(--pop-color-eng) transparent transparent transparent;
+}
+
+#popBox::after {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	left: 279pt;
+	bottom: -34pt;
+	border-style: solid;
+	border-width: 35pt 14pt 0 42pt;
+	border-color: #FFFFFF transparent transparent transparent;
+}
+
+#popBox img {
+	width: 70pt;
+	border: 2pt solid black;
+	margin: auto;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#popBox1 {
+	display: flex;
+	border-top: 4pt dashed var(--pop-color-jp);
+	margin: 0;
+	padding: 0;
+	box-sizing: content-box;
+}
+
+#popBox.popEng #popBox1 {
+	border-top: 4pt dashed var(--pop-color-eng);
+}
+
+#popBox2 {
+	margin: 0;
+	padding: 7pt;
+}
+
+#popBox3 {
+	display: flex;
+	flex-direction: column-reverse;
+	margin: 0;
+	padding: 10pt;
+	width: 100pt;
+}
+
+#popTitle {
+	font-weight: bold;
+	font-size: 12pt;
+	margin: 4pt 14pt 8pt 14pt;
+	padding: 0;
+	width: 372pt;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+	word-break: normal;
+	hyphens: auto;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+}
+
+#popAuthor {
+	text-align: right;
+	font-size: 8pt;
+	margin: 4pt 8pt;
+	padding: 0;
+}
+
+#popText {
+	font-size: 11pt;
+	line-height: 16pt;
+	width: 286pt;
+	height: 96pt;
+	margin: 0;
+	padding: 0;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+	word-break: normal;
+	hyphens: auto;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 6;
+	overflow: hidden;
+}
+
+#popName {
+	text-align: right;
+	font-weight: bold;
+	font-size: 9pt;
+	margin: 2pt 0 0 0;
+	padding: 0;
+}
+
+#popQRup {
+	text-align: center;
+	font-weight: bold;
+	font-size: 10pt;
+	color: var(--pop-color-jp) !important;
+	margin: 8pt 0;
+	padding: 0;
+}
+
+#popBox.popEng #popQRup {
+	color: var(--pop-color-eng) !important;
+}
