@@ -1,14 +1,3 @@
-const BookISBN = document.getElementById("inputBookISBN");
-const BookSeries = document.getElementById("inputBookSeries");
-const BookURL = document.getElementById("inputBookURL");
-const BookClass = document.getElementById("inputBookClass");
-const BookTitle = document.getElementById("inputBookTitle");
-const BookAuthor = document.getElementById("inputBookAuthor");
-const BookPublicationYear = document.getElementById("inputBookPublicationYear");
-const BookPublicationMonth = document.getElementById("inputBookPublicationMonth");
-const ReviewDate = document.getElementById("inputReviewDate");
-const ReviewName = document.getElementById("inputReviewName");
-const ReviewText = document.getElementById("inputReviewText");
 
 const ErrorMessage = document.getElementById("errorMessage");
 const BookImgCheckBox = document.getElementById("bookImgCheckBox");
@@ -30,7 +19,7 @@ const CatchPage = async (URL, ID) => {
 	const page = await fetch(URL);
 	const html = await page.text();
 	const dom = new DOMParser().parseFromString(html, 'text/html');
-	const domTarget = dom.querySelector('#ISBN_' + ID);
+	const domTarget = dom.querySelector(ID);
 	if (domTarget != null) {
 		console.log("ISBNが同じ本があるか:True");
 		return 1;
@@ -91,6 +80,108 @@ const onClickClipData = () => {
 	}, () => {
 		alert("コピーに失敗しました");
 	});
+}
+
+const checkData = () => {
+	// 入力部分の受け取り
+	const BookISBN = document.getElementById("inputBookISBN");
+	const BookID = document.getElementById("inputBookID");
+	const BookSeries = document.getElementById("inputBookSeries");
+	const BookURL = document.getElementById("inputBookURL");
+	const BookClass = document.getElementById("inputBookClass");
+	const BookTitle = document.getElementById("inputBookTitle");
+	const BookAuthor = document.getElementById("inputBookAuthor");
+	const BookPublicationYear = document.getElementById("inputBookPublicationYear");
+	const BookPublicationMonth = document.getElementById("inputBookPublicationMonth");
+	const ReviewDate = document.getElementById("inputReviewDate");
+	const ReviewName = document.getElementById("inputReviewName");
+	const ReviewText = document.getElementById("inputReviewText");
+	// 入力部分の修正
+	let ErrorMessage_Text = "";
+	// ISBNの修正
+	let BookId = "";
+	let BookISBN_Text_S = (BookISBN.value).toString();
+	if (BookISBN_Text_S.match(/^\d{10}$/g)) {
+		let checker_num = 0;
+		for (let i = 1; i < BookISBN_Text_S.length; i++) {
+			checker_num += (11 - i) * Number(BookISBN_Text_S[i - 1]);
+		}
+		checker_num = ((11 - (checker_num % 11)) % 11) % 10;
+		if (checker_num == Number(BookISBN_Text_S[9])) {
+			BookISBN_Text_S = "978" + BookISBN_Text_S;
+			checker_num = 0;
+			for (let i = 1; i < BookISBN_Text_S.length; i++) {
+				checker_num += (3 - (i % 2) * 2) * Number(BookISBN_Text_S[i - 1]);
+			}
+			checker_num = (10 - (checker_num % 10)) % 10;
+			BookISBN_Text_S = BookISBN_Text_S.slice(0, 12) + String(checker_num);
+			BookISBN.value = Number(BookISBN_Text_S);
+			BookId = "ISBN" + BookISBN.value;
+		} else {
+			ErrorMessage_Text = "ISBNが間違っています";
+		}
+	} else if (BookISBN_Text_S.match(/^\d{13}$/g)) {
+		let checker_num = 0;
+		for (let i = 1; i < BookISBN_Text_S.length; i++) {
+			checker_num += (3 - (i % 2) * 2) * Number(BookISBN_Text_S[i - 1]);
+		}
+		checker_num = (10 - (checker_num % 10)) % 10;
+		if (checker_num == Number(BookISBN_Text_S[12])) {
+			BookId = "ISBN_" + BookISBN.value;
+		} else {
+			ErrorMessage_Text = "ISBNが間違っています";
+		}
+	} else if (BookISBN_Text_S == "") {
+		if (BookID.value == "") {
+			ErrorMessage_Text = "ISBNを入力するか, 書誌IDまたはレコードIDを入力してください";
+		} else {
+			BookId = "DocID_" + BookID.value;
+		}
+	} else {
+		ErrorMessage_Text = "ISBNが間違っています";
+	}
+	// URLのチェック
+	if (!ErrorMessage_Text) {
+		if (BookURL.value == "") {// URLのチェック
+			ErrorMessage_Text = "本のURLが未入力です";
+		} else if (!BookURL.value.match(/^https\:\/\/hdl\.handle\.net\/2324\/\d+$/)) {// URLのチェック
+			ErrorMessage_Text = "本のURLが不正です";
+		} else if (!BookClass.value.match(/^\d{1}$/g)) {// Classのチェック
+			ErrorMessage_Text = "本の分類が間違っています";
+		} else if (BookTitle.value == "") {// タイトルのチェック
+			ErrorMessage_Text = "本のタイトルが未入力です";
+		} else if (BookAuthor.value == "") {// 著者のチェック
+			ErrorMessage_Text = "本の著者が未入力です";
+		} else if (!BookPublicationYear.value.match(/^\d*$/g)) {// 発行年月のチェック
+			ErrorMessage_Text = "本の発行年が不正です";
+		} else if (!["", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"].includes(BookPublicationMonth.value)) {// 発行年月のチェック
+			ErrorMessage_Text = "本の発行月が不正です";
+		} else if (ReviewDate.value == "") {// 投稿日のチェック
+			ErrorMessage_Text = "投稿日が未入力です";
+		} else if (ReviewText.value == "") {// レビュー本文のチェック
+			ErrorMessage_Text = "レビュー本文が未入力です";
+		}
+	}
+	if (!ErrorMessage_Text && ReviewName.value == "") {// 投稿者の名前のチェック
+		ReviewName.value = "匿名";
+	}
+	// 発行年月日の作成
+	let BookPublication = BookPublicationYear.value + "-" + BookPublicationMonth.value;
+	BookPublication.replace(/-$/, '');
+	return {
+		ErrorMessage: ErrorMessage_Text,
+		ID: BookId,
+		Series: BookSeries.value,
+		URL: BookURL.value,
+		Class: BookClass.value,
+		Title: BookTitle.value,
+		Author: BookAuthor.value,
+		Publication: BookPublication,
+		Date: ReviewDate.value,
+		Name: ReviewName.value,
+		Text: ReviewText.value
+	};
+
 }
 
 const onClickMakeData = () => {
@@ -269,6 +360,19 @@ const onClickMakeData = () => {
 }
 
 const onClickCheckData = () => {
+	//// 入力部分の受け取り
+	//const BookISBN = document.getElementById("inputBookISBN");
+	//const BookID = document.getElementById("inputBookID");
+	//const BookSeries = document.getElementById("inputBookSeries");
+	//const BookURL = document.getElementById("inputBookURL");
+	//const BookClass = document.getElementById("inputBookClass");
+	//const BookTitle = document.getElementById("inputBookTitle");
+	//const BookAuthor = document.getElementById("inputBookAuthor");
+	//const BookPublicationYear = document.getElementById("inputBookPublicationYear");
+	//const BookPublicationMonth = document.getElementById("inputBookPublicationMonth");
+	//const ReviewDate = document.getElementById("inputReviewDate");
+	//const ReviewName = document.getElementById("inputReviewName");
+	//const ReviewText = document.getElementById("inputReviewText");
 	// 既存部分の消去
 	while (BookImgCheckBox.firstChild) {
 		BookImgCheckBox.removeChild(BookImgCheckBox.firstChild);
@@ -276,104 +380,111 @@ const onClickCheckData = () => {
 	while (OutputHTMLandPrint.firstChild) {
 		OutputHTMLandPrint.removeChild(OutputHTMLandPrint.firstChild);
 	}
-	// 入力部分の修正
-	let ErrorMessage_Text = "";
-	// ISBNの修正
-	let BookISBN_Text_S = (BookISBN.value).toString();
-	if (BookISBN_Text_S.match(/^\d{10}$/g)) {
-		let checker_num = 0;
-		for (let i = 1; i < BookISBN_Text_S.length; i++) {
-			checker_num += (11 - i) * Number(BookISBN_Text_S[i - 1]);
-		}
-		checker_num = ((11 - (checker_num % 11)) % 11) % 10;
-		if (checker_num == Number(BookISBN_Text_S[9])) {
-			BookISBN_Text_S = "978" + BookISBN_Text_S;
-			checker_num = 0;
-			for (let i = 1; i < BookISBN_Text_S.length; i++) {
-				checker_num += (3 - (i % 2) * 2) * Number(BookISBN_Text_S[i - 1]);
-			}
-			checker_num = (10 - (checker_num % 10)) % 10;
-			BookISBN_Text_S = BookISBN_Text_S.slice(0, 12) + String(checker_num);
-			BookISBN.value = Number(BookISBN_Text_S);
-		} else {
-			ErrorMessage_Text = "ISBNが間違っています";
-		}
-	} else if (BookISBN_Text_S.match(/^\d{13}$/g)) {
-		let checker_num = 0;
-		for (let i = 1; i < BookISBN_Text_S.length; i++) {
-			checker_num += (3 - (i % 2) * 2) * Number(BookISBN_Text_S[i - 1]);
-		}
-		checker_num = (10 - (checker_num % 10)) % 10;
-		if (checker_num == Number(BookISBN_Text_S[12])) {
-			;// あっている
-		} else {
-			ErrorMessage_Text = "ISBNが間違っています";
-		}
-	} else {
-		ErrorMessage_Text = "ISBNが間違っています";
-	}
-	// URLのチェック
-	if (!ErrorMessage_Text) {
-		if (BookURL.value == "") {
-			ErrorMessage_Text = "本のURLが未入力です";
-		} else if (!BookURL.value.match(/^http\:\/\/hdl\.handle\.net\/2324\/\d+$/)) {
-			ErrorMessage_Text = "本のURLが不正です";
-		}
-	}
-	// Classのチェック
-	if (!ErrorMessage_Text && !BookClass.value.match(/^\d{1}$/g)) {
-		ErrorMessage_Text = "本の分類が間違っています";
-	}
-	// タイトルのチェック
-	if (!ErrorMessage_Text && BookTitle.value == "") {
-		ErrorMessage_Text = "本のタイトルが未入力です";
-	}
-	// 著者のチェック
-	if (!ErrorMessage_Text && BookAuthor.value == "") {
-		ErrorMessage_Text = "本の著者が未入力です";
-	}
-	// 発行年月のチェック
-	if (!ErrorMessage_Text && !BookPublicationYear.value.match(/^\d*$/g)) {
-		ErrorMessage_Text = "本の発行年が不正です";
-	}
-	if (!ErrorMessage_Text && !["", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"].includes(BookPublicationMonth.value)) {
-		ErrorMessage_Text = "本の発行月が不正です";
-	}
-	// 投稿日のチェック
-	if (!ErrorMessage_Text && ReviewDate.value == "") {
-		ErrorMessage_Text = "投稿日が未入力です";
-	}
-	// 投稿者の名前のチェック
-	if (!ErrorMessage_Text && ReviewName.value == "") {
-		ReviewName.value = "匿名";
-	}
-	// レビュー本文のチェック
-	if (!ErrorMessage_Text && ReviewText.value == "") {
-		ErrorMessage_Text = "レビュー本文が未入力です";
-	}
+	//// 入力部分の修正
+	//let ErrorMessage_Text = "";
+	//// ISBNの修正
+	//let BookISBN_Text_S = (BookISBN.value).toString();
+	//if (BookISBN_Text_S.match(/^\d{10}$/g)) {
+	//	let checker_num = 0;
+	//	for (let i = 1; i < BookISBN_Text_S.length; i++) {
+	//		checker_num += (11 - i) * Number(BookISBN_Text_S[i - 1]);
+	//	}
+	//	checker_num = ((11 - (checker_num % 11)) % 11) % 10;
+	//	if (checker_num == Number(BookISBN_Text_S[9])) {
+	//		BookISBN_Text_S = "978" + BookISBN_Text_S;
+	//		checker_num = 0;
+	//		for (let i = 1; i < BookISBN_Text_S.length; i++) {
+	//			checker_num += (3 - (i % 2) * 2) * Number(BookISBN_Text_S[i - 1]);
+	//		}
+	//		checker_num = (10 - (checker_num % 10)) % 10;
+	//		BookISBN_Text_S = BookISBN_Text_S.slice(0, 12) + String(checker_num);
+	//		BookISBN.value = Number(BookISBN_Text_S);
+	//	} else {
+	//		ErrorMessage_Text = "ISBNが間違っています";
+	//	}
+	//} else if (BookISBN_Text_S.match(/^\d{13}$/g)) {
+	//	let checker_num = 0;
+	//	for (let i = 1; i < BookISBN_Text_S.length; i++) {
+	//		checker_num += (3 - (i % 2) * 2) * Number(BookISBN_Text_S[i - 1]);
+	//	}
+	//	checker_num = (10 - (checker_num % 10)) % 10;
+	//	if (checker_num == Number(BookISBN_Text_S[12])) {
+	//		;// あっている
+	//	} else {
+	//		ErrorMessage_Text = "ISBNが間違っています";
+	//	}
+	//} else if (BookISBN_Text_S == "") {
+	//	if (BookID.value == "") {
+	//		ErrorMessage_Text = "ISBNを入力するか, 書誌IDまたはレコードIDを入力してください";
+	//	} else {
+	//		;
+	//	}
+	//} else {
+	//	ErrorMessage_Text = "ISBNが間違っています";
+	//}
+	//// URLのチェック
+	//if (!ErrorMessage_Text) {
+	//	if (BookURL.value == "") {
+	//		ErrorMessage_Text = "本のURLが未入力です";
+	//	} else if (!BookURL.value.match(/^https\:\/\/hdl\.handle\.net\/2324\/\d+$/)) {
+	//		ErrorMessage_Text = "本のURLが不正です";
+	//	}
+	//}
+	//// Classのチェック
+	//if (!ErrorMessage_Text && !BookClass.value.match(/^\d{1}$/g)) {
+	//	ErrorMessage_Text = "本の分類が間違っています";
+	//}
+	//// タイトルのチェック
+	//if (!ErrorMessage_Text && BookTitle.value == "") {
+	//	ErrorMessage_Text = "本のタイトルが未入力です";
+	//}
+	//// 著者のチェック
+	//if (!ErrorMessage_Text && BookAuthor.value == "") {
+	//	ErrorMessage_Text = "本の著者が未入力です";
+	//}
+	//// 発行年月のチェック
+	//if (!ErrorMessage_Text && !BookPublicationYear.value.match(/^\d*$/g)) {
+	//	ErrorMessage_Text = "本の発行年が不正です";
+	//}
+	//if (!ErrorMessage_Text && !["", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"].includes(BookPublicationMonth.value)) {
+	//	ErrorMessage_Text = "本の発行月が不正です";
+	//}
+	//// 投稿日のチェック
+	//if (!ErrorMessage_Text && ReviewDate.value == "") {
+	//	ErrorMessage_Text = "投稿日が未入力です";
+	//}
+	//// 投稿者の名前のチェック
+	//if (!ErrorMessage_Text && ReviewName.value == "") {
+	//	ReviewName.value = "匿名";
+	//}
+	//// レビュー本文のチェック
+	//if (!ErrorMessage_Text && ReviewText.value == "") {
+	//	ErrorMessage_Text = "レビュー本文が未入力です";
+	//}
 	// エラーメッセージの出力
-	ErrorMessage.innerText = ErrorMessage_Text;
-	if (!ErrorMessage_Text) {
+	const { ErrorMessage_, ID, Series, URL, Class, Title, Author, Publication, Date, Name, Text } = checkData();
+	ErrorMessage.innerText = ErrorMessage_;
+	if (!ErrorMessage_) {
 		// ISBNの存在判定
-		CatchPage(BookPageURLList[BookClass.value], BookISBN.value)
+		CatchPage(BookPageURLList[Class], ID)
 			.then(value => {
 				console.log("Trueの処理");
 				const AttentionMessage = document.createElement("div");
 				AttentionMessage.setAttribute("id", "AttentionMessage");
 				// メッセージの作成
-				AttentionMessage.innerHTML = "<p>分野別ブックレビューコレクション:分野" + BookClass.value + "のページに同じ本があります。</p>"
+				AttentionMessage.innerHTML = "<p>分野別ブックレビューコレクション:分野" + Class + "のページに同じ本があります。</p>"
 				BookImgCheckBox.appendChild(AttentionMessage);
 			})
 			.catch(value => {
 				console.log("Falseの処理");
-				// 発行年月日の作成
-				let BookPublication = "";
-				if (!BookPublicationYear.value == "") {
-					BookPublication += BookPublicationYear.value;
-					if (!BookPublicationMonth.value == "") {
-						BookPublication += "-" + BookPublicationMonth.value;
-					}
-				}
+				//// 発行年月日の作成
+				//let BookPublication = "";
+				//if (!BookPublicationYear.value == "") {
+				//	BookPublication += BookPublicationYear.value;
+				//	if (!BookPublicationMonth.value == "") {
+				//		BookPublication += "-" + BookPublicationMonth.value;
+				//	}
+				//}
 				// 要素の作成
 				const Box = document.createElement("div");
 				const AttentionMessage = document.createElement("div");
@@ -398,8 +509,8 @@ const onClickCheckData = () => {
 				}
 				Message.innerText = "以下の画像から書影を選び、クリックしてください";
 				// URLの追加
-				image_E.src = "https://syndetics.com/index.aspx?isbn=" + BookISBN.value + "/LC.GIF&client=springshare";
-				image_J.src = "https://www.hanmoto.com/bd/img/" + BookISBN.value + "_600.jpg";
+				image_E.src = "https://syndetics.com/index.aspx?isbn=" + ID + "/LC.GIF&client=springshare";
+				image_J.src = "https://www.hanmoto.com/bd/img/" + ID + "_600.jpg";
 				image_T.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
 				// URLがない場合はCuter本棚の画像を表示
 				image_E.onerror = () => {
@@ -410,16 +521,16 @@ const onClickCheckData = () => {
 				}
 				// 各画像にデータの値とクリックした時の処理を配置
 				for (const image of [image_E, image_J, image_T]) {
-					image.setAttribute("data-ISBN", BookISBN.value);
-					image.setAttribute("data-Series", BookSeries.value);
-					image.setAttribute("data-URL", BookURL.value);
-					image.setAttribute("data-Class", BookClass.value);
-					image.setAttribute("data-Title", BookTitle.value);
-					image.setAttribute("data-Author", BookAuthor.value);
-					image.setAttribute("data-Publication", BookPublication);
-					image.setAttribute("data-Date", ReviewDate.value);
-					image.setAttribute("data-Name", ReviewName.value);
-					image.setAttribute("data-Text", ReviewText.value);
+					image.setAttribute("data-ISBN", ID);
+					image.setAttribute("data-Series", Series);
+					image.setAttribute("data-URL", URL);
+					image.setAttribute("data-Class", Class);
+					image.setAttribute("data-Title", Title);
+					image.setAttribute("data-Author", Author);
+					image.setAttribute("data-Publication", Publication);
+					image.setAttribute("data-Date", Date);
+					image.setAttribute("data-Name", Name);
+					image.setAttribute("data-Text", Text);
 					image.setAttribute('onclick', "onClickMakeData()");
 				}
 				// 要素の設置
@@ -430,69 +541,6 @@ const onClickCheckData = () => {
 				Box.appendChild(image_J);
 				Box.appendChild(image_T);
 			});
-		//		// 発行年月日の作成
-		//		let BookPublication = "";
-		//		if (!BookPublicationYear.value == "") {
-		//			BookPublication += BookPublicationYear.value;
-		//			if (!BookPublicationMonth.value == "") {
-		//				BookPublication += "-" + BookPublicationMonth.value;
-		//			}
-		//		}
-		//		// 要素の作成
-		//		const Box = document.createElement("div");
-		//		const AttentionMessage = document.createElement("div");
-		//		AttentionMessage.setAttribute("id", "AttentionMessage");
-		//		const AttentionMessageList = document.createElement("ul");
-		//		const Message = document.createElement("p");
-		//		const image_E = new Image();
-		//		const image_J = new Image();
-		//		const image_T = new Image();
-		//		// メッセージの作成
-		//		AttentionMessage.innerHTML = "<p>以下の部分が入力されていません。入力内容に間違いはありませんか？</p>"
-		//		AttentionMessageList.innerHTML = "";
-		//		if (BookSeries.value == "") {
-		//			AttentionMessageList.innerHTML += "<li>シリーズ名</li>";
-		//		}
-		//		if (BookPublicationYear.value == "") {
-		//			AttentionMessageList.innerHTML += "<li>発行年月</li>";
-		//		}
-		//		AttentionMessage.appendChild(AttentionMessageList);
-		//		if (AttentionMessageList.innerHTML == "") {
-		//			AttentionMessage.innerHTML = "";
-		//		}
-		//		Message.innerText = "以下の画像から書影を選び、クリックしてください";
-		//		// URLの追加
-		//		image_E.src = "https://syndetics.com/index.aspx?isbn=" + BookISBN.value + "/LC.GIF&client=springshare";
-		//		image_J.src = "https://www.hanmoto.com/bd/img/" + BookISBN.value + "_600.jpg";
-		//		image_T.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
-		//		// URLがない場合はCuter本棚の画像を表示
-		//		image_E.onerror = () => {
-		//			image_E.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
-		//		}
-		//		image_J.onerror = () => {
-		//			image_J.src = "https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603";
-		//		}
-		//		// 各画像にデータの値とクリックした時の処理を配置
-		//		for (const image of [image_E, image_J, image_T]) {
-		//			image.setAttribute("data-ISBN", BookISBN.value);
-		//			image.setAttribute("data-Series", BookSeries.value);
-		//			image.setAttribute("data-URL", BookURL.value);
-		//			image.setAttribute("data-Class", BookClass.value);
-		//			image.setAttribute("data-Title", BookTitle.value);
-		//			image.setAttribute("data-Author", BookAuthor.value);
-		//			image.setAttribute("data-Publication", BookPublication);
-		//			image.setAttribute("data-Date", ReviewDate.value);
-		//			image.setAttribute("data-Name", ReviewName.value);
-		//			image.setAttribute("data-Text", ReviewText.value);
-		//			image.setAttribute('onclick', "onClickMakeData()");
-		//		}
-		//		// 要素の設置
-		//		BookImgCheckBox.appendChild(AttentionMessage);
-		//		BookImgCheckBox.appendChild(Message);
-		//		BookImgCheckBox.appendChild(Box);
-		//		Box.appendChild(image_E);
-		//		Box.appendChild(image_J);
-		//		Box.appendChild(image_T);
 	} else {
 		alert(ErrorMessage_Text);
 	}

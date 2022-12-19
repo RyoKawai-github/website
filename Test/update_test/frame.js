@@ -1,87 +1,48 @@
-const onClickSaveDate = () => {
-	const textArea = document.getElementById("s-lg-editor-content");
-	console.log(textArea);
-	const test_div = document.createElement("div");
-	test_div.innerHTML = textArea.value;
-	console.log(test_div);
-	const textSaveButton = document.getElementById("s-lib-alert-btn-first");
-	console.log(textSaveButton);
-	if (textSaveButton == null) {
-		console.log("not find save button");
-	} else {
-		const textSaveButton_click = textSaveButton.getAttribute("click");
-		console.log(textSaveButton_click);
-		textSaveButton.click();
-		console.log("success close popup");
-	}
+const CatchPage = async (URL) => {
+	const page = await fetch(URL);
+	const html = await page.text();
+	const dom = new DOMParser().parseFromString(html, 'text/html');
+	return dom;
 }
 
-const onClickUpdate = () => {
-	const promise = new Promise((resolve, reject) => {
-		const editButton = document.getElementById("s-lg-admin-edit-content-text-50745584-container");
-		console.log(editButton);
-		const editButtonHTML = editButton.lastElementChild.children[1].firstElementChild;
-		console.log(editButtonHTML);
-		if (editButtonHTML == null) {
-			console.log("not exists button");
-			reject();
-		} else {
-			console.log("exists button");
-			editButtonHTML.click();
-			resolve();
-		}
-	})
-		.then(() => {
-			console.log("success open popup");
-			setTimeout(onClickSaveDate, 1000);
-		})
-		.catch(() => {
-			console.log("error");
-		})
-}
-
-const onClickUpdate2 = async () => {
-	const editButton = document.getElementById("s-lg-admin-edit-content-text-50745584-container");
-	console.log(editButton);
+const onClickUpdate = async (dom, containerID, selector_css, html_str) => {
+	const editButton = dom.getElementById("s-lg-admin-edit-content-text-" + containerID + "-container");
 	const editButtonHTML = editButton.lastElementChild.children[1].firstElementChild;
-	console.log(editButtonHTML);
-	if (editButtonHTML != null) {
-		console.log("exists button");
-		editButtonHTML.click();
-		console.log("clicked");
-		await new Promise((resolve) => {
-			setTimeout(() => { resolve() }, 1000);
-		})
-		resolve();
-	} else {
-		console.log("not exists button");
-	}
-}
-const onClickSaveDate2 = async () => {
-	console.log("success open popup");
+	console.assert(editButtonHTML != null, "not exists " + containerID + " button");
+	const document_obj = document.createElement("div");
+	document_obj.appendChild(editButtonHTML);
+	editButtonHTML.click();
+	await new Promise((resolve) => {
+		let counter = 0;
+		const timerId = setInterval(() => {
+			if (++counter > 99 || document.getElementById("s-lg-editor-content") != null) {
+				clearInterval(timerId);
+				resolve(0);
+			}
+		}, 100)
+	})
 	const textArea = document.getElementById("s-lg-editor-content");
-	console.log(textArea);
-	const test_div = document.createElement("div");
-	test_div.innerHTML = textArea.value;
-	console.log(test_div);
+	const content_html = document.createElement("div");
+	content_html.innerHTML = textArea.value;
+	const target = content_html.querySelector(selector_css);
+	target.innerHTML = "\n" + html_str + target.innerHTML;
+	textArea.value = content_html.innerHTML;
 	const textSaveButton = document.getElementById("s-lib-alert-btn-first");
-	console.log(textSaveButton);
-	if (textSaveButton != null) {
-		console.log("find save button");
-		const textSaveButton_click = textSaveButton.getAttribute("click");
-		console.log(textSaveButton_click);
-		textSaveButton.click();
-		console.log("success close popup");
-		return 0;
-	} else {
-		console.log("not find save button");
-	}
+	console.assert(textSaveButton != null, "not find save button");
+	textSaveButton.click();
+	await new Promise((resolve) => {
+		let counter = 0;
+		const timerId = setInterval(() => {
+			if (++counter > 99 || document.getElementById("s-lib-alert-btn-first") == null) {
+				clearInterval(timerId);
+				resolve(0);
+			}
+		}, 100)
+	})
+	return 0;
 }
-const onClicked = () => {
-	onClickUpdate2()
-		.then(onClickSaveDate2()
-			.catch(() => 'error')
-		)
-		.catch(() => 'error')
 
+const onClicked = async () => {
+	const dom = await CatchPage("https://kyushu-u.libapps.com/libguides/admin_c.php?g=948899&p=6944015")
+	await onClickUpdate(dom, "50745584", "#testID", "<li>aaa</li>").catch(val => { console.log("not update page"); throw 0; })
 }
