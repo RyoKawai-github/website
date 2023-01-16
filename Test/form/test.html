@@ -19,8 +19,8 @@
 			value="9784478107256"></p>
 	<p>書誌IDまたはレコードID: <input type="number" id="inputBookID" placeholder="[-]不要" value="9784478107256"></p>
 	<p>シリーズ名: <input type="text" id="inputBookSeries"> (九コレに記載がない場合は省略可)</p>
-	<p>本のURL(九コレのURL): <input type="url" id="inputBookURL" placeholder="http://hdl.handle.net/2324/" size="40"
-			value="http://hdl.handle.net/2324/1"></p>
+	<p>本のURL(九コレのURL): <input type="url" id="inputBookURL" placeholder="https://hdl.handle.net/2324/" size="40"
+			value="https://hdl.handle.net/2324/1"></p>
 	<p>本の分類(請求記号の百の位(0-9)): <input type="number" id="inputBookClass" min="0" max="9" value="0"></p>
 	<p>本のタイトル: <input type="text" id="inputBookTitle" size="50" value="うおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお">
 	</p>
@@ -34,6 +34,7 @@
 	<p><textarea id="inputReviewText" rows="12"
 			cols="30">ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</textarea>
 	</p>
+	<p id="log"></p>
 	<!-- メッセージ部分 -->
 	<p id="errorMessage">このメッセージが表示されている場合は、ページを再読み込みしてください。</p>
 	<!-- ボタン部分 -->
@@ -43,7 +44,7 @@
 	<!-- 出力部分-->
 	<div id="outputHTMLandPrint"></div>
 	<script type="text/javascript" src="qrcode.min.js"></script>
-	<script src="frame.js"></script>
+	<script src="frame2.js"></script>
 	<script src="../BookList/frame.js"></script>
 </body>
 
