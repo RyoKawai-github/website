@@ -1,99 +1,125 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="Context-Style-Type" content="text/css" />
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script>
-    //共通パーツ読み込み
-     $(function() {
-     $("#header").load("Layout/header.html");
-     $("#nav").load("Layout/nav.html");
-     $("#footer").load("Layout/footer.html");
-    });
-    </script>
-  <title>RyoKawai</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Context-Style-Type" content="text/css" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script>
+		//共通パーツ読み込み
+		$(function () {
+			$("#header").load("Layout/header.html");
+			$("#nav").load("Layout/nav.html");
+			$("#footer").load("Layout/footer.html");
+		});
+	</script>
+	<title>RyoKawai</title>
 </head>
+
 <body>
-  <header id="header">
-    ここにheader.htmlが読み込まれる.
-  </header>
-  <nav id="nav">
-    ここにnav.htmlが読み込まれる.
-  </nav>
-  <section>
-    <div class="container">
-      <main>
-        <div class="main-inner">
-          <h1>website</h1>
-          <h2>math</h2>
-          <ul>
-            <li><a href="https://www.skaji.org/home" target="_blank">鍛冶先生のHP</a></li>
-            <li><a href="https://takenagakoudai.github.io" target="_blank">竹永さんのHP</a></li>
-            <li><a href="http://www.ic.daito.ac.jp/~mizutani/html/mathexpress.html" target="_blank">MathJax</a></li>
-            <li><a href="https://user.math.kyushu-u.ac.jp/index.php?ochiai" target="_blank">落合先生のHP</a></li>
-            <li><a href="http://pantodon.jp/index.rb?body=index" target="_blank">玉木先生のHP</a></li>
-            <li><a href="https://math.jp/wiki/メインページ" target="_blank">Mathpedia</a></li>
-            <li><a href="http://alg-d.com" target="_blank">壱大整域</a></li>
-            <li><a href="https://paper3510mm.github.io" target="_blank">はたらく双対性</a></li>
-            <li><a href="https://github.com/Seasawher" target="_blank">kitamadoさん</a></li>
-            <li><a href="http://tsujimotter.info/works/turing/" target="_blank">チューリングマシンシュミレーター</a></li>
-            <li><a href="https://ncatlab.org/nlab/show/HomePage" target="_blank">nLab</a></li>
-            <li><a href="https://tanaka-hiroki1989.github.io" target="_blank">田中博基さんのHP</a></li>
-            <li><a href="https://researchmap.jp/nuida/資料公開" target="_blank">縫田先生の資料</a></li>
-            <li><a href="https://yamyamtopo.wordpress.com" target="_blank">yamyamtopoさんの資料</a></li>
-          </ul>
-          <h2>tex</h2>
-          <ul>
-            <li><a href="http://www2.yukawa.kyoto-u.ac.jp/~koudai.sugimoto/dokuwiki/doku.php?id=latex:latexmkの設定" target="_blank">latexmk</a></li>
-            <li><a href="https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90" target="_blank">索引生成</a></li>
-            <li><a href="http://www2.yukawa.kyoto-u.ac.jp/~koudai.sugimoto/dokuwiki/doku.php?id=latex:vscodeによるlatex環境の基本設定" target="_blank">VScode</a></li>
-            <li><a href="https://deic-web.uab.cat/~iblanes/beamer_gallery/index.html" target="_blank">beamer</a></li>
-            <li><a href="https://mathlandscape.com/latex-proof/" target="_blank">証明環境について</a></li>
-            <li><a href="https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289" target="_blank">amsmath</a></li>
-            <li><a href="https://konoyonohana.blog.fc2.com/blog-entry-58.html" target="_blank">enumitem</a></li>
-            <li><a href="http://yunavi.la.coocan.jp/tex.html#stylefile" target="_blank">TeXの部屋</a></li>
-          </ul>
-          <h2>git</h2>
-          <ul>
-            <li><a href="https://qiita.com/anqooqie/items/110957797b3d5280c44f#thumbsdbやds_storeをgitignoreに入れるのはよくないって本当" target="_blank">gitignore</a></li>
-            <li><a href="https://qiita.com/rana_kualu/items/6ed60ee2e5099557cba4" target="_blank">git内に別のgit</a></li>
-            <li><a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages" target="_blank">github pagesについて</a></li>
-          </ul>
-          <h2>VScode</h2>
-          <ul>
-            <li><a href="https://code.visualstudio.com/updates/v1_60#_high-performance-bracket-pair-colorization" target="_blank">Settings Color</a></li>
-            <li><a href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide" target="_blank">Syntax Highlight Guide</a></li>
-            <li><a href="https://code.visualstudio.com/docs/getstarted/settings#_languagespecific-editor-settings" target="_blank">User and Workspace Settings</a></li>
-            <li><a href="https://teratail.com/questions/335752" target="_blank">関数の色の変更</a></li>
-            <li><a href="https://creators.members.co.jp/2021/02/knowledge_007/" target="_blank">シンタックスの色変更</a></li>
-            <li><a href="https://qiita.com/kazutosato/items/04bb337699f1868d3573" target="_blank">テーマのカスタマイズ</a></li>
-          </ul>
-          <h2>html</h2>
-          <ul>
-            <li><a href="https://code-ship-blog.wemotion.co.jp/technology/【初学者必見】displayについて知ろう！/">display</a></li>
-            <li><a href="https://www.marorika.com/entry/copy-to-clipboard">コピー機能</a></li>
-          </ul>
-          <h2>PC関係</h2>
-          <ul>
-            <li><a href="https://original-game.com/homebrew/">homebrew</a></li>
-            <li><a href="https://www.yokoweb.net/2020/02/18/macos-doxygen-install/">doxygen</a></li>
-            <li><a href="https://sobassy.jp" target="_blank">そばっしーさんのHP</a></li>
-            <li><a href="https://zenn.dev/irugo/articles/4bd113195228c3" target="_blank">C言語の高速化</a></li>
-            <li><a href="https://qiita.com/Yarakashi_Kikohshi/items/407f85ba2835d945dd5b">VScodeでのmarkdown</a></li>
-          </ul>
-        </div>
-      </main>
-      <aside>
-        <div class="aside-inner">
-          side
-        </div>
-      </aside>
-    </div>
-  </section>
-  <footer id="footer">
-    ここにfooter.htmlが読み込まれる.
-  </footer>
+	<header id="header">
+		ここにheader.htmlが読み込まれる.
+	</header>
+	<nav id="nav">
+		ここにnav.htmlが読み込まれる.
+	</nav>
+	<section>
+		<div class="container">
+			<main>
+				<div class="main-inner">
+					<h1>website</h1>
+					<h2>math</h2>
+					<ul>
+						<li><a href="https://www.skaji.org/home" target="_blank">鍛冶先生のHP</a></li>
+						<li><a href="https://takenagakoudai.github.io" target="_blank">竹永さんのHP</a></li>
+						<li><a href="http://www.ic.daito.ac.jp/~mizutani/html/mathexpress.html"
+								target="_blank">MathJax</a></li>
+						<li><a href="https://user.math.kyushu-u.ac.jp/index.php?ochiai" target="_blank">落合先生のHP</a></li>
+						<li><a href="http://pantodon.jp/index.rb?body=index" target="_blank">玉木先生のHP</a></li>
+						<li><a href="https://math.jp/wiki/メインページ" target="_blank">Mathpedia</a></li>
+						<li><a href="http://alg-d.com" target="_blank">壱大整域</a></li>
+						<li><a href="https://paper3510mm.github.io" target="_blank">はたらく双対性</a></li>
+						<li><a href="https://github.com/Seasawher" target="_blank">kitamadoさん</a></li>
+						<li><a href="http://tsujimotter.info/works/turing/" target="_blank">チューリングマシンシュミレーター</a></li>
+						<li><a href="https://ncatlab.org/nlab/show/HomePage" target="_blank">nLab</a></li>
+						<li><a href="https://tanaka-hiroki1989.github.io" target="_blank">田中博基さんのHP</a></li>
+						<li><a href="https://researchmap.jp/nuida/資料公開" target="_blank">縫田先生の資料</a></li>
+						<li><a href="https://yamyamtopo.wordpress.com" target="_blank">yamyamtopoさんの資料</a></li>
+					</ul>
+					<h2>tex</h2>
+					<ul>
+						<li><a href="http://www2.yukawa.kyoto-u.ac.jp/~koudai.sugimoto/dokuwiki/doku.php?id=latex:latexmkの設定"
+								target="_blank">latexmk</a></li>
+						<li><a href="https://blog.wtsnjp.com/2016/12/19/tex-and-latex/" target="_blank">texとlatexの違い</a>
+						</li>
+						<li><a href="https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90"
+								target="_blank">索引生成</a></li>
+						<li><a href="http://www2.yukawa.kyoto-u.ac.jp/~koudai.sugimoto/dokuwiki/doku.php?id=latex:vscodeによるlatex環境の基本設定"
+								target="_blank">VScode</a></li>
+						<li><a href="https://deic-web.uab.cat/~iblanes/beamer_gallery/index.html"
+								target="_blank">beamer</a></li>
+						<li><a href="https://mathlandscape.com/latex-proof/" target="_blank">証明環境について</a></li>
+						<li><a href="https://qiita.com/Yarakashi_Kikohshi/items/6362bf26828bfcfdb289"
+								target="_blank">amsmath</a></li>
+						<li><a href="https://konoyonohana.blog.fc2.com/blog-entry-58.html" target="_blank">enumitem</a>
+						</li>
+						<li><a href="http://yunavi.la.coocan.jp/tex.html#stylefile" target="_blank">TeXの部屋</a></li>
+					</ul>
+					<h2>git</h2>
+					<ul>
+						<li><a href="https://qiita.com/anqooqie/items/110957797b3d5280c44f#thumbsdbやds_storeをgitignoreに入れるのはよくないって本当"
+								target="_blank">gitignore</a></li>
+						<li><a href="https://qiita.com/rana_kualu/items/6ed60ee2e5099557cba4"
+								target="_blank">git内に別のgit</a></li>
+						<li><a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages"
+								target="_blank">github pagesについて</a></li>
+					</ul>
+					<h2>VScode</h2>
+					<ul>
+						<li><a href="https://code.visualstudio.com/updates/v1_60#_high-performance-bracket-pair-colorization"
+								target="_blank">Settings Color</a></li>
+						<li><a href="https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide"
+								target="_blank">Syntax Highlight Guide</a></li>
+						<li><a href="https://code.visualstudio.com/docs/getstarted/settings#_languagespecific-editor-settings"
+								target="_blank">User and Workspace Settings</a></li>
+						<li><a href="https://teratail.com/questions/335752" target="_blank">関数の色の変更</a></li>
+						<li><a href="https://creators.members.co.jp/2021/02/knowledge_007/"
+								target="_blank">シンタックスの色変更</a></li>
+						<li><a href="https://qiita.com/kazutosato/items/04bb337699f1868d3573"
+								target="_blank">テーマのカスタマイズ</a></li>
+					</ul>
+					<h2>html</h2>
+					<ul>
+						<li><a
+								href="https://code-ship-blog.wemotion.co.jp/technology/【初学者必見】displayについて知ろう！/">display</a>
+						</li>
+						<li><a href="https://www.marorika.com/entry/copy-to-clipboard">コピー機能</a></li>
+					</ul>
+					<h2>PC関係</h2>
+					<ul>
+						<li><a href="https://qiita.com/angel_p_57/items/2e3f3f8661de32a0d432">正しいSSHの認識</a></li>
+						<li><a href="https://qiita.com/rihib/items/9b1f611619695cbf68a0">SSH接続 for Mac</a></li>
+						<li><a href="https://original-game.com/homebrew/">homebrew</a></li>
+						<li><a href="https://www.yokoweb.net/2020/02/18/macos-doxygen-install/">doxygen</a></li>
+						<li><a href="https://sobassy.jp" target="_blank">そばっしーさんのHP</a></li>
+						<li><a href="https://zenn.dev/irugo/articles/4bd113195228c3" target="_blank">C言語の高速化</a></li>
+						<li><a
+								href="https://qiita.com/Yarakashi_Kikohshi/items/407f85ba2835d945dd5b">VScodeでのmarkdown</a>
+						</li>
+					</ul>
+				</div>
+			</main>
+			<aside>
+				<div class="aside-inner">
+					side
+				</div>
+			</aside>
+		</div>
+	</section>
+	<footer id="footer">
+		ここにfooter.htmlが読み込まれる.
+	</footer>
 </body>
+
 </html>

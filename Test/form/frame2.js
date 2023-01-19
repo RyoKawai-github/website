@@ -381,7 +381,7 @@ const onClickMakePreview = async () => {
 	popBox1.appendChild(popBox3);
 	popBox2.appendChild(popText);
 	popBox2.appendChild(popName);
-	popBox3.appendChild(QRcode);
+	popBox3.appendChild(_QRcode);
 	popBox3.appendChild(popQRup);
 	Message0.innerHTML += "<h2>pop</h2>";
 	Message0.appendChild(ButtonPrint);
