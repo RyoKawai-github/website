@@ -764,174 +764,222 @@ numberlike=subsection,
 									<pre>
 <code>
 {
-    // ---------- Editor ----------
-
-    // フォント サイズをピクセル単位で制御します。
-    "editor.fontSize": 15,
-    // フォント ファミリを制御します。
-    //"editor.fontFamily":"Ricty Diminished",
-    // 行の高さを制御します。
-    "editor.lineHeight": 0,
-    // 1つのタブに相当するスペースの数。
-    "editor.tabSize": 2,
-    // 入力補完を表示する
-    "editor.quickSuggestions": false,
-    // 現在行をガターを含めてハイライトするので視認性が上がる
-    "editor.renderLineHighlight": "all",
-    // 入力補完の表示を何ms遅らせるか
-    //"editor.quickSuggestionsDelay": 10,
-    // 括弧開きを入力したとき括弧閉じを自動的に入れる
-    //"editor.autoClosingBrackets": true,
-    // 括弧同士に色をつける
-    //"editor.bracketPairColorization.enabled": true,
-    // 空白文字列の表示
-    "editor.renderWhitespace": "boundary",
-    // ウインドウ幅で折り返す
-    "editor.wordWrap": "on",
-    // カーソルがにゅるっと点滅する
-    "editor.cursorBlinking": "smooth",
-    // エディタのendなどを自動入力
-    //"editor.autoIndent": true,
-    // インデントガイド(インデントに沿って縦線を表示)
-    "editor.renderIndentGuides": true,
-    // インデントの自動判定
-    "editor.detectIndentation": true,
-    // ミニマップの表示
-    "editor.minimap.enabled": false,
-    // カラーテーマ
-    "workbench.colorTheme": "Visual Studio Dark",
-    // ウィンドウのズームレベル
-    "window.zoomLevel": -1,
-    // 余分なホワイトスペースを削除
-    "files.trimTrailingWhitespace": true,
-    // Enable the extension.
-    //"guides.enabled": false,
-    // Specifies the severity of the message when the classpath is incomplete for a Java file
-    //"java.errors.incompleteClasspath.severity": "ignore",
-    // 新規ファイルはUntitledでファイル作成
-    //"workbench.startupEditor": "newUntitledFile",
-    //"workbench.sideBar.location": "left",
-    // ファイルの末尾は改行で終わらせる
-    "files.insertFinalNewline": true,
-    // 拡張機能を自動更新
-    "extensions.autoUpdate": true,
-    // codeコマンドで(ディレクトリではなく)ファイルを開いたときは、既に開いているウインドウがあればそこに表示する
-    "window.openFilesInNewWindow": "off",
-    //スクリーンリーダー(読み上げ機能)
-    "editor.accessibilitySupport": "off",
-    // タイトルバーにファイルのフルパスを表示する
-    //"window.showFullPath": true,
-    //"explorer.confirmDelete": false,
-    // Quick Open で開いたエディターをプレビューとして表示するかどうかを制御します。
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    // プレビュー画面を開かない
-    "workbench.editor.enablePreview": false,
-    // 現在のタブの下線に色をつける
-    "workbench.colorCustomizations": {
-        "tab.activeBorder": "#0099ff"
-    },
-    // ワークベンチのフォント エイリアシング方法を制御します。
-    //"workbench.fontAliasing": "antialiased",
-    // エディターのタブの大きさを制御します。
-    //"workbench.editor.tabSizing": "shrink",
-    // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。
-    //"workbench.startupEditor": "newUntitledFile",
-    // 3 本の指で横方向にスワイプすると、開いているファイル間を移動できます。
-    //"workbench.editor.swipeToNavigate": true,
-    //"explorer.confirmDragAndDrop": false,
-    //"workbench.colorTheme": "Cobalt2",
-    //"workbench.iconTheme": "material-icon-theme",
-    //"breadcrumbs.enabled": true,
-
-    // ---------- Terminal ----------
-
-    // 実行するターミナル アプリケーションをカスタマイズします。
-    "terminal.external.osxExec": "Terminal.app",
-    // ターミナルのフォント サイズをピクセル単位で制御します。
-    "terminal.integrated.fontSize": 15,
-    // Terminalのフォント設定
-    //"terminal.integrated.fontFamily": "Source Code Pro for Powerline",
-    //"workbench.iconTheme": "material-icon-theme",
-    //"workbench.statusBar.visible": true,
-    //"workbench.colorTheme": "Cobalt2",
-    //"githubPullRequests.hosts": [
-    //  {
-    //    "host": "https://github.com",
-    //    "username": "oauth",
-    //    "token": "system"
-    //  }
-    //],
-
-    // ---------- Language ----------
-
-    // タブストップ中にも入力補完を
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-
-    // ---------- LaTeX Workshop ----------
-
-    // 使用パッケージのコマンドや環境の補完を有効にする
-    "latex-workshop.intellisense.package.enabled": true,
-
-    // 生成ファイルを削除するときに対象とするファイル
-    // デフォルト値に "*.synctex.gz" を追加
-    "latex-workshop.latex.clean.fileTypes": [
-        "*.aux", // 相互参照や目次の情報が入ったファイル
-        "*.log", // ログファイル
-        "*.bbl", // bibtex 参考文献リストを記述したファイル
-        "*.blg", // bibtex ログファイル
-        "*.idx", // makeindex 書き出された索引語句ファイル
-        "*.ind", // makeindex 並び替えられた出力よう索引語句ファイル
-        "*.ilg", // makeindex ログファイル
-        "*.ist", // makeindex 索引スタイルファイル
-        "*.toc", // \tableofcontents
-        "*.lof", // \listoffigures
-        "*.lot", // \listoftables
-        "*.out",
-        "*.acn",
-        "*.acr",
-        "*.alg",
-        "*.glg",
-        "*.glo", // \glossary
-        "*.gls", // \glossary
-        "*.fls",
-        "*.fdb_latexmk",
-        "*.snm",
-        "*.nav",
-        "*.dvi", //デバイスに依存しない組版結果のファイル dvipsで印刷
-        "*.synctex.gz"
-    ],
-
-    // 生成ファイルを "out" ディレクトリに吐き出す
-    "latex-workshop.latex.outDir": "out",
-
-    // ビルドのレシピ
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "latexmk",
-            "tools": [
-                "latexmk"
-            ]
-        },
-    ],
-
-    // ビルドのレシピに使われるパーツ
-    "latex-workshop.latex.tools": [
-        {
-            "name": "latexmk",
-            "command": "latexmk",
-            "args": [
-                "-silent",
-                "-halt-on-error",
-                "-outdir=%OUTDIR%",
-                "%DOC%"
-            ],
-        },
-    ],
-    //PDFの表示方法
-    "latex-workshop.view.pdf.viewer": "tab",
-    //TeX文章のカーソル位置でPDFを表示
-    "latex-workshop.synctex.afterBuild.enabled": true,
+// ---------- Editor ----------
+"editor.fontSize": 15, // 文字サイズ(ピクセル)
+"editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace", // フォントの設定("Ricty Diminished"がプログラミングにはいいらしい)
+"editor.lineHeight": 0, // 行の高さ
+"editor.tabSize": 4, // 1つのタブに相当する半角スペースの数
+"editor.insertSpaces": false, // タブキーを押したときにスペースに変換しない
+"editor.detectIndentation": false, // インデントの自動判定 trueにすると, 既存のファイルに対してもファイルごとのタブのサイズが適用される.
+"editor.quickSuggestions": { // 入力補完の表示
+"comments": false,
+"strings": false,
+"other": true
+},
+"editor.suggest.showWords": false, // textを消す
+// 自動フォーマット設定
+"editor.formatOnSave": true, // 保存時にフォーマット
+"editor.formatOnType": true, // 入力中（改行時）にフォーマット
+"editor.formatOnPaste": true, // ペースト時にフォーマット
+"editor.renderLineHighlight": "all", // 現在行をハイライトする(ガターを含めて)
+"editor.quickSuggestionsDelay": 0, // 入力補完の表示を0ms遅らせる
+"editor.renderWhitespace": "boundary", // 空白文字列の表示(dot)
+"editor.renderControlCharacters": true, // 制御文字を表示する
+"editor.unicodeHighlight.invisibleCharacters": true, // 制御文字の強調
+"editor.wordWrap": "on", // ウインドウ幅で折り返す
+"editor.cursorBlinking": "smooth", // カーソルがにゅるっと点滅する
+"editor.autoClosingBrackets": "beforeWhitespace", // 括弧開きを入力したとき, 後ろが空白ならば括弧閉じを自動的に入れる
+"editor.autoClosingQuotes": "beforeWhitespace", // 引用符開きを入力したとき, 後ろが空白ならば引用符閉じを自動的に入れる
+"editor.autoSurround": "languageDefined", // 選択してから括弧を入力すると自動で囲ってくれる
+"editor.bracketPairColorization.enabled": false, // 括弧同士に色をつけない
+"editor.guides.bracketPairs": "active", // 括弧で囲われた部分の行にガイドをつける
+//
+"workbench.colorCustomizations": {
+// 現在のタブの下線に色をつける
+"tab.activeBorder": "#0099ff",
+// 括弧の色
+//"editorBracketHighlight.foreground1": "#FF0000", // 赤
+//"editorBracketHighlight.foreground2": "#FFBF3F", // 橙
+//"editorBracketHighlight.foreground3": "#FFFF00", // 黄
+//"editorBracketHighlight.foreground4": "#3FFF3F", // 緑
+//"editorBracketHighlight.foreground5": "#3F7FFF", // 青
+//"editorBracketHighlight.foreground6": "#FF7FFF" // 紫
+},
+"editor.accessibilitySupport": "off", // スクリーンリーダー(読み上げ機能)
+"editor.minimap.enabled": false, // ミニマップの非表示
+"workbench.colorTheme": "Default Dark+", // カラーテーマ
+"window.zoomLevel": -1, // ウィンドウのズームレベル
+"files.trimTrailingWhitespace": false, // 余分なホワイトスペースを削除しない
+"editor.copyWithSyntaxHighlighting": false, // テキストコピー時に書式情報を保持しない
+// Enable the extension.
+//"guides.enabled": false,
+// Specifies the severity of the message when the classpath is incomplete for a Java file
+//"java.errors.incompleteClasspath.severity": "ignore",
+// 新規ファイルはUntitledでファイル作成
+//"workbench.startupEditor": "newUntitledFile",
+//"workbench.sideBar.location": "left",
+"files.insertFinalNewline": true, // ファイルの末尾は改行で終わらせる
+"window.openFilesInNewWindow": "off", // codeコマンドで(ディレクトリではなく)ファイルを開いたときは、既に開いているウインドウがあればそこに表示する
+//"window.showFullPath": true, // タイトルバーにファイルのフルパスを表示する
+//"explorer.confirmDelete": false,
+// クリックでエディターをプレビューとして開くかどうか
+"workbench.editor.enablePreview": false,
+// Quick Open で開いたエディターをプレビューとして表示するかどうか
+"workbench.editor.enablePreviewFromQuickOpen": false,
+// エディターのタブの大きさ
+"workbench.editor.tabSizing": "shrink",
+// ワークベンチのガイド線と幅
+"workbench.tree.renderIndentGuides": "always",
+"workbench.tree.indent": 16,
+// ワークベンチのフォント エイリアシング方法を制御します。
+//"workbench.fontAliasing": "antialiased",
+// 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。
+//"workbench.startupEditor": "newUntitledFile",
+// 3 本の指で横方向にスワイプすると、開いているファイル間を移動できる
+//"workbench.editor.swipeToNavigate": true,
+//"explorer.confirmDragAndDrop": false,
+//"workbench.colorTheme": "Cobalt2",
+//"workbench.iconTheme": "material-icon-theme",
+//"breadcrumbs.enabled": true,
+// ---------- Terminal ----------
+// 実行するターミナル アプリケーションをカスタマイズします。
+"terminal.external.osxExec": "Terminal.app",
+// ターミナルのフォント サイズをピクセル単位で制御します。
+"terminal.integrated.fontSize": 15,
+// Terminalのフォント設定
+//"terminal.integrated.fontFamily": "Source Code Pro for Powerline",
+//"workbench.iconTheme": "material-icon-theme",
+//"workbench.statusBar.visible": true,
+//"workbench.colorTheme": "Cobalt2",
+//"githubPullRequests.hosts": [
+// {
+// "host": "https://github.com",
+// "username": "oauth",
+// "token": "system"
+// }
+//],
+// ---------- Update ----------
+// 自動でアップデートを行うか否か
+"update.enableWindowsBackgroundUpdates": false,
+// アップデートはどのように行うか
+"update.mode": "manual",
+"update.showReleaseNotes": true,
+// 拡張機能の更新を受け取る
+"extensions.autoCheckUpdates": true,
+// 拡張機能を自動更新する
+"extensions.autoUpdate": false,
+// ---------- Language ----------
+// タブストップ中にも入力補完を表示するかどうか
+"editor.suggest.snippetsPreventQuickSuggestions": false,
+// ---------- LaTeX Workshop ----------
+// 使用パッケージのコマンドや環境の補完を有効にする
+"latex-workshop.intellisense.package.enabled": true,
+// 生成ファイルを削除するときに対象とするファイル
+// デフォルト値に "*.synctex.gz" を追加
+"latex-workshop.latex.clean.fileTypes": [
+"*.aux", // 相互参照や目次の情報が入ったファイル
+"*.log", // ログファイル
+"*.bbl", // bibtex 参考文献リストを記述したファイル
+"*.blg", // bibtex ログファイル
+"*.idx", // makeindex 書き出された索引語句ファイル
+"*.ind", // makeindex 並び替えられた出力よう索引語句ファイル
+"*.ilg", // makeindex ログファイル
+"*.ist", // makeindex 索引スタイルファイル
+"*.toc", // \tableofcontents
+"*.lof", // \listoffigures
+"*.lot", // \listoftables
+"*.out",
+"*.acn",
+"*.acr",
+"*.alg",
+"*.glg",
+"*.glo", // \glossary
+"*.gls", // \glossary
+"*.fls",
+"*.fdb_latexmk",
+"*.snm",
+"*.nav",
+"*.dvi", //デバイスに依存しない組版結果のファイル dvipsで印刷
+"*.synctex.gz"
+],
+// 生成ファイルを "out" ディレクトリに吐き出す
+"latex-workshop.latex.outDir": "out",
+// ビルドのレシピ
+"latex-workshop.latex.recipes": [
+{
+"name": "latexmk",
+"tools": [
+"latexmk"
+]
+},
+],
+// ビルドのレシピに使われるパーツ
+"latex-workshop.latex.tools": [
+{
+"name": "latexmk",
+"command": "latexmk",
+"args": [
+"-silent",
+"-halt-on-error",
+"-outdir=%OUTDIR%",
+"%DOC%"
+],
+},
+],
+//PDFの表示方法
+"latex-workshop.view.pdf.viewer": "tab",
+//TeX文章のカーソル位置でPDFを表示
+"latex-workshop.synctex.afterBuild.enabled": true,
+"explorer.confirmDelete": false,
+//雑多なもの
+"hediet.vscode-drawio.theme": "Kennedy",
+"liveServer.settings.donotVerifyTags": true,
+"workbench.editorAssociations": {
+"*.png": "hediet.vscode-drawio",
+"*.ipynb": "jupyter-notebook"
+},
+"jupyter.alwaysTrustNotebooks": true,
+"editor.guides.indentation": true,
+"editor.unicodeHighlight.nonBasicASCII": false,
+// ---------- Settings by file ----------
+"[latex]": {
+// 1つのタブに相当する半角スペースの数
+"editor.tabSize": 2,
+"editor.formatOnSave": false, // 保存時にフォーマット
+"editor.formatOnType": false, // 入力中（改行時）にフォーマット
+"editor.formatOnPaste": false, // ペースト時にフォーマット
+},
+"[bibtex]": {
+// 1つのタブに相当する半角スペースの数
+"editor.tabSize": 2,
+},
+"[python]": {
+// タブキーを押したときにスペースに変換する
+"editor.insertSpaces": true,
+},
+"[jupyter]": {
+// タブキーを押したときにスペースに変換する
+"editor.insertSpaces": true,
+},
+"[markdown]": {
+"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+// 不要なルールの削除
+//"markdownlint.config": {
+// "MD045": false,
+//}
+},
+"cSpell.enableFiletypes": [
+"!html",
+"!jsonc"
+],
+"python.analysis.extraPaths": [
+"/Users/2020mac-002/opt/anaconda3/lib/python3.9/site-packages/"
+],
+"livePreview.debugOnExternalPreview": true,
+"cmake.configureOnOpen": true,
+"liveServer.settings.donotShowInfoMsg": true,
 }
+
 </code>
 </pre>
 								</li>
