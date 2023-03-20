@@ -96,6 +96,10 @@
 	content: "ISBN:";
 }
 
+#BookList .book-BibD::before {
+	content: "書誌(レコード)ID:";
+}
+
 #BookList .ReviewBox {
 	margin: auto;
 	display: flex;

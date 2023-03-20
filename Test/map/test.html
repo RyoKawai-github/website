@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>test</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<!-- キャンパス部分 -->
+	<div id="mapBox">
+		<div class="marker" style="left: 70px; top: 90px;"
+			data-src="https://www.hanmoto.com/bd/img/9784478107256_600.jpg" data-title="The visual MBA"
+			data-url="http://hdl.handle.net/2324/1001708851" onclick="onClickMarker()"></div>
+		<div class="marker" style="left: 90px; top: 90px;"
+			data-src="https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603" data-title="" data-url=""
+			onclick="onClickMarker()"></div>
+		<div id="target"></div>
+	</div>
+	<div id="BookBox"><a href="">
+			<div class="ImgBox"><img src="https://guides.lib.kyushu-u.ac.jp/ld.php?content_id=50567603" alt="">
+			</div>
+			<p></p>
+		</a></div>
+	<!-- テスト部分 -->
+	<p id="xxx">0</p>
+	<p id="yyy">0</p>
+	<!-- 入力部分 -->
+	<p style="color: red;font-weight: bold;font-size: large;">! PCでgoogle Chromeを利用することをお勧めします。</p>
+	<p>ISBN(10桁は13桁に補正されます。10桁の最後の数字がXの場合は0を記入してください。): <input type="number" id="inputBookISBN" placeholder="[-]不要"
+			value="9784478107256"></p>
+	<p>書誌IDまたはレコードID: <input type="number" id="inputBookID" placeholder="[-]不要" value="9784478107256"></p>
+	</p>
+	<!-- メッセージ部分 -->
+	<p id="errorMessage">このメッセージが表示されている場合は、ページを再読み込みしてください。</p>
+	<!-- ボタン部分 -->
+	<input type="button" class="madeButton" value="追加" onclick="onClickAddPop()">
+	<script src="frame_open.js"></script>
+	<script src="frame_close.js"></script>
+</body>
+
+</html>
